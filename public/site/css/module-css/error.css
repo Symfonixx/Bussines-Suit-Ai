@@ -1,0 +1,108 @@
+/*--------------------------------------------------------------
+# Error Page
+--------------------------------------------------------------*/
+.error-page {
+    position: relative;
+    display: block;
+    padding: 112px 0 120px;
+    z-index: 1;
+}
+
+.error-page__inner {
+    position: relative;
+    display: block;
+    max-width: 780px;
+    margin: 0 auto;
+}
+
+.error-page__img {
+    position: relative;
+    display: block;
+}
+
+.error-page__img img {
+    width: auto;
+    max-width: 100%;
+    height: auto;
+}
+
+.error-page__content {
+    position: relative;
+    display: block;
+    margin-top: 31px;
+}
+
+.error-page__content h2 {
+    font-size: 50px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: var(--techguru-white);
+    margin: 0 0 18px;
+}
+
+.error-page__content p {
+    font-size: 18px;
+    line-height: 30px;
+    color: var(--techguru-gray);
+    margin: 0;
+}
+
+.error-page__content .btn-box {
+    position: relative;
+    display: block;
+    margin-top: 42px;
+}
+
+.error-page__content .thm-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.error-page__code {
+    position: relative;
+    display: block;
+    font-size: 140px;
+    line-height: 1;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    background: linear-gradient(270deg, #5CB0E9 0%, #3D72FC 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+}
+
+.error-page__debug {
+    margin: 28px auto 0;
+    max-width: 640px;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.error-page__content .btn-box {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    justify-content: center;
+    align-items: center;
+}
+
+.error-page__btn-secondary {
+    background: transparent !important;
+    border: 1px solid rgba(var(--techguru-white-rgb), 0.28);
+}
+
+.error-page__btn-secondary:hover {
+    color: var(--techguru-white) !important;
+}
+
+@media (max-width: 767px) {
+    .error-page__code {
+        font-size: 96px;
+    }
+
+    .error-page__content h2 {
+        font-size: 32px;
+    }
+}

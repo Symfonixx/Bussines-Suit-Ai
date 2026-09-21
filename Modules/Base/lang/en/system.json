@@ -1,0 +1,101 @@
+{
+    "title": "System Configurations",
+    "page_description": "Internal company details, currency, API credentials, and admin notification settings.",
+    "form_description": "Configure company details for invoices, multi-currency defaults, API keys, and the admin notification email.",
+    "tabs": {
+        "branding": "Branding",
+        "company": "Company",
+        "finance": "Finance",
+        "notifications": "Notifications",
+        "backup": "Backup",
+        "fingerprint": "Fingerprint"
+    },
+    "company_details": {
+        "title": "Company Details",
+        "description": "Used on invoices. Falls back to website contact settings when left blank.",
+        "phone": "Company Phone",
+        "email": "Company Email",
+        "address": "Company Address",
+        "sign_image": "Company Sign Image",
+        "sign_image_hint": "Appears on invoices as the authorized signature."
+    },
+    "currency": {
+        "title": "Default Currency",
+        "description": "System-wide base currency used for ledgers, budgets, and exchange-rate snapshots.",
+        "default": "Default Currency",
+        "default_hint": "New transactions and budgets default to this currency. Exchange rates are fetched relative to it.",
+        "names": {
+            "USD": "US Dollar",
+            "EUR": "Euro",
+            "GBP": "British Pound",
+            "TRY": "Turkish Lira"
+        }
+    },
+    "api_configs": {
+        "title": "Exchange Rate API",
+        "description": "Credentials used to refresh live FX rates for multi-currency accounting.",
+        "fixer_api_key": "Fixer.io API Key",
+        "fixer_api_key_hint": "Used to fetch live exchange rates. Keep this secret — it is not shared to the public site.",
+        "fetch_rates": "Fetch rates now",
+        "key_configured": "API key configured",
+        "key_missing": "API key not set",
+        "rates_updated": "Rates last updated",
+        "rates_never": "No rates fetched yet",
+        "status_title": "FX status"
+    },
+    "admin_notifications": {
+        "title": "Admin Notifications",
+        "description": "All system notification emails are sent to this address.",
+        "email": "Admin Email",
+        "email_hint": "Overrides ADMIN_EMAIL from .env when set. Supports comma-separated addresses."
+    },
+    "admin_branding": {
+        "title": "Admin Panel Branding",
+        "description": "Logos shown in the admin sidebar and mobile header.",
+        "logo": "Admin Logo",
+        "logo_hint": "Displayed in the sidebar and mobile header. Recommended size: 245 × 45 px.",
+        "min_logo": "Admin Minimized Logo",
+        "min_logo_hint": "Shown when the sidebar is collapsed. Falls back to the admin logo when not set. Recommended size: 50 × 50 px."
+    },
+    "backup": {
+        "title": "Automatic Backup",
+        "description": "Schedule database backups. Manual backups can also be created from the Backups page.",
+        "enabled": "Enable Automatic Backup",
+        "enabled_label": "Run backups automatically",
+        "enabled_hint": "Uses the interval below. Requires the server cron: php artisan schedule:run",
+        "interval_days": "Backup Interval (Days)",
+        "interval_days_hint": "Create an automatic backup every N days (1–365).",
+        "last_run": "Last Automatic Backup",
+        "manage_link": "Manage backups",
+        "status_on": "Automatic backups are on",
+        "status_off": "Automatic backups are off",
+        "never_run": "Not run yet"
+    },
+    "fingerprint": {
+        "title": "Fingerprint Machine",
+        "description": "Connect to a ZKTeco device over TCP/IP. Employee IDs in Symfonix are mapped to device user IDs for enrollment and attendance sync.",
+        "status_title": "Integration",
+        "enabled_on": "Enabled",
+        "enabled_off": "Disabled",
+        "connection_title": "Device",
+        "connection_ready": "Host configured",
+        "connection_missing": "Host not set",
+        "last_sync": "Last attendance sync",
+        "never_synced": "Never synced",
+        "enabled": "Enable Fingerprint Machine",
+        "enabled_label": "Use fingerprint machine integration",
+        "enabled_hint": "When disabled, HR sync actions are blocked.",
+        "host": "Device IP / Host",
+        "host_hint": "LAN IP address of the ZKTeco fingerprint terminal.",
+        "port": "Port",
+        "port_hint": "Default ZKTeco TCP port is 4370.",
+        "comm_key": "Communication Key",
+        "comm_key_hint": "Numeric device comm password (0 if unset on the device).",
+        "timeout": "Connection Timeout (seconds)",
+        "timeout_hint": "Socket timeout for device operations (3–60 seconds).",
+        "name_encoding": "Name Encoding",
+        "name_encoding_hint": "Device codepage for employee names (UTF-8, Windows-1256 for Arabic, etc.).",
+        "test_connection": "Test connection",
+        "manage_sync": "Open HR sync"
+    }
+}

@@ -1,0 +1,52 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        if (Schema::hasTable('teams')) {
+            if (! Schema::hasColumn('teams', 'employee_id')) {
+                Schema::table('teams', function (Blueprint $table) {
+                    $table->foreignId('employee_id')
+                        ->nullable()
+                        ->unique()
+                        ->constrained('employees')
+                        ->nullOnDelete();
+                });
+            }
+
+            return;
+        }
+
+        Schema::create('teams', function (Blueprint $table) {
+            $table->id();
+            $table->string('avatar');
+            $table->json('name');
+            $table->json('position');
+            $table->string('linked_in')->nullable();
+            $table->string('facebook')->nullable();
+            $table->string('github')->nullable();
+            $table->string('behance')->nullable();
+            $table->string('resume')->nullable();
+            $table->text('key_skills')->nullable();
+            $table->enum('status', ['Published', 'Archived'])->default('Published');
+            $table->foreignId('employee_id')->nullable()->unique()->constrained('employees')->nullOnDelete();
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('teams');
+    }
+};

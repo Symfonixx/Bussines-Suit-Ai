@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="توثيق Symfonix Business Suite — منصة موحدة لإدارة الأعمال تجمع CRM والموارد البشرية والمالية والضرائب والتقارير وإدارة المحتوى والذكاء الاصطناعي (اسأل Symfonix) ضمن نظام معياري عالي الأداء.">
+  <title>Symfonix Business Suite — التوثيق</title>
+  <link rel="alternate" hreflang="en" href="../index.html">
+  <link rel="alternate" hreflang="ar" href="./index.html">
+  <link rel="alternate" hreflang="tr" href="../tr/index.html">
+  <link rel="alternate" hreflang="de" href="../de/index.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">انتقل إلى المحتوى</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="./index.html" class="brand" aria-label="الصفحة الرئيسية لتوثيق Symfonix Business Suite">
+        <img src="../images/logo.png" alt="شعار Symfonix Business Suite" class="brand-logo" width="36" height="36">
+        <span class="brand-text">
+          <span class="brand-name">Symfonix Business Suite</span>
+          <span class="brand-tagline">التوثيق</span>
+        </span>
+      </a>
+
+      <nav class="top-nav" aria-label="التنقل الرئيسي">
+        <a href="#introduction">المقدمة</a>
+        <a href="#architecture">الهيكلية</a>
+        <a href="#modules">الوحدات</a>
+        <a href="#ai">الذكاء الاصطناعي</a>
+        <a href="#getting-started">البدء</a>
+      </nav>
+
+      <div class="header-actions">
+        <div class="lang-switcher" aria-label="مبدل اللغة">
+          <a href="../index.html" lang="en">EN</a>
+          <a href="./index.html" class="is-active" lang="ar">AR</a>
+          <a href="../tr/index.html" lang="tr">TR</a>
+          <a href="../de/index.html" lang="de">DE</a>
+        </div>
+        <a href="#getting-started" class="btn btn-ghost">النشر</a>
+        <a href="#introduction" class="btn btn-primary">اقرأ التوثيق</a>
+        <button class="menu-toggle" type="button" aria-label="تبديل قائمة التنقل" aria-expanded="false" aria-controls="sidebar">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="docs-shell">
+    <div class="sidebar-overlay" id="sidebar-overlay" aria-hidden="true"></div>
+
+    <aside class="sidebar" id="sidebar" aria-label="تنقل التوثيق">
+      <div class="sidebar-inner">
+        <div class="sidebar-search">
+          <input type="search" id="doc-search" placeholder="ابحث في التوثيق..." aria-label="ابحث في التوثيق">
+        </div>
+
+        <nav>
+          <div class="nav-group">
+            <div class="nav-group-label">نظرة عامة</div>
+            <ul class="sidebar-nav">
+              <li><a href="#introduction" class="is-active">المقدمة والرؤية</a></li>
+              <li><a href="#why-symfonix">لماذا Symfonix Business Suite</a></li>
+              <li><a href="#value-proposition">القيمة للمؤسسات</a></li>
+            </ul>
+          </div>
+
+          <div class="nav-group">
+            <div class="nav-group-label">المنصة</div>
+            <ul class="sidebar-nav">
+              <li><a href="#architecture">هيكلية النظام</a></li>
+              <li><a href="#core-engine">المحرك الأساسي</a></li>
+              <li><a href="#data-consistency">اتساق البيانات</a></li>
+              <li><a href="#performance">الأداء</a></li>
+            </ul>
+          </div>
+
+          <div class="nav-group">
+            <div class="nav-group-label">الوحدات</div>
+            <ul class="sidebar-nav">
+              <li><a href="#modules">نظرة عامة على الوحدات</a></li>
+              <li><a href="#crm">CRM وخطوط المبيعات</a></li>
+              <li><a href="#lifecycle">دورة حياة المبيعات والتسليم</a></li>
+              <li><a href="#project">المشاريع ودراسات الحالة</a></li>
+              <li><a href="#hr">الموارد البشرية</a></li>
+              <li><a href="#finance">المالية</a></li>
+              <li><a href="#currency-setup">إعداد العملات المتعددة</a></li>
+              <li><a href="#tax">الضرائب</a></li>
+              <li><a href="#reporting">التقارير</a></li>
+              <li><a href="#cms">إدارة المحتوى</a></li>
+              <li><a href="#ai">الذكاء الاصطناعي (اسأل Symfonix)</a></li>
+              <li><a href="#integrations">واجهات البرمجة والتكاملات</a></li>
+            </ul>
+          </div>
+
+          <div class="nav-group">
+            <div class="nav-group-label">للمطورين</div>
+            <ul class="sidebar-nav">
+              <li><a href="#getting-started">البدء</a></li>
+              <li><a href="#requirements">المتطلبات</a></li>
+              <li><a href="#installation">التثبيت</a></li>
+              <li><a href="#module-deployment">نشر الوحدات</a></li>
+              <li><a href="#permissions">الصلاحيات والأدوار</a></li>
+              <li><a href="#testing">الاختبارات</a></li>
+              <li><a href="#production">بيئة الإنتاج</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </aside>
+
+    <main class="main-content" id="main-content">
+      <div class="content-wrapper">
+        <section class="hero" aria-labelledby="hero-title">
+          <span class="hero-badge">منصة مؤسسية · v1.0</span>
+          <h1 id="hero-title">منصة واحدة لكل وظائف الأعمال.</h1>
+          <p class="hero-lead">
+            Symfonix Business Suite منصة موحدة لإدارة الأعمال تجمع CRM والموارد البشرية والمالية والضرائب والتقارير وإدارة المحتوى والذكاء الاصطناعي (اسأل Symfonix، توليد المحتوى، تعديل الصور، ودردشة الموقع) وسير العمل التشغيلي ضمن نظام معياري عالي الأداء، لتقليل تعقيد الأدوات المتفرقة والتكاملات الهشة.
+          </p>
+          <div class="hero-actions">
+            <a href="#getting-started" class="btn btn-primary">ابدأ الآن</a>
+            <a href="#architecture" class="btn btn-ghost">استكشف الهيكلية</a>
+            <a href="../pdf/symfonix-docs-ar.pdf" class="btn btn-ghost" download>تنزيل PDF</a>
+          </div>
+          <div class="hero-stats">
+            <div class="stat-item">
+              <div class="stat-value">16</div>
+              <div class="stat-label">وحدة أعمال</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value">1</div>
+              <div class="stat-label">قاعدة بيانات موحدة</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value">∞</div>
+              <div class="stat-label">سير عمل قابل للتركيب</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value">B2B</div>
+              <div class="stat-label">جاهزة للمؤسسات</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="doc-section" id="introduction">
+          <h2>المقدمة والرؤية</h2>
+          <p class="section-intro">
+            تم تطوير Symfonix Business Suite للمؤسسات التي تجاوزت مرحلة استخدام أدوات منفصلة لكل وظيفة، حيث توجد المبيعات في نظام والرواتب في نظام آخر والمحتوى في مكان ثالث مع تكرار للبيانات ومشكلات مزامنة مستمرة.
+          </p>
+          <p>
+            تعكس كلمة <strong>Symfonix</strong> فلسفة المنتج: تناغم التقنيات داخل المؤسسة بدل تصادمها. فبدل أن تتحول الشركة إلى جهة تقوم بربط عشرات الخدمات يدويًا، توفر المنصة <em>محركًا أساسيًا</em> يقوم بتحميل الوحدات المستقلة حسب الحاجة التشغيلية.
+          </p>
+          <p>
+            تعتمد المنصة على Laravel 13 وبنية معيارية باستخدام <code>nwidart/laravel-modules</code>، ما يجعلها مناسبة للوكالات والشركات الخدمية والمؤسسات متوسطة الحجم التي تحتاج بنية تشغيل موحدة دون التضحية بالمرونة.
+          </p>
+
+          <div class="card-grid">
+            <article class="card">
+              <div class="card-icon" aria-hidden="true">🔗</div>
+              <h3>منظومة موحدة</h3>
+              <p>استبدال تعدد الاشتراكات والأنظمة المتفرقة بمنصة واحدة تشارك قاعدة بيانات موحدة وتجربة استخدام متسقة.</p>
+            </article>
+            <article class="card">
+              <div class="card-icon" aria-hidden="true">🧩</div>
+              <h3>تصميم معياري</h3>
+              <p>يمكن تفعيل CRM والموارد البشرية والمالية وإدارة المحتوى والوحدات الأخرى بشكل مستقل مع تكامل عميق على مستوى البيانات.</p>
+            </article>
+            <article class="card">
+              <div class="card-icon" aria-hidden="true">⚡</div>
+              <h3>أداء مرتفع</h3>
+              <p>واجهة إدارة سريعة مع Inertia.js واستعلامات محسنة ودعم Redis للتخزين المؤقت والمهام الخلفية.</p>
+            </article>
+            <article class="card">
+              <div class="card-icon" aria-hidden="true">🌐</div>
+              <h3>جاهزية متعددة اللغات</h3>
+              <p>دعم مدمج للإنجليزية والعربية والتركية والألمانية مع صلاحيات دقيقة وهيكل تنظيمي يدعم الفروع.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="doc-section" id="why-symfonix">
+          <h3>لماذا Symfonix Business Suite؟</h3>
+          <p>مع نمو الأعمال تتراكم الديون البرمجية: CRM هنا، محاسبة هناك، وجداول بيانات للباقي. هذا يخلق:</p>
+          <ul>
+            <li><strong>جزر بيانات</strong> حيث لا تتطابق بيانات العملاء بين المبيعات والمالية.</li>
+            <li><strong>تكلفة تكامل مرتفعة</strong> بسبب الاعتماد على ملفات CSV والتدفقات اليدوية.</li>
+            <li><strong>تشتت في الصلاحيات</strong> عبر لوحات تحكم متعددة.</li>
+            <li><strong>ضعف في التقارير</strong> لأن الإدارة لا تحصل على صورة موحدة لحظية.</li>
+          </ul>
+          <p>
+            تعالج Symfonix Business Suite هذه المشكلات من الجذور. عند إغلاق صفقة في CRM يمكن إنشاء مشروع تلقائيًا، وعند تسجيل عملية بيع يتم تحديث المالية، وعند إضافة موظف جديد تنتشر الصلاحيات من خلال نظام الأدوار المركزي.
+          </p>
+
+          <h4>لماذا تختار الشركات Symfonix Business Suite؟</h4>
+          <ul class="feature-list">
+            <li>
+              <strong>خفض تكاليف البرمجيات</strong>
+              استبدال الاشتراكات المتداخلة وتقليل عبء صيانة التكاملات الخارجية.
+            </li>
+            <li>
+              <strong>تسريع العمليات اليومية</strong>
+              ربط فرق المبيعات والمالية والمشاريع والموارد البشرية والمحتوى بدلًا من التسليم اليدوي المتكرر.
+            </li>
+            <li>
+              <strong>بيانات أعمال موثوقة</strong>
+              توحيد العملاء والمعاملات والمشاريع والصلاحيات في نظام واحد لتحسين التقارير والقرارات.
+            </li>
+            <li>
+              <strong>التحكم وملكية البيانات</strong>
+              استضافة المنصة على بنيتك الخاصة وتحديد الوصول حسب الدور مع الاحتفاظ بالسيطرة على بيانات الشركة والعملاء.
+            </li>
+            <li>
+              <strong>النمو دون استبدال النظام</strong>
+              البدء بالوحدات المطلوبة اليوم وتفعيل قدرات إضافية مع توسع الفرق والفروع والعمليات.
+            </li>
+          </ul>
+        </section>
+
+        <section class="doc-section" id="value-proposition">
+          <h3>القيمة المعمارية للمؤسسات</h3>
+          <p>تقدم المنصة قيمة حقيقية لمديري الأعمال والفرق التقنية عبر ثلاث محاور رئيسية:</p>
+          <ul class="feature-list">
+            <li>
+              <strong>خفض التكلفة الإجمالية للملكية</strong>
+              تقليل عدد الموردين الخارجيين وتقليص عبء صيانة التكاملات مع إمكانية الاستضافة على بنيتك الخاصة.
+            </li>
+            <li>
+              <strong>تسريع التنفيذ التشغيلي</strong>
+              تعمل التدفقات بين الوحدات مباشرة على نفس قاعدة البيانات دون انتظار مزامنة أو Webhooks.
+            </li>
+            <li>
+              <strong>قابلية توسع مستقبلية</strong>
+              يمكن إضافة وحدات جديدة مع نمو المؤسسة دون إعادة بناء النظام الأساسي.
+            </li>
+          </ul>
+          <div class="callout callout--info">
+            <span class="callout-icon" aria-hidden="true">ℹ️</span>
+            <div class="callout-content">
+              <p><strong>منصة قابلة للتركيب.</strong> لا تحتاج المؤسسة إلى اعتماد كل شيء دفعة واحدة. يمكن تشغيل الوحدات المطلوبة اليوم وإضافة غيرها لاحقًا بينما يتكفل المحرك الأساسي بالتسجيل والتوجيه والصلاحيات.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="doc-section" id="architecture">
+          <h2>هيكلية النظام</h2>
+          <p class="section-intro">
+            تعتمد Symfonix Business Suite على هيكلية متعددة الطبقات، حيث تبقى منطق الأعمال داخل وحدات مستقلة، بينما يتولى المحرك الأساسي التنسيق بينها فوق قاعدة بيانات موحدة.
+          </p>
+
+          <div class="arch-diagram" role="img" aria-label="مخطط معماري يوضح طبقة الوحدات وطبقة المحرك الأساسي وطبقة البيانات">
+            <div class="arch-layer arch-layer--modules">
+              <div class="arch-layer-label">وحدات الأعمال (تحميل ديناميكي)</div>
+              <span class="arch-chip">CRM</span>
+              <span class="arch-chip">HR / User</span>
+              <span class="arch-chip">Finance</span>
+              <span class="arch-chip">Tax</span>
+              <span class="arch-chip">Reporting</span>
+              <span class="arch-chip">CMS</span>
+              <span class="arch-chip">AI</span>
+              <span class="arch-chip">Project</span>
+              <span class="arch-chip">Product</span>
+              <span class="arch-chip">Support</span>
+            </div>
+            <div class="arch-connector" aria-hidden="true">↕</div>
+            <div class="arch-layer arch-layer--core">
+              <div class="arch-layer-label">المحرك الأساسي</div>
+              <span class="arch-chip">Module Registry</span>
+              <span class="arch-chip">Auth &amp; Permissions</span>
+              <span class="arch-chip">Event Bus</span>
+              <span class="arch-chip">Shared Services</span>
+              <span class="arch-chip">Admin Shell (Inertia)</span>
+            </div>
+            <div class="arch-connector" aria-hidden="true">↕</div>
+            <div class="arch-layer arch-layer--data">
+              <div class="arch-layer-label">طبقة البيانات</div>
+              <span class="arch-chip">MySQL / MariaDB</span>
+              <span class="arch-chip">Redis (cache / queues)</span>
+              <span class="arch-chip">File Storage</span>
+            </div>
+          </div>
+
+          <p>
+            كل وحدة في المجلد <code>Modules/</code> تملك نماذجها وراوتاتها وملفات الترحيل الخاصة بها، بينما يكتشف المحرك الأساسي الوحدات النشطة ويقوم بتسجيلها وتشغيلها.
+          </p>
+        </section>
+
+        <section class="doc-section" id="core-engine">
+          <h3>المحرك الأساسي</h3>
+          <p>
+            تشكل وحدتا <strong>Core</strong> و<strong>Base</strong> العمود الفقري للمنصة. تتولى Core أوامر التثبيت والخدمات المشتركة، بينما تدير Base الإعدادات العامة والفروع والدول وSEO والنسخ الاحتياطي و<code>/humans.txt</code> وشاشة <strong>واجهات البرمجة والتكاملات</strong> (SMTP وWhatsApp Cloud API وOpenAI وGemini ومزوّد اسأل Symfonix). تتضمن إعدادات النظام أيضًا Fixer وجهاز بصمة ZKTeco. تُحمَّل وحدة <strong>AI</strong> مثل أي وحدة أعمال: مسارات الإدارة ومكوّنات Blade وجداول المحادثات وسجلات الأدوات دون ربط CRM أو المالية بمزوّد نموذج محدد.
+          </p>
+          <ol>
+            <li><strong>إدارة دورة حياة الوحدات</strong> من التفعيل والتعطيل إلى الترحيل.</li>
+            <li><strong>تجميع الصلاحيات</strong> من كل الوحدات في سجل موحد باستخدام Spatie Permission.</li>
+            <li><strong>قالب الإدارة الموحد</strong> لعرض الصفحات وبناء التنقل داخل لوحة الإدارة.</li>
+            <li><strong>الأحداث عبر الوحدات</strong> لربط العمليات دون إنشاء اعتماد مباشر بين الوحدات.</li>
+          </ol>
+        </section>
+
+        <section class="doc-section" id="data-consistency">
+          <h3>اتساق البيانات</h3>
+          <p>
+            لأن جميع الوحدات تعمل على قاعدة بيانات واحدة، يتم فرض العلاقات المرجعية على مستوى المخطط نفسه، وليس عبر مزامنة ليلية أو عمليات استيراد يدوية.
+          </p>
+          <p>
+            تستخدم المنصة DTOs عبر <code>spatie/laravel-data</code> لتوحيد نقل البيانات بين الطبقات، كما تتيح النماذج متعددة اللغات إدارة المحتوى والبيانات عبر أكثر من لغة دون ازدواجية.
+          </p>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>المجال</th>
+                  <th>النهج</th>
+                  <th>الفائدة</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>ملكية المخطط</td>
+                  <td>ترحيلات لكل وحدة</td>
+                  <td>تطوير مستقل دون ازدحام مركزي</td>
+                </tr>
+                <tr>
+                  <td>الكيانات المشتركة</td>
+                  <td>نماذج Core وBase</td>
+                  <td>مصدر واحد للحقيقة التنظيمية</td>
+                </tr>
+                <tr>
+                  <td>المعاملات</td>
+                  <td>Laravel DB transactions</td>
+                  <td>تنفيذ ذري للعمليات متعددة الجداول</td>
+                </tr>
+                <tr>
+                  <td>التتبع</td>
+                  <td>سجلات قاعدة البيانات وTelescope</td>
+                  <td>شفافية أفضل في المراجعة والاستكشاف</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="doc-section" id="performance">
+          <h3>الأداء</h3>
+          <ul>
+            <li><strong>Inertia.js</strong> يوفر تنقلًا سريعًا بأسلوب SPA دون الحاجة لفصل الواجهة عن الخادم بالكامل.</li>
+            <li><strong>التحميل المسبق والأنماط المستودعية</strong> تقلل مشكلات N+1 في الوحدات ذات الحمل العالي.</li>
+            <li><strong>Redis</strong> يحسن الكاش والمهام الخلفية والجلسات في بيئات الإنتاج.</li>
+            <li><strong>Laravel Pulse</strong> يقدم مراقبة أداء مستمرة عند تفعيله.</li>
+            <li><strong>Vite</strong> ينتج ملفات أمامية محسنة وقابلة للتخزين المؤقت.</li>
+          </ul>
+        </section>
+
+        <section class="doc-section" id="modules">
+          <h2>الوحدات الأساسية والواجهات</h2>
+          <p class="section-intro">
+            تأتي Symfonix Business Suite بمجموعة متكاملة من الوحدات التجارية، وتوفر كل وحدة واجهة إدارة خاصة بها مع تكامل موحد للصلاحيات والإشعارات.
+          </p>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>الوحدة</th>
+                  <th>المجال</th>
+                  <th>القدرات الأساسية</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td><strong>Core</strong></td><td>تشغيل المنصة</td><td><code>app:install</code> والخدمات المشتركة ودورة حياة الوحدات</td></tr>
+                <tr><td><strong>Base</strong></td><td>إعدادات النظام</td><td>الدول والفروع وSEO والنسخ الاحتياطي وSMTP وواتساب ومفاتيح OpenAI/Gemini</td></tr>
+                <tr><td><strong>AI</strong></td><td>المساعدون والتوليد</td><td>اسأل Symfonix، دردشة الموقع، توليد النماذج وعروض الأسعار والمتابعات، إنشاء/تعديل الصور عبر Gemini</td></tr>
+                <tr><td><strong>CRM</strong></td><td>المبيعات والعلاقات</td><td>العملاء المحتملون، الصفقات، الشركات، عروض الأسعار، خط المبيعات، الاشتراكات، التسويق عبر البريد وواتساب، التوقعات، لوحة التحكم، مسودات العروض والمتابعات بالذكاء الاصطناعي</td></tr>
+                <tr><td><strong>User</strong></td><td>الموارد البشرية والوصول</td><td>المستخدمون، الموظفون، الأدوار، الإجازات، بصمة الحضور، بوابة العملاء</td></tr>
+                <tr><td><strong>Finance</strong></td><td>المحاسبة</td><td>دفتر متعدد العملات، الفواتير، الذمم المدينة، الرواتب، العمولات، المصروفات</td></tr>
+                <tr><td><strong>Tax</strong></td><td>الامتثال</td><td>معدلات الضريبة، دفتر ضريبة المخرجات/المدخلات، تقارير الإقرار</td></tr>
+                <tr><td><strong>Reporting</strong></td><td>التحليلات</td><td>تقارير المالية والمبيعات والتسويق والعمليات والموظفين مع تصدير CSV/PDF</td></tr>
+                <tr><td><strong>Cms</strong></td><td>المحتوى</td><td>الصفحات، المقالات، الأسئلة الشائعة، شعارات العملاء، المحتوى متعدد اللغات</td></tr>
+                <tr><td><strong>Product</strong></td><td>الكتالوج</td><td>الأصناف والفئات وتكامل المبيعات</td></tr>
+                <tr><td><strong>Project</strong></td><td>التنفيذ</td><td>المشاريع والحالات وحالات الاستخدام ومتابعة التسليم</td></tr>
+                <tr><td><strong>Support</strong></td><td>الدعم</td><td>التذاكر والمشتركين والشكاوى</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="doc-section" id="crm">
+          <div class="module-block">
+            <div class="module-meta">
+              <span class="tag tag--primary">المبيعات</span>
+              <span class="tag tag--neutral">إدارة خط المبيعات</span>
+            </div>
+            <h3>CRM وخطوط المبيعات</h3>
+            <p>وحدة CRM هي محرك الإيرادات في المنصة، وتغطي الرحلة من أول تواصل وحتى إغلاق الصفقة مع تتبع الأنشطة والاشتراكات.</p>
+            <ul>
+              <li><strong>إدارة العملاء المحتملين</strong> مع حقول مخصصة ووسوم وتتبع المصادر.</li>
+              <li><strong>لوحة خط المبيعات</strong> بمراحل قابلة للتخصيص. يرى المكلَّف صفقاته ما لم يملك <code>sales.deals.view_all</code>.</li>
+              <li><strong>عروض الأسعار</strong> ببنود وضريبة وخصم، وتنزيل PDF، ورابط عام للقبول أو الرفض، ومسودة اختيارية بالذكاء الاصطناعي من الشركة والصفقة قبل الحفظ.</li>
+              <li><strong>سجلات الشركات</strong> تربط الشركات بالصفقات والمشاريع وجهات الاتصال والاشتراكات.</li>
+              <li><strong>الأنشطة والمهام</strong> للمكالمات والاجتماعات والمتابعات. في سجل العميل المحتمل يمكن توليد نشاط متابعة بالذكاء الاصطناعي ثم حفظه يدويًا.</li>
+              <li><strong>الاشتراكات</strong> للعقود المتكررة والتجديد والفوترة.</li>
+              <li><strong>التسويق عبر البريد وواتساب</strong> بحملات في الطابور وقوالب ميتا وسجل تسليم.</li>
+              <li><strong>توقعات المبيعات</strong> مرجّحة باحتمال الفوز حسب المرحلة والمندوب وتاريخ الإغلاق المتوقع.</li>
+              <li><strong>لوحة CRM قابلة للتخصيص</strong>.</li>
+            </ul>
+            <p>تدفقات المراحل مبنية بشكل يتيح للوحدات الأخرى الاستماع للأحداث، مثل إنشاء مشروع بعد إغلاق صفقة ناجحة. المسار الكامل من الاستفسار إلى المشروع في <a href="#lifecycle">دورة حياة المبيعات والتسليم</a>.</p>
+          </div>
+        </section>
+
+        <section class="doc-section" id="lifecycle">
+          <h2>دورة حياة المبيعات والتسليم</h2>
+          <p class="section-intro">
+            المسار التجاري هو <strong>استفسار → عميل محتمل → صفقة → (عرض سعر) → رُبحت → مشروع</strong>. دراسات الحالة والاشتراكات مسار موازٍ: ربح الصفقة لا ينشر دراسة حالة، وعرض السعر لا ينشئ فاتورة تلقائيًا.
+          </p>
+          <div class="lifecycle-flow" role="img" aria-label="استفسار ثم عميل محتمل ثم صفقة ثم مشروع">
+            <span class="arch-chip">استفسار</span>
+            <span class="lifecycle-arrow" aria-hidden="true">→</span>
+            <span class="arch-chip">عميل محتمل</span>
+            <span class="lifecycle-arrow" aria-hidden="true">→</span>
+            <span class="arch-chip">شركة + جهة اتصال</span>
+            <span class="lifecycle-arrow" aria-hidden="true">→</span>
+            <span class="arch-chip">صفقة</span>
+            <span class="lifecycle-arrow" aria-hidden="true">→</span>
+            <span class="arch-chip">عرض سعر</span>
+            <span class="lifecycle-arrow" aria-hidden="true">→</span>
+            <span class="arch-chip">رُبحت</span>
+            <span class="lifecycle-arrow" aria-hidden="true">→</span>
+            <span class="arch-chip">مشروع</span>
+            <span class="lifecycle-arrow" aria-hidden="true">→</span>
+            <span class="arch-chip">دراسة حالة</span>
+          </div>
+          <p class="lifecycle-note">دردشة الموقع يمكن أن تنشئ عميلاً محتملاً مباشرة دون سجل استفسار. دراسات الحالة تُكتب يدويًا بعد التسليم.</p>
+          <ul>
+            <li><strong>الاستفسار</strong> من <code>/contact-us</code> لا ينشئ عميلاً محتملاً تلقائيًا. في القائمة: <strong>تحويل إلى عميل محتمل</strong> أو <strong>تحويل إلى جهة اتصال</strong> فقط.</li>
+            <li><strong>العميل المحتمل من الدردشة</strong> يُنشأ بعد الاسم والبريد الصالح بمصدر <code>website</code>.</li>
+            <li><strong>تحويل إلى صفقة</strong> ينشئ أو يجد الشركة وجهة الاتصال الأساسية ثم صفقة في المرحلة الافتراضية (Lead) مع الميزانية والخدمات.</li>
+            <li><strong>تحويل إلى عميل</strong> بدون صفقة عند الحاجة إلى حساب فقط.</li>
+            <li><strong>مراحل الخط</strong>: Lead 10٪ → Qualified 25٪ → Proposal 50٪ → Negotiation 75٪ → Closed Won 100٪ / Closed Lost 0٪.</li>
+            <li><strong>Closed Won</strong> ينشئ مشروعًا في <strong>التخطيط</strong> ويسجّل إيرادًا وعمولة معلّقة. التحويل مباشرة إلى Won في نافذة التحويل لا يطلق الحدث — حرّك المرحلة بعد الإنشاء.</li>
+            <li><strong>عرض السعر</strong> من الصفقة (<code>draft</code> ثم إرسال). قبول العميل يربح الصفقة ويربط المشروع. الرفض لا يغيّر الصفقة. <strong>الفاتورة</strong> يدوية من الصفقة الرابحة.</li>
+            <li><strong>الاشتراكات</strong> على الشركة وليست على الصفقة. فاتورة الفترة الأولى عند الإنشاء.</li>
+          </ul>
+        </section>
+
+        <section class="doc-section" id="project">
+          <div class="module-block">
+            <div class="module-meta">
+              <span class="tag tag--primary">التسليم</span>
+              <span class="tag tag--neutral">دراسات الحالة</span>
+            </div>
+            <h3>المشاريع ودراسات الحالة</h3>
+            <p>
+              <strong>المشروع</strong> سجل تنفيذ بعد ربح الصفقة. <strong>حالة الاستخدام</strong> (دراسة الحالة) صفحة تسويق عامة. يمكن ربطهما، وإكمال المشروع لا ينشر دراسة حالة تلقائيًا.
+            </p>
+            <ul>
+              <li>حالات المشروع: تخطيط → تطوير → ضمان جودة → مكتمل → معلّق. المشروع الجديد يبدأ بالتخطيط.</li>
+              <li>دراسات الحالة من <strong>المشاريع ← حالات الاستخدام</strong> مع مشروع مرتبط اختياريًا. الموقع العام: <code>/use-cases</code>. يمكن توليد النموذج والصورة بالذكاء الاصطناعي. الصلاحية: <code>project.use_cases.*</code>.</li>
+              <li>المشاريع المكتملة قد تحصل على <strong>شهادة عميل</strong> من البوابة — وهي غير دراسات الحالة.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="doc-section" id="hr">
+          <div class="module-block">
+            <div class="module-meta">
+              <span class="tag tag--primary">الأفراد</span>
+              <span class="tag tag--neutral">الهوية والصلاحيات</span>
+            </div>
+            <h3>الموارد البشرية</h3>
+            <p>توفر وحدة User أساس الموارد البشرية والهوية الرقمية داخل المنصة من خلال الربط بين حسابات المستخدمين وملفات الموظفين والأدوار والصلاحيات.</p>
+            <ul>
+              <li><strong>ملفات الموظفين</strong> بمعلومات الاتصال والحالة الوظيفية والبنية التنظيمية.</li>
+              <li><strong>صلاحيات دقيقة</strong> بمفاتيح <code>group.tab.action</code> وأدوار سيناريو (مدير الموارد البشرية، المبيعات، المالية، المشاريع، العمليات).</li>
+              <li><strong>بصمة الحضور</strong> عبر جهاز ZKTeco (إعدادات النظام ← البصمة).</li>
+              <li><strong>الإجازات والتوظيف</strong>.</li>
+              <li><strong>بوابة الموظف</strong> وبوابة العميل لعروض الأسعار.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="doc-section" id="finance">
+          <div class="module-block">
+            <div class="module-meta">
+              <span class="tag tag--primary">المحاسبة</span>
+              <span class="tag tag--neutral">الإيرادات والمصروفات</span>
+            </div>
+            <h3>المالية</h3>
+            <p>تغطي وحدة Finance العمليات المالية متعددة العملات من تسجيل الدخل والمصروفات إلى الرواتب والعمولات والقيود والفواتير، مع تكامل قائم على الأحداث مع باقي الوحدات.</p>
+            <ul>
+              <li><strong>المعاملات</strong> مع تصنيف وفلاتر ولوحات يومية.</li>
+              <li><strong>القيود اليومية</strong> لدعم الممارسات المحاسبية الرسمية.</li>
+              <li><strong>الفواتير والذمم المدينة</strong>.</li>
+              <li><strong>الرواتب</strong> مرتبطة مباشرة بملفات الموظفين.</li>
+              <li><strong>العمولات</strong> على أساس الصفقات وأهداف المبيعات.</li>
+              <li><strong>الإشعارات والفواتير</strong> عبر Listeners منفصلة للحفاظ على الترابط الضعيف.</li>
+              <li><strong>سياق العملة</strong> يفصل بين عملة المحاسبة الأساسية وعملة المعاملة وعملة العرض الخاصة بجلسة المستخدم، مع حفظ سعر الصرف وقت الترحيل.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="doc-section" id="currency-setup">
+          <h3>إعداد العملات المتعددة</h3>
+          <p>
+            <strong>العملة الافتراضية</strong> هي أساس المحاسبة، بينما يحتفظ كل سجل <strong>بعملة المعاملة</strong>، ويغيّر محدد العملة في ترويسة لوحة الإدارة <strong>عملة العرض</strong> فقط. تحفظ القيود سعر التحويل إلى العملة الأساسية والمبلغ الأساسي وقت الترحيل، لذلك لا يؤدي تحديث الأسعار لاحقًا إلى تعديل القيد الأصلي.
+          </p>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>الإعداد</th><th>الغرض</th><th>الافتراضي</th></tr></thead>
+              <tbody>
+                <tr><td><code>FINANCE_DEFAULT_CURRENCY</code></td><td>عملة المحاسبة الأساسية</td><td><code>USD</code></td></tr>
+                <tr><td><code>FINANCE_SUPPORTED_CURRENCIES</code></td><td>العملات المتاحة مفصولة بفواصل</td><td><code>USD,EUR,GBP,TRY</code></td></tr>
+                <tr><td><code>FIXER_API_KEY</code></td><td>مفتاح Fixer أو API Layer</td><td>فارغ</td></tr>
+                <tr><td><code>FIXER_BASE_URL</code></td><td>عنوان خدمة أسعار الصرف</td><td><code>https://data.fixer.io/api</code></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>يمكن لمن يملك صلاحية <code>Settings Management</code> تعديل العملة الافتراضية ومفتاح Fixer من <strong>إعدادات النظام ← المالية</strong>، وتكون قيم قاعدة البيانات أعلى أولوية من ملف البيئة. تبقى قائمة العملات المدعومة محددة من البيئة/الإعدادات. خطط Fixer المجانية تعتمد EUR، ويحسب النظام العملات الأساسية الأخرى عبر أسعار متقاطعة مع EUR.</p>
+          <span class="code-label">Terminal</span>
+          <pre><code># إرسال التحديث إلى الطابور
+php artisan finance:fetch-exchange-rates
+
+# تنفيذ فوري مع إمكانية تحديد العملة الأساسية
+php artisan finance:fetch-exchange-rates --sync
+php artisan finance:fetch-exchange-rates --base=EUR --sync</code></pre>
+          <div class="callout callout--warning">
+            <span class="callout-icon" aria-hidden="true">⚠️</span>
+            <div class="callout-content">
+              <p><strong>لا تستخدم الأسعار الاحتياطية في محاسبة الإنتاج.</strong> يضيف التثبيت أسعارًا تقريبية، وقد يستخدم النظام سعر <code>1.0</code> عند غياب مفتاح Fixer أو السعر المخزن. اضبط المزامنة وراقبها قبل تسجيل معاملات فعلية. تغيير العملة الافتراضية بعد وجود قيود يتطلب ترحيل بيانات مضبوطًا لأن المبالغ الأساسية التاريخية تحتفظ بأساس المحاسبة الأصلي.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="doc-section" id="tax">
+          <div class="module-block">
+            <div class="module-meta">
+              <span class="tag tag--primary">الامتثال</span>
+              <span class="tag tag--neutral">الدفتر والإقرار</span>
+            </div>
+            <h3>الضرائب</h3>
+            <p>تخزّن وحدة Tax معدلات شاملة أو غير شاملة (اختياريًا حسب المنطقة)، وتطبّقها على بنود الفواتير ومبيعات المنتجات، وتسجّل <strong>ضريبة المخرجات</strong> المحصّلة و<strong>ضريبة المدخلات</strong> المدفوعة على المصروفات في دفتر مستقل. تقارير الإقرار تلخّص صافي الضريبة للفترة.</p>
+          </div>
+        </section>
+
+        <section class="doc-section" id="reporting">
+          <div class="module-block">
+            <div class="module-meta">
+              <span class="tag tag--primary">التحليلات</span>
+              <span class="tag tag--neutral">CSV / PDF</span>
+            </div>
+            <h3>التقارير</h3>
+            <p>يوفر مركز Reporting تحليلات المالية والمبيعات والتسويق والعمليات والموظفين مع فلاتر الفترة وتصدير CSV/PDF. تشمل تقارير التسويق معدل تسليم واتساب، وتشمل تقارير العمليات تذاكر الدعم وحضور البصمة.</p>
+          </div>
+        </section>
+
+        <section class="doc-section" id="cms">
+          <div class="module-block">
+            <div class="module-meta">
+              <span class="tag tag--primary">المحتوى</span>
+              <span class="tag tag--neutral">متعدد اللغات</span>
+            </div>
+            <h3>إدارة المحتوى</h3>
+            <p>تشغل وحدة CMS الموقع العام إلى جانب لوحة الإدارة، وتوفر نظامًا متكاملًا لإدارة الصفحات والمقالات والأسئلة الشائعة وشعارات العملاء وإعدادات SEO.</p>
+            <ul>
+              <li><strong>الصفحات الثابتة</strong> مع Slugs ومحتوى مترجم وتعبئة النماذج وتعديل الصور بالذكاء الاصطناعي.</li>
+              <li><strong>المدونة</strong> مع تصنيفات وصور وبيانات SEO ونفس مساعدي الذكاء الاصطناعي.</li>
+              <li><strong>الأسئلة الشائعة</strong> بطريقة منظمة وقابلة للإدارة.</li>
+              <li><strong>عملاؤنا</strong> لشعارات الموقع العام.</li>
+              <li><strong>دعم اللغات</strong> للإنجليزية والعربية والتركية والألمانية مع دعم RTL للعربية.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="doc-section" id="ai">
+          <div class="module-block">
+            <div class="module-meta">
+              <span class="tag tag--primary">ذكاء اصطناعي</span>
+              <span class="tag tag--neutral">OpenAI + Gemini</span>
+            </div>
+            <h3>الذكاء الاصطناعي — اسأل Symfonix والتوليد ودردشة الموقع</h3>
+            <p>
+              تضيف وحدة <strong>AI</strong> (<code>Modules/AI</code>) مساعدين وتوليدًا فوق بيانات المنصة الفعلية. الوحدة اختيارية: يعمل CRM والمالية وإدارة المحتوى بدون مفاتيح API. عند حفظ OpenAI و/أو Gemini في <strong>واجهات البرمجة والتكاملات ← تكاملات الذكاء الاصطناعي</strong> تُفعَّل أربع قدرات. القيم في قاعدة البيانات تتجاوز <code>.env</code>.
+            </p>
+            <p>
+              المزوّدون منفصلون عمدًا. يشترك اسأل Symfonix ودردشة الموقع في موجّه واحد (<code>auto</code> يجرّب OpenAI ثم Gemini). يفضّل TinyMCE والنماذج المنظَّمة OpenAI ويسقطان إلى نموذج التحليل في Gemini. إنشاء الصور وتعديلها يستخدمان نموذج صور Gemini فقط.
+            </p>
+            <h4>اسأل Symfonix</h4>
+            <p>
+              مساعد أعمال للقراءة فقط في ترويسة لوحة الإدارة (ورقاقات اقتراح في لوحة التحكم). يحتاج <code>ai.assistant.view</code>. تُحفظ المحادثات لكل مستخدم في <code>ai_conversations</code> / <code>ai_messages</code>. يجيب النموذج من نتائج الأدوات فقط ولا يخترع أرقامًا أو أسماء أو حالات، ويطابق لغة المستخدم. لا ينشئ سجلات ولا يرسل بريدًا أو واتساب. تظهر كل أداة فقط إذا كان للمستخدم صلاحية الشاشة المقابلة.
+            </p>
+            <ul>
+              <li>ماذا يحدث في العمل اليوم؟ من لديه أكثر المهام المتأخرة؟ أي المشاريع متأخرة؟</li>
+              <li>مبيعات هذا الشهر؟ معدل نمو الإيرادات مقابل العام الماضي؟</li>
+              <li>أفضل العملاء حسب الإيراد؟ أي العملاء المحتملين نتابعهم اليوم؟</li>
+              <li>الفواتير المتأخرة، زوار الموقع، أفضل الخدمات مبيعًا، تقرير الموظفين؟</li>
+            </ul>
+            <p>تشمل الأدوات لقطة الأعمال، تركيز اليوم، إحصاءات العملاء المحتملين والعملاء والمشاريع والفواتير والمدفوعات والمصروفات والموظفين والتذاكر، والعمل المتأخر، والزوار، وأفضل الخدمات، والبحث في السجلات، ومسودة رسالة متابعة.</p>
+            <h4>توليد المحتوى والعروض والمتابعات</h4>
+            <ul>
+              <li><strong>TinyMCE «إنشاء بالذكاء الاصطناعي»</strong> — توليد أو إعادة كتابة HTML المحرر من تعليمات.</li>
+              <li><strong>تعبئة النماذج</strong> — JSON منظَّم للمقالات والصفحات والخدمات والمنتجات وحالات الاستخدام (عناوين، slugs إنجليزية، SEO، نص HTML) بلغة لوحة الإدارة.</li>
+              <li><strong>توليد عرض سعر</strong> من شركة وصفقة باستخدام الخدمات/المنتجات المنشورة. يتطلب <code>sales.quotes.create</code> ويُراجع قبل الحفظ.</li>
+              <li><strong>متابعة العميل المحتمل</strong> — مسودة نشاط (نوع، عنوان، نص، موعد) تتطلب <code>crm.activities.create</code>.</li>
+            </ul>
+            <h4>الصور ودردشة الموقع</h4>
+            <p>
+              يعدّل Gemini صورة موجودة أو ينشئ واحدة من تعليمات (حتى 500 حرف)، مع مطابقة شعار العلامة من <strong>الإعدادات ← الهوية</strong> اختيارياً. الأهداف المسموحة في الإعداد: منتج، صفحة CMS، مقال، حالة استخدام — مع صلاحية التعديل لكل هدف.
+            </p>
+            <p>
+              ودجت BotMan على الموقع العام تستخدم نفس المفاتيح لكن أدواتًا آمنة للعامة: سرد/قراءة الخدمات المنشورة، ملف الشركة، التقاط عميل محتمل (اسم وبريد صالح)، واقتراح أزرار رد سريع. لا تعرض بيانات CRM أو المالية أو الموارد البشرية. حدّ للمعدل لكل عنوان IP (افتراضي 20 / 60 ثانية). بدون مفاتيح أو مع <code>AI_CHATBOT_ENABLED=false</code> تبقى إجابات الكتالوج المنشورة.
+            </p>
+            <p>المتغيرات: <code>OPENAI_API_KEY</code>، <code>OPENAI_MODEL</code>، <code>GEMINI_API_KEY</code>، <code>GEMINI_IMAGE_MODEL</code>، <code>GEMINI_ANALYSIS_MODEL</code>، <code>AI_ASSISTANT_PROVIDER=auto</code>، <code>AI_CHATBOT_ENABLED=true</code>.</p>
+            <div class="callout callout--info">
+              <span class="callout-icon" aria-hidden="true">ℹ️</span>
+              <div class="callout-content">
+                <p><strong>الأمان.</strong> امنح <code>ai.assistant.view</code> فقط لمن يجوز له الاستعلام عن بيانات التشغيل الحية. أدوات المساعد تحترم صلاحيات الوحدات. دردشة الموقع لا تستدعي أدوات الإدارة.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="doc-section" id="integrations">
+          <h3>واجهات البرمجة والتكاملات</h3>
+          <p>القيم المحفوظة في لوحة الإدارة تتجاوز <code>.env</code>. الحقول الفارغة تستخدم قيمة البيئة.</p>
+          <ul>
+            <li><strong>SMTP</strong> — واجهات البرمجة ← البريد (الحملات والإشعارات تحتاج عامل الطابور).</li>
+            <li><strong>WhatsApp Cloud API</strong> — رمز الوصول ومعرّف رقم الهاتف؛ قوالب معتمدة في ميتا. إصدار Graph الافتراضي <code>v21.0</code>.</li>
+            <li><strong>OpenAI وGemini واسأل Symfonix</strong> — واجهات البرمجة ← تكاملات الذكاء الاصطناعي. راجع <a href="#ai">الذكاء الاصطناعي</a>.</li>
+            <li><strong>Fixer</strong> — إعدادات النظام ← المالية.</li>
+            <li><strong>بصمة ZKTeco</strong> — إعدادات النظام ← البصمة (منفذ TCP <code>4370</code>).</li>
+          </ul>
+        </section>
+
+        <section class="doc-section" id="getting-started">
+          <h2>البدء</h2>
+          <p class="section-intro">يوضح هذا الدليل خطوات تشغيل Symfonix Business Suite من مشروع جديد حتى الوصول إلى لوحة الإدارة مع الوحدات الأساسية.</p>
+        </section>
+
+        <section class="doc-section" id="requirements">
+          <h3>المتطلبات</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>الاعتماد</th><th>الإصدار</th><th>ملاحظات</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>PHP</td><td>8.3+</td><td>مع الإضافات الأساسية الخاصة بـ Laravel</td></tr>
+                <tr><td>Composer</td><td>2.x</td><td>إدارة حزم PHP</td></tr>
+                <tr><td>Node.js</td><td>18+</td><td>مع npm لبناء الأصول الأمامية</td></tr>
+                <tr><td>MySQL / MariaDB</td><td>8.0+ / 10.6+</td><td>قاعدة البيانات الأساسية</td></tr>
+                <tr><td>Redis</td><td>6+</td><td>اختياري لكنه موصى به للإنتاج</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="doc-section" id="installation">
+          <h3>التثبيت</h3>
+          <ol class="steps">
+            <li>
+              <h4>نسخ المشروع وضبط البيئة</h4>
+              <p>انسخ ملف البيئة وحدد معلومات قاعدة البيانات:</p>
+              <span class="code-label">Terminal</span>
+              <pre><code>cp .env.example .env</code></pre>
+              <span class="code-label">.env</span>
+              <pre><code>DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=symfonix
+DB_USERNAME=root
+DB_PASSWORD=
+
+FINANCE_DEFAULT_CURRENCY=USD
+FINANCE_SUPPORTED_CURRENCIES=USD,EUR,GBP,TRY
+FIXER_API_KEY=
+FIXER_BASE_URL=https://data.fixer.io/api
+
+GEMINI_API_KEY=
+OPENAI_API_KEY=
+AI_ASSISTANT_PROVIDER=auto
+AI_CHATBOT_ENABLED=true
+
+DOCS_ENABLED=true</code></pre>
+            </li>
+            <li>
+              <h4>تثبيت الاعتمادات</h4>
+              <span class="code-label">Terminal</span>
+              <pre><code>composer install
+npm install && npm run build</code></pre>
+            </li>
+            <li>
+              <h4>تشغيل أمر التثبيت</h4>
+              <p>يقوم <code>app:install</code> بتشغيل الترحيلات والبيانات الأولية والصلاحيات وإضافة إعدادات العملات والأسعار الأساسية وإنشاء المستخدم الإداري:</p>
+              <span class="code-label">Terminal</span>
+              <pre><code>php artisan app:install</code></pre>
+            </li>
+            <li>
+              <h4>تشغيل التطبيق</h4>
+              <span class="code-label">Terminal</span>
+              <pre><code>php artisan serve</code></pre>
+            </li>
+          </ol>
+        </section>
+
+        <section class="doc-section" id="module-deployment">
+          <h3>نشر الوحدات</h3>
+          <p>تتبع الوحدات هيكل <code>nwidart/laravel-modules</code> القياسي، حيث تمتلك كل وحدة نماذجها وراوتاتها وترحيلاتها وموفري الخدمة.</p>
+          <span class="code-label">Terminal</span>
+          <pre><code>php artisan module:list
+php artisan module:enable CRM
+php artisan module:disable Testimonial
+php artisan module:migrate Finance</code></pre>
+        </section>
+
+        <section class="doc-section" id="permissions">
+          <h3>الصلاحيات والأدوار</h3>
+          <p>تعتمد المنصة على <code>Spatie Laravel Permission</code>. تُنشأ الصلاحيات عند <code>app:install</code> من كتالوج <code>group.tab.action</code> (وتُعاد مقابلة الأسماء القديمة إلى الأدوار الحالية). أمثلة: <code>ai.assistant.view</code>، <code>sales.quotes.create</code>، <code>marketing.whatsapp.send</code>، <code>tax.rates.view</code>، <code>reporting.finance.export</code>، <code>hr.fingerprint.manage</code>. توليد المحتوى والصور والعروض والمتابعات يعيد استخدام مفاتيح الإنشاء/التعديل للشاشة نفسها. يضيف التثبيت أدوار Admin ومدير الموارد البشرية والمبيعات والمالية والمشاريع والعمليات.</p>
+        </section>
+
+        <section class="doc-section" id="testing">
+          <h3>الاختبارات</h3>
+          <p>اختبارات الوحدة والتكامل في <code>tests/</code>. لتغطية Playwright راجع <code>tests/README.md</code>.</p>
+          <pre><code>php artisan test
+npm run test:e2e</code></pre>
+        </section>
+
+        <section class="doc-section" id="production">
+          <h3>بيئة الإنتاج</h3>
+          <ol class="steps">
+            <li>
+              <h4>إعداد البيئة</h4>
+              <span class="code-label">.env</span>
+              <pre><code>APP_ENV=production
+APP_DEBUG=false
+CACHE_DRIVER=redis
+QUEUE_CONNECTION=redis
+SESSION_DRIVER=redis</code></pre>
+            </li>
+            <li>
+              <h4>بناء الإنتاج</h4>
+              <span class="code-label">Terminal</span>
+              <pre><code>composer install --no-dev --optimize-autoloader
+npm ci && npm run build</code></pre>
+            </li>
+            <li>
+              <h4>الكاش والمهام الخلفية</h4>
+              <span class="code-label">Terminal</span>
+              <pre><code>php artisan migrate --force
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache</code></pre>
+              <p>شغّل عامل الطابور وجدولة Laravel. تقوم الجدولة بتحديث أسعار الصرف كل ساعة. حملات واتساب والبريد والتحديثات اليدوية تحتاج عامل الطابور.</p>
+              <pre><code>* * * * * cd /path-to-symfonix && php artisan schedule:run >> /dev/null 2>&1</code></pre>
+            </li>
+          </ol>
+          <div class="callout callout--warning">
+            <span class="callout-icon" aria-hidden="true">⚠️</span>
+            <div class="callout-content">
+              <p><strong>مراجعة الإنتاج:</strong> عطّل وضع التصحيح، وفعّل المصادقة الثنائية، ولا تضف ملف <code>.env</code> إلى Git. اضبط مفتاح Fixer صالحًا وراقب آخر جلب ناجح من <strong>إعدادات النظام ← المالية</strong> لأن الأسعار المخزنة لا تُرفض تلقائيًا عند تقادمها. عيّن بيانات واتساب من <strong>واجهات البرمجة والتكاملات</strong>. اضبط مفاتيح OpenAI و/أو Gemini من <strong>تكاملات الذكاء الاصطناعي</strong> إن استخدمت اسأل Symfonix أو التوليد أو الصور أو دردشة الموقع، وقيّد <code>ai.assistant.view</code> على من يجوز لهم الاستعلام عن البيانات الحية. اضبط <code>DOCS_ENABLED=false</code> إذا لم ترد إظهار <code>/docs</code>.</p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>&copy; 2026 Symfonix Business Suite. جميع الحقوق محفوظة.</p>
+      <p>
+        <a href="#introduction">التوثيق</a>
+        &nbsp;·&nbsp;
+        <a href="#getting-started">البدء</a>
+        &nbsp;·&nbsp;
+        <a href="../index.html">English</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      'use strict';
+
+      var toggle = document.querySelector('.menu-toggle');
+      var sidebar = document.getElementById('sidebar');
+      var overlay = document.getElementById('sidebar-overlay');
+
+      function openSidebar() {
+        sidebar.classList.add('is-open');
+        overlay.classList.add('is-visible');
+        overlay.setAttribute('aria-hidden', 'false');
+        toggle.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeSidebar() {
+        sidebar.classList.remove('is-open');
+        overlay.classList.remove('is-visible');
+        overlay.setAttribute('aria-hidden', 'true');
+        toggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+
+      toggle.addEventListener('click', function () {
+        if (sidebar.classList.contains('is-open')) {
+          closeSidebar();
+        } else {
+          openSidebar();
+        }
+      });
+
+      overlay.addEventListener('click', closeSidebar);
+
+      sidebar.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+          if (window.innerWidth < 768) {
+            closeSidebar();
+          }
+        });
+      });
+
+      var sections = document.querySelectorAll('.doc-section[id], .hero');
+      var navLinks = document.querySelectorAll('.sidebar-nav a');
+
+      function setActiveNav() {
+        var scrollPos = window.scrollY + 120;
+        var current = '';
+
+        sections.forEach(function (section) {
+          if (section.offsetTop <= scrollPos) {
+            current = section.getAttribute('id');
+          }
+        });
+
+        navLinks.forEach(function (link) {
+          link.classList.remove('is-active');
+          if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('is-active');
+          }
+        });
+      }
+
+      window.addEventListener('scroll', setActiveNav, { passive: true });
+      setActiveNav();
+
+      var searchInput = document.getElementById('doc-search');
+      if (searchInput) {
+        searchInput.addEventListener('input', function () {
+          var query = this.value.toLowerCase().trim();
+          navLinks.forEach(function (link) {
+            var li = link.parentElement;
+            var text = link.textContent.toLowerCase();
+            li.style.display = !query || text.includes(query) ? '' : 'none';
+          });
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

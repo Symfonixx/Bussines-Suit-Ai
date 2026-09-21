@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="tr" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Symfonix Business Suite dokümantasyonu — CRM, İK, Finans, Vergi, Raporlama, CMS ve yapay zeka (Ask Symfonix) modüllerini tek bir yüksek performanslı iş platformunda birleştiren bütünleşik sistem.">
+  <title>Symfonix Business Suite — Dokümantasyon</title>
+  <link rel="alternate" hreflang="en" href="../index.html">
+  <link rel="alternate" hreflang="ar" href="../ar/index.html">
+  <link rel="alternate" hreflang="tr" href="./index.html">
+  <link rel="alternate" hreflang="de" href="../de/index.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">İçeriğe geç</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="./index.html" class="brand" aria-label="Symfonix Business Suite ana sayfası">
+        <img src="../images/logo.png" alt="Symfonix Business Suite logosu" class="brand-logo" width="36" height="36">
+        <span class="brand-text">
+          <span class="brand-name">Symfonix Business Suite</span>
+          <span class="brand-tagline">Dokümantasyon</span>
+        </span>
+      </a>
+
+      <nav class="top-nav" aria-label="Birincil gezinme">
+        <a href="#introduction">Giriş</a>
+        <a href="#architecture">Mimari</a>
+        <a href="#modules">Modüller</a>
+        <a href="#ai">Yapay zeka</a>
+        <a href="#getting-started">Başlangıç</a>
+      </nav>
+
+      <div class="header-actions">
+        <div class="lang-switcher" aria-label="Dil değiştirici">
+          <a href="../index.html" lang="en">EN</a>
+          <a href="../ar/index.html" lang="ar">AR</a>
+          <a href="./index.html" class="is-active" lang="tr">TR</a>
+          <a href="../de/index.html" lang="de">DE</a>
+        </div>
+        <a href="#getting-started" class="btn btn-ghost">Dağıtım</a>
+        <a href="#introduction" class="btn btn-primary">Dokümantasyonu oku</a>
+        <button class="menu-toggle" type="button" aria-label="Gezinme menüsünü aç/kapat" aria-expanded="false" aria-controls="sidebar">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="docs-shell">
+    <div class="sidebar-overlay" id="sidebar-overlay" aria-hidden="true"></div>
+
+    <aside class="sidebar" id="sidebar" aria-label="Dokümantasyon gezinmesi">
+      <div class="sidebar-inner">
+        <div class="sidebar-search">
+          <input type="search" id="doc-search" placeholder="Dokümanda ara..." aria-label="Dokümanda ara">
+        </div>
+
+        <nav>
+          <div class="nav-group">
+            <div class="nav-group-label">Genel Bakış</div>
+            <ul class="sidebar-nav">
+              <li><a href="#introduction" class="is-active">Giriş ve Vizyon</a></li>
+              <li><a href="#why-symfonix">Neden Symfonix Business Suite</a></li>
+              <li><a href="#value-proposition">Kurumsal Değer</a></li>
+            </ul>
+          </div>
+
+          <div class="nav-group">
+            <div class="nav-group-label">Platform</div>
+            <ul class="sidebar-nav">
+              <li><a href="#architecture">Sistem Mimarisi</a></li>
+              <li><a href="#core-engine">Çekirdek Motor</a></li>
+              <li><a href="#data-consistency">Veri Tutarlılığı</a></li>
+              <li><a href="#performance">Performans</a></li>
+            </ul>
+          </div>
+
+          <div class="nav-group">
+            <div class="nav-group-label">Modüller</div>
+            <ul class="sidebar-nav">
+              <li><a href="#modules">Temel Modüller</a></li>
+              <li><a href="#crm">CRM ve Pipeline</a></li>
+              <li><a href="#lifecycle">Satış ve teslimat yaşam döngüsü</a></li>
+              <li><a href="#project">Projeler ve vaka çalışmaları</a></li>
+              <li><a href="#hr">İnsan Kaynakları</a></li>
+              <li><a href="#finance">Finans</a></li>
+              <li><a href="#currency-setup">Çoklu Para Birimi</a></li>
+              <li><a href="#tax">Vergi</a></li>
+              <li><a href="#reporting">Raporlar</a></li>
+              <li><a href="#cms">İçerik Yönetimi</a></li>
+              <li><a href="#ai">Yapay zeka (Ask Symfonix)</a></li>
+              <li><a href="#integrations">API ve Entegrasyonlar</a></li>
+            </ul>
+          </div>
+
+          <div class="nav-group">
+            <div class="nav-group-label">Geliştiriciler</div>
+            <ul class="sidebar-nav">
+              <li><a href="#getting-started">Başlangıç</a></li>
+              <li><a href="#requirements">Gereksinimler</a></li>
+              <li><a href="#installation">Kurulum</a></li>
+              <li><a href="#module-deployment">Modül Dağıtımı</a></li>
+              <li><a href="#permissions">Yetkiler ve Roller</a></li>
+              <li><a href="#testing">Testler</a></li>
+              <li><a href="#production">Prodüksiyon</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </aside>
+
+    <main class="main-content" id="main-content">
+      <div class="content-wrapper">
+        <section class="hero" aria-labelledby="hero-title">
+          <span class="hero-badge">Kurumsal Platform · v1.0</span>
+          <h1 id="hero-title">Tüm iş fonksiyonları için tek platform.</h1>
+          <p class="hero-lead">
+            Symfonix Business Suite; CRM, İK, Finans, Vergi, Raporlama, CMS, yapay zeka (Ask Symfonix, içerik üretimi, görsel düzenleme ve genel sohbet botu) ve temel operasyonel süreçleri tek bir yüksek performanslı, modüler iş yönetim platformunda birleştirerek parçalı SaaS yapılarından doğan entegrasyon yükünü ortadan kaldırır.
+          </p>
+          <div class="hero-actions">
+            <a href="#getting-started" class="btn btn-primary">Hemen başla</a>
+            <a href="#architecture" class="btn btn-ghost">Mimariyi incele</a>
+            <a href="../pdf/symfonix-docs-tr.pdf" class="btn btn-ghost" download>PDF'yi indir</a>
+          </div>
+          <div class="hero-stats">
+            <div class="stat-item">
+              <div class="stat-value">16</div>
+              <div class="stat-label">İş modülü</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value">1</div>
+              <div class="stat-label">Birleşik veritabanı</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value">∞</div>
+              <div class="stat-label">Birleştirilebilir iş akışları</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value">B2B</div>
+              <div class="stat-label">Kurumsal hazır</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="doc-section" id="introduction">
+          <h2>Giriş ve Vizyon</h2>
+          <p class="section-intro">
+            Symfonix Business Suite, satışın bir araçta, maaş yönetiminin başka bir araçta ve içerik operasyonlarının üçüncü bir sistemde tutulduğu dağınık iş yazılımı yapısını aşmış şirketler için tasarlandı.
+          </p>
+          <p>
+            <strong>Symfonix</strong> adı ürün felsefesini yansıtır: teknolojilerin çatışması değil uyum içinde orkestrasyonu. Şirketlerin onlarca SaaS ürününü birbirine bağlamak zorunda kalması yerine, platform bağımsız iş modüllerini ihtiyaçlara göre yükleyen bir <em>çekirdek sistem motoru</em> sunar.
+          </p>
+          <p>
+            Laravel 13 ve <code>nwidart/laravel-modules</code> tabanlı modüler mimarisi sayesinde platform; ajanslar, hizmet şirketleri ve orta ölçekli B2B işletmeler için esnek ama bütünleşik bir operasyon omurgası sağlar.
+          </p>
+
+          <div class="card-grid">
+            <article class="card">
+              <div class="card-icon" aria-hidden="true">🔗</div>
+              <h3>Birleşik Ekosistem</h3>
+              <p>Farklı üçüncü parti araçları tek bir veritabanı ve tutarlı kullanıcı deneyimi sunan ortak platformda birleştirir.</p>
+            </article>
+            <article class="card">
+              <div class="card-icon" aria-hidden="true">🧩</div>
+              <h3>Modüler Tasarım</h3>
+              <p>CRM, İK, Finans, CMS ve diğer modüller bağımsız etkinleştirilebilir; yine de veri katmanında derin entegrasyon sağlar.</p>
+            </article>
+            <article class="card">
+              <div class="card-icon" aria-hidden="true">⚡</div>
+              <h3>Yüksek Performans</h3>
+              <p>Inertia.js tabanlı yönetim deneyimi, optimize sorgular ve prodüksiyon için isteğe bağlı Redis desteği sunar.</p>
+            </article>
+            <article class="card">
+              <div class="card-icon" aria-hidden="true">🌐</div>
+              <h3>Küresel Hazırlık</h3>
+              <p>İngilizce, Arapça, Türkçe ve Almanca yerelleştirme, rol tabanlı erişim ve çok şubeli organizasyon yapısı desteklenir.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="doc-section" id="why-symfonix">
+          <h3>Neden Symfonix Business Suite?</h3>
+          <p>B2B şirketler büyüdükçe genellikle şu sorunlarla karşılaşır:</p>
+          <ul>
+            <li><strong>Veri adacıkları</strong> — CRM'deki müşteri bilgileri finans tarafındaki kayıtlarla uyuşmaz.</li>
+            <li><strong>Entegrasyon vergisi</strong> — CSV aktarımları ve manuel süreçler operasyonu yavaşlatır.</li>
+            <li><strong>Yetki dağınıklığı</strong> — erişim yönetimi birçok panel arasında bölünür.</li>
+            <li><strong>Raporlama körlüğü</strong> — yönetim gerçek zamanlı çapraz fonksiyon görünürlüğü elde edemez.</li>
+          </ul>
+          <p>
+            Symfonix Business Suite bu sürtünmeyi mimari düzeyde ortadan kaldırır. CRM'de kapanan bir anlaşma proje kaydını tetikleyebilir, ürün satışı finans tarafına anında yansıyabilir, yeni çalışan rolleri merkezi izin sistemi üzerinden otomatik yayılabilir.
+          </p>
+
+          <h4>Şirketler neden Symfonix Business Suite'i tercih eder?</h4>
+          <ul class="feature-list">
+            <li>
+              <strong>Daha düşük yazılım maliyeti</strong>
+              Birbiriyle örtüşen abonelikleri kaldırır ve üçüncü taraf entegrasyonlarının bakım yükünü azaltır.
+            </li>
+            <li>
+              <strong>Daha hızlı günlük operasyonlar</strong>
+              Satış, finans, proje, İK ve içerik ekiplerini tekrarlanan manuel aktarımlar yerine bağlantılı iş akışlarında buluşturur.
+            </li>
+            <li>
+              <strong>Güvenilir iş verileri</strong>
+              Müşterileri, işlemleri, projeleri ve izinleri daha net raporlama ve kararlar için yönetilen tek sistemde tutar.
+            </li>
+            <li>
+              <strong>Kontrol ve veri sahipliği</strong>
+              Platformu kendi altyapınızda barındırın, erişimi rollere göre belirleyin ve şirket verilerinin kontrolünü koruyun.
+            </li>
+            <li>
+              <strong>Sistemi değiştirmeden büyüme</strong>
+              Bugün gereken modüllerle başlayın; ekipler, şubeler ve süreçler büyüdükçe yeni yetenekleri etkinleştirin.
+            </li>
+          </ul>
+        </section>
+
+        <section class="doc-section" id="value-proposition">
+          <h3>Kurumsal Mimari Değer</h3>
+          <p>Platform işletmeler ve teknik karar vericiler için üç temel alanda değer üretir:</p>
+          <ul class="feature-list">
+            <li>
+              <strong>Toplam sahip olma maliyetini düşürür</strong>
+              Tedarikçi sayısını ve entegrasyon bakım yükünü azaltır, ayrıca kendi altyapınızda barındırılabilir.
+            </li>
+            <li>
+              <strong>Operasyonel hızı artırır</strong>
+              Modüller arası veri akışı aynı şema üzerinde milisaniyeler içinde gerçekleşir.
+            </li>
+            <li>
+              <strong>Geleceğe dönük modülerlik sağlar</strong>
+              Yeni yetenekler çekirdeği yeniden yazmadan eklenebilir.
+            </li>
+          </ul>
+          <div class="callout callout--info">
+            <span class="callout-icon" aria-hidden="true">ℹ️</span>
+            <div class="callout-content">
+              <p><strong>Aşamalı benimseme için tasarlandı.</strong> Kurumlar bugün ihtiyaç duydukları modülleri etkinleştirip zamanla yeni bileşenler ekleyebilir; kayıt, yönlendirme ve yetkilendirme çekirdek motor tarafından yönetilir.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="doc-section" id="architecture">
+          <h2>Sistem Mimarisi</h2>
+          <p class="section-intro">
+            Symfonix Business Suite, iş mantığını bağımsız modüllerde tutan; bunları ortak bir çekirdek motor ile yöneten ve tek ilişkisel veritabanına bağlayan katmanlı bir mimari izler.
+          </p>
+
+          <div class="arch-diagram" role="img" aria-label="İş modülleri, çekirdek sistem motoru ve veri katmanını gösteren mimari diyagram">
+            <div class="arch-layer arch-layer--modules">
+              <div class="arch-layer-label">İş Modülleri (dinamik yükleme)</div>
+              <span class="arch-chip">CRM</span>
+              <span class="arch-chip">HR / User</span>
+              <span class="arch-chip">Finance</span>
+              <span class="arch-chip">Tax</span>
+              <span class="arch-chip">Reporting</span>
+              <span class="arch-chip">CMS</span>
+              <span class="arch-chip">AI</span>
+              <span class="arch-chip">Project</span>
+              <span class="arch-chip">Product</span>
+              <span class="arch-chip">Support</span>
+            </div>
+            <div class="arch-connector" aria-hidden="true">↕</div>
+            <div class="arch-layer arch-layer--core">
+              <div class="arch-layer-label">Çekirdek Sistem Motoru</div>
+              <span class="arch-chip">Module Registry</span>
+              <span class="arch-chip">Auth &amp; Permissions</span>
+              <span class="arch-chip">Event Bus</span>
+              <span class="arch-chip">Shared Services</span>
+              <span class="arch-chip">Admin Shell (Inertia)</span>
+            </div>
+            <div class="arch-connector" aria-hidden="true">↕</div>
+            <div class="arch-layer arch-layer--data">
+              <div class="arch-layer-label">Veri Katmanı</div>
+              <span class="arch-chip">MySQL / MariaDB</span>
+              <span class="arch-chip">Redis (cache / queues)</span>
+              <span class="arch-chip">File Storage</span>
+            </div>
+          </div>
+
+          <p>
+            Her modül <code>Modules/</code> altında bağımsız bir Laravel paketi gibi yaşar; kendi route, model, migration ve service provider yapılarına sahiptir. Çekirdek motor etkin modülleri açılışta keşfeder ve kaydeder.
+          </p>
+        </section>
+
+        <section class="doc-section" id="core-engine">
+          <h3>Çekirdek Motor</h3>
+          <p>
+            <strong>Core</strong> ve <strong>Base</strong> modülleri platformun omurgasını oluşturur. Core kurulum komutlarını ve ortak servisleri sunarken, Base genel ayarları, ülkeleri, şubeleri, SEO, yedekleme, <code>/humans.txt</code> ve <strong>API ve Entegrasyonlar</strong> (SMTP, WhatsApp Cloud API, OpenAI, Gemini ve Ask Symfonix sağlayıcısı) ekranını yönetir. Sistem Yapılandırmaları ayrıca Fixer ve ZKTeco parmak izi ayarlarını içerir. <strong>AI</strong> modülü diğer iş modülleri gibi yüklenir.
+          </p>
+          <ol>
+            <li><strong>Modül yaşam döngüsü</strong> — etkinleştirme, devre dışı bırakma ve migration işlemleri.</li>
+            <li><strong>Yetki sentezi</strong> — modüllerden gelen izinleri Spatie Permission altında birleştirme.</li>
+            <li><strong>Yönetim kabuğu</strong> — panel iskeleti ve sayfa navigasyonu.</li>
+            <li><strong>Çapraz modül olayları</strong> — sıkı bağımlılık olmadan iş akışları kurma.</li>
+          </ol>
+        </section>
+
+        <section class="doc-section" id="data-consistency">
+          <h3>Veri Tutarlılığı</h3>
+          <p>
+            Tüm modüller tek veritabanı üzerinde çalıştığı için referans bütünlüğü şema seviyesinde korunur; bu da gece senkronizasyonları veya manuel eşleştirme ihtiyacını azaltır.
+          </p>
+          <p>
+            <code>spatie/laravel-data</code> ile veri taşıma nesneleri standartlaştırılır, çok dilli modeller ise CMS ve katalog içeriklerinin dillere göre tutarlı kalmasını sağlar.
+          </p>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Konu</th>
+                  <th>Yaklaşım</th>
+                  <th>Fayda</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Şema sahipliği</td><td>Modül bazlı migration</td><td>Bağımsız evrim ve düşük merkezi darboğaz</td></tr>
+                <tr><td>Paylaşılan varlıklar</td><td>Core/Base modelleri</td><td>Organizasyon verisi için tek doğru kaynak</td></tr>
+                <tr><td>İşlemler</td><td>Laravel DB transaction</td><td>Çok tablolü işlemlerde atomiklik</td></tr>
+                <tr><td>Denetlenebilirlik</td><td>DB loglama + Telescope</td><td>Uyumluluk ve hata ayıklama görünürlüğü</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="doc-section" id="performance">
+          <h3>Performans</h3>
+          <ul>
+            <li><strong>Inertia.js</strong> tam API ayrımının karmaşıklığını yaşamadan SPA benzeri gezinme sağlar.</li>
+            <li><strong>Eager loading ve repository desenleri</strong> özellikle CRM ve Finans gibi modüllerde N+1 sorunlarını azaltır.</li>
+            <li><strong>Redis</strong> önbellek, oturum ve kuyruk işleme için prodüksiyonda önemli iyileştirme sunar.</li>
+            <li><strong>Laravel Pulse</strong> canlı performans izleme imkanı verir.</li>
+            <li><strong>Vite</strong> optimize edilmiş ve cache-busted frontend çıktıları üretir.</li>
+          </ul>
+        </section>
+
+        <section class="doc-section" id="modules">
+          <h2>Temel Modüller ve Arayüzler</h2>
+          <p class="section-intro">
+            Symfonix Business Suite, her biri yönetim arayüzü ve ortak izin sistemiyle entegre çalışan kapsamlı iş modülleriyle gelir.
+          </p>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Modül</th>
+                  <th>Alan</th>
+                  <th>Ana Yetkinlikler</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td><strong>Core</strong></td><td>Platform önyükleme</td><td><code>app:install</code>, ortak yardımcılar, modül yaşam döngüsü</td></tr>
+                <tr><td><strong>Base</strong></td><td>Sistem ayarları</td><td>Ülkeler, şubeler, SEO, yedekleme, SMTP, WhatsApp, OpenAI/Gemini kimlik bilgileri</td></tr>
+                <tr><td><strong>AI</strong></td><td>Asistan ve üretim</td><td>Ask Symfonix, genel sohbet botu, form/teklif/takip üretimi, Gemini görsel oluşturma/düzenleme</td></tr>
+                <tr><td><strong>CRM</strong></td><td>Satış ve ilişkiler</td><td>Lead, deal, şirket, teklif, pipeline, abonelik, e-posta/WhatsApp pazarlama, tahminler, pano, yapay zeka teklif ve takip taslakları</td></tr>
+                <tr><td><strong>User</strong></td><td>İK ve erişim</td><td>Kullanıcılar, çalışanlar, roller, izinler, parmak izi yoklama, müşteri portalı</td></tr>
+                <tr><td><strong>Finance</strong></td><td>Muhasebe</td><td>Çoklu para birimli defter, faturalar, alacaklar, maaşlar, komisyonlar, giderler</td></tr>
+                <tr><td><strong>Tax</strong></td><td>Uyumluluk</td><td>Vergi oranları, çıktı/girdi vergi defteri, beyan raporları</td></tr>
+                <tr><td><strong>Reporting</strong></td><td>Analitik</td><td>Finans, satış, pazarlama, operasyon ve çalışan raporları (CSV/PDF)</td></tr>
+                <tr><td><strong>Cms</strong></td><td>İçerik</td><td>Sayfalar, blog, SSS, müşteri logoları, çok dilli içerik, yapay zeka form ve görsel düzenleme</td></tr>
+                <tr><td><strong>Product</strong></td><td>Katalog</td><td>Ürün kategorileri, katalog öğeleri, satış entegrasyonu</td></tr>
+                <tr><td><strong>Project</strong></td><td>Teslimat</td><td>Projeler, durumlar, use case kayıtları</td></tr>
+                <tr><td><strong>Support</strong></td><td>Destek</td><td>Ticket, aboneler ve şikayet yönetimi</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="doc-section" id="crm">
+          <div class="module-block">
+            <div class="module-meta">
+              <span class="tag tag--primary">Satış</span>
+              <span class="tag tag--neutral">Pipeline Yönetimi</span>
+            </div>
+            <h3>CRM ve Pipeline</h3>
+            <p>CRM modülü ilk temastan anlaşma kapanışına kadar tüm gelir yaşam döngüsünü yönetir.</p>
+            <ul>
+              <li><strong>Lead yönetimi</strong>, özel alanlar, etiketler ve kaynak takibi</li>
+              <li><strong>Kanban pipeline</strong> ve <code>sales.deals.view_all</code> ile tüm fırsatları görme</li>
+              <li><strong>Teklifler</strong> — kalem, vergi/iskonto, PDF, müşterinin kabul/ret ettiği genel bağlantı ve şirket+deal’dan isteğe bağlı yapay zeka taslağı</li>
+              <li><strong>Şirket kayıtları</strong> ile kontak, deal, proje ve abonelik ilişkileri</li>
+              <li><strong>Aktivite ve görevler</strong> ile satış koordinasyonu; lead kaydında yapay zeka ile takip taslağı</li>
+              <li><strong>Abonelikler</strong> ile tekrar eden hizmet sözleşmeleri</li>
+              <li><strong>E-posta ve WhatsApp pazarlama</strong> — kuyruklu kampanyalar, şablonlar ve teslimat günlüğü</li>
+              <li><strong>Satış tahminleri</strong> — aşama kazanma olasılığına göre ağırlıklı ciro</li>
+              <li><strong>Özelleştirilebilir CRM panosu</strong></li>
+            </ul>
+            <p>Aşama geçişleri diğer modüllerin dinlediği olayları tetikler (ör. Closed Won bir proje ve finans kaydı oluşturur). Tam yol için <a href="#lifecycle">satış ve teslimat yaşam döngüsü</a>.</p>
+          </div>
+        </section>
+
+        <section class="doc-section" id="lifecycle">
+          <h2>Satış ve teslimat yaşam döngüsü</h2>
+          <p class="section-intro">
+            Ticari yol <strong>talep → lead → deal → (teklif) → kazanıldı → proje</strong>. Vaka çalışmaları ve abonelikler bu yolun yanındadır; deal kazanmak vaka çalışması yayınlamaz, teklif fatura oluşturmaz.
+          </p>
+          <div class="lifecycle-flow" role="img" aria-label="Talep, lead, deal, proje">
+            <span class="arch-chip">Talep</span>
+            <span class="lifecycle-arrow" aria-hidden="true">→</span>
+            <span class="arch-chip">Lead</span>
+            <span class="lifecycle-arrow" aria-hidden="true">→</span>
+            <span class="arch-chip">Şirket + kontak</span>
+            <span class="lifecycle-arrow" aria-hidden="true">→</span>
+            <span class="arch-chip">Deal</span>
+            <span class="lifecycle-arrow" aria-hidden="true">→</span>
+            <span class="arch-chip">Teklif</span>
+            <span class="lifecycle-arrow" aria-hidden="true">→</span>
+            <span class="arch-chip">Kazanıldı</span>
+            <span class="lifecycle-arrow" aria-hidden="true">→</span>
+            <span class="arch-chip">Proje</span>
+            <span class="lifecycle-arrow" aria-hidden="true">→</span>
+            <span class="arch-chip">Vaka çalışması</span>
+          </div>
+          <p class="lifecycle-note">Sohbet botu talep kaydı olmadan doğrudan lead oluşturabilir. Vaka çalışmaları teslimattan sonra elle yazılır.</p>
+          <ul>
+            <li><strong>Talep</strong> — <code>/contact-us</code> bir iletişim formu kaydeder; lead otomatik oluşmaz. Listede <strong>Leade dönüştür</strong> veya yalnızca <strong>Kontakta dönüştür</strong>.</li>
+            <li><strong>Sohbet lead’i</strong> — ad + geçerli e-posta sonrası <code>source = website</code>.</li>
+            <li><strong>Deal’e dönüştür</strong> — şirket ve birincil kontak bulunur/oluşturulur, varsayılan aşamada (Lead) deal açılır; bütçe ve hizmetler kopyalanır.</li>
+            <li><strong>Müşteriye dönüştür</strong> — deal olmadan hesap.</li>
+            <li><strong>Pipeline</strong>: Lead %10 → Qualified %25 → Proposal %50 → Negotiation %75 → Closed Won %100 / Closed Lost %0.</li>
+            <li><strong>Closed Won</strong> — <strong>Planning</strong> durumunda proje + gelir kaydı ve bekleyen komisyon. Dönüştürme modalında doğrudan Won seçmek olayı tetiklemez; sonra aşamayı hareket ettirin.</li>
+            <li><strong>Teklif</strong> deal’dan kopyalanır (<code>draft</code> → gönderildi). Müşteri kabulü deal’i kazanır ve projeyi bağlar. Red yalnızca teklifi değiştirir. <strong>Fatura</strong> kazanılmış deal’dan elle oluşturulur.</li>
+            <li><strong>Abonelikler</strong> şirkete bağlıdır, deal’e değil.</li>
+          </ul>
+        </section>
+
+        <section class="doc-section" id="project">
+          <div class="module-block">
+            <div class="module-meta">
+              <span class="tag tag--primary">Teslimat</span>
+              <span class="tag tag--neutral">Vaka çalışmaları</span>
+            </div>
+            <h3>Projeler ve vaka çalışmaları</h3>
+            <p>
+              <strong>Proje</strong> kazanılmış deal’dan oluşan teslimat kaydıdır. <strong>Use case</strong> (vaka çalışması) kamuya açık bir pazarlama sayfasıdır. Bağlanabilirler; proje bitince vaka otomatik yayınlanmaz.
+            </p>
+            <ul>
+              <li>Durumlar: Planning → Development → QA → Completed → On Hold. Yeni proje Planning ile başlar.</li>
+              <li>Vaka çalışmaları <strong>Proje → Use Cases</strong>, isteğe bağlı bağlı proje. Genel site: <code>/use-cases</code>. Yapay zeka form ve görseli doldurabilir. İzin: <code>project.use_cases.*</code>.</li>
+              <li>Tamamlanan projeler portal <strong>testimonial</strong> alabilir — vaka çalışmasından ayrıdır.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="doc-section" id="hr">
+          <div class="module-block">
+            <div class="module-meta">
+              <span class="tag tag--primary">İnsan</span>
+              <span class="tag tag--neutral">Kimlik ve Erişim</span>
+            </div>
+            <h3>İnsan Kaynakları</h3>
+            <p>User modülü çalışan kayıtları, kullanıcı hesapları, roller ve izinler arasında köprü kurar.</p>
+            <ul>
+              <li><strong>Çalışan profilleri</strong> ve organizasyonel bilgiler</li>
+              <li><strong>Granüler RBAC</strong> (<code>group.tab.action</code>) ve senaryo rolleri (İK, Satış, Finans, Proje, Operasyon yöneticisi)</li>
+              <li><strong>Parmak izi yoklama</strong> — ZKTeco TCP/IP (Sistem Yapılandırmaları → Fingerprint)</li>
+              <li><strong>İzin ve işe alım</strong></li>
+              <li><strong>Portal paneli</strong> ve müşteri teklif portalı</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="doc-section" id="finance">
+          <div class="module-block">
+            <div class="module-meta">
+              <span class="tag tag--primary">Muhasebe</span>
+              <span class="tag tag--neutral">Gelir ve Gider</span>
+            </div>
+            <h3>Finans</h3>
+            <p>Finans modülü çoklu para birimli günlük işlemlerden maaşlara, komisyonlardan gider ve fatura yönetimine kadar tüm finansal süreci kapsar.</p>
+            <ul>
+              <li><strong>Gelir/gider kayıtları</strong> ve filtreleme</li>
+              <li><strong>Journal entry</strong> desteği</li>
+              <li><strong>Faturalar ve alacaklar</strong> (AR)</li>
+              <li><strong>Maaş yönetimi</strong> ve çalışan bağlantısı</li>
+              <li><strong>Komisyon hesaplama</strong> ve satış hedefleri</li>
+              <li><strong>Fatura bildirimleri</strong> için event/listener tabanlı akış</li>
+              <li><strong>Para birimi bağlamı</strong> ile muhasebe tabanı, işlem para birimi ve oturuma özel görüntüleme para birimi birbirinden ayrılır; kayıt anındaki kur saklanır.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="doc-section" id="currency-setup">
+          <h3>Çoklu Para Birimi Kurulumu</h3>
+          <p>
+            <strong>Varsayılan para birimi</strong> muhasebe tabanıdır; her kayıt kendi <strong>işlem para birimini</strong> korur. Yönetim başlığındaki seçici yalnızca kullanıcının <strong>görüntüleme para birimini</strong> değiştirir. Yevmiye kayıtları, kayıt anındaki işlemden tabana kuru ve taban tutarını sakladığından sonraki kur güncellemeleri özgün kaydı değiştirmez.
+          </p>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Ayar</th><th>Amaç</th><th>Varsayılan</th></tr></thead>
+              <tbody>
+                <tr><td><code>FINANCE_DEFAULT_CURRENCY</code></td><td>Muhasebe taban para birimi</td><td><code>USD</code></td></tr>
+                <tr><td><code>FINANCE_SUPPORTED_CURRENCIES</code></td><td>Virgülle ayrılmış kullanılabilir para birimleri</td><td><code>USD,EUR,GBP,TRY</code></td></tr>
+                <tr><td><code>FIXER_API_KEY</code></td><td>Fixer veya API Layer anahtarı</td><td>Boş</td></tr>
+                <tr><td><code>FIXER_BASE_URL</code></td><td>Döviz kuru servis adresi</td><td><code>https://data.fixer.io/api</code></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p><code>Settings Management</code> yetkisine sahip kullanıcılar varsayılan para birimini ve Fixer anahtarını <strong>Sistem Yapılandırmaları → Finans</strong> bölümünden değiştirebilir; veritabanındaki ayarlar ortam değerlerinden önceliklidir. Desteklenen para birimleri listesi ortam/yapılandırma üzerinden yönetilir. Ücretsiz Fixer planları EUR tabanlıdır; sistem diğer tabanları EUR çapraz kurlarıyla türetir.</p>
+          <span class="code-label">Terminal</span>
+          <pre><code># Güncellemeyi kuyruğa al
+php artisan finance:fetch-exchange-rates
+
+# Hemen çalıştır; gerekirse tabanı geçersiz kıl
+php artisan finance:fetch-exchange-rates --sync
+php artisan finance:fetch-exchange-rates --base=EUR --sync</code></pre>
+          <div class="callout callout--warning">
+            <span class="callout-icon" aria-hidden="true">⚠️</span>
+            <div class="callout-content">
+              <p><strong>Yedek kurları prodüksiyon muhasebesinde kullanmayın.</strong> Kurulum yaklaşık başlangıç kurları ekler; Fixer anahtarı veya kayıtlı kur yoksa sistem <code>1.0</code> değerine düşebilir. Canlı işlemlerden önce senkronizasyonu yapılandırıp izleyin. Kayıtlar oluştuktan sonra varsayılan para birimini değiştirmek, tarihsel taban tutarları eski muhasebe tabanını koruduğu için kontrollü veri migration'ı gerektirir.</p>
+            </div>
+          </div>
+        </section>
+
+        </section>
+
+        <section class="doc-section" id="tax">
+          <div class="module-block">
+            <div class="module-meta">
+              <span class="tag tag--primary">Uyumluluk</span>
+              <span class="tag tag--neutral">Defter ve Beyan</span>
+            </div>
+            <h3>Vergi</h3>
+            <p>Tax modülü dahil/hariç oranları (isteğe bağlı bölge kodu), fatura ve ürün satışı satırlarına uygular; tahsil edilen <strong>çıktı vergisi</strong> ile giderlerdeki <strong>girdi vergisini</strong> deftere yazar. Beyan raporları net vergiyi dönem bazında özetler.</p>
+          </div>
+        </section>
+
+        <section class="doc-section" id="reporting">
+          <div class="module-block">
+            <div class="module-meta">
+              <span class="tag tag--primary">Analitik</span>
+              <span class="tag tag--neutral">CSV / PDF</span>
+            </div>
+            <h3>Raporlar</h3>
+            <p>Reporting hub’ı Finans, Satış, Pazarlama, Operasyon ve Çalışan analitiğini ortak dönem filtreleri ve CSV/PDF dışa aktarma ile sunar. Pazarlama raporları WhatsApp teslimat oranını, operasyon raporları bilet SLA ve parmak izi yoklamayı içerir.</p>
+          </div>
+        </section>
+
+        <section class="doc-section" id="cms">
+          <div class="module-block">
+            <div class="module-meta">
+              <span class="tag tag--primary">İçerik</span>
+              <span class="tag tag--neutral">Çok Dilli</span>
+            </div>
+            <h3>İçerik Yönetimi</h3>
+            <p>CMS modülü kamuya açık web sitesini ve içerik yönetim deneyimini besler; sayfalar, blog yazıları, SSS ve müşteri logolarını yönetir.</p>
+            <ul>
+              <li><strong>Statik sayfalar</strong> ve slug bazlı yönlendirme; isteğe bağlı yapay zeka form doldurma ve görsel düzenleme</li>
+              <li><strong>Blog yönetimi</strong>, SEO metadataları ve aynı yapay zeka yardımcıları</li>
+              <li><strong>SSS yönetimi</strong> ve bilgi tabanı yapıları</li>
+              <li><strong>Müşteri logoları</strong></li>
+              <li><strong>Yerelleştirme</strong> ile İngilizce, Arapça, Türkçe ve Almanca içerik desteği</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="doc-section" id="ai">
+          <div class="module-block">
+            <div class="module-meta">
+              <span class="tag tag--primary">Yapay zeka</span>
+              <span class="tag tag--neutral">OpenAI + Gemini</span>
+            </div>
+            <h3>Yapay zeka — Ask Symfonix, içerik üretimi ve genel sohbet botu</h3>
+            <p>
+              <strong>AI</strong> modülü (<code>Modules/AI</code>) canlı Symfonix verisi üzerinde asistanlar ve üretim ekler. İsteğe bağlıdır: API anahtarı olmadan CRM, Finans ve CMS çalışmaya devam eder. OpenAI ve/veya Gemini <strong>API ve Entegrasyonlar → Yapay zeka entegrasyonları</strong> altında kaydedildiğinde dört yetenek açılır. Veritabanı değerleri <code>.env</code> üzerine yazılır.
+            </p>
+            <p>
+              Sağlayıcılar bilinçli olarak ayrılmıştır. Ask Symfonix ve genel sohbet botu aynı yönlendiriciyi paylaşır (<code>auto</code> önce OpenAI, sonra Gemini). TinyMCE ve yapılandırılmış form üretimi OpenAI’yi tercih eder, Gemini analiz modeline düşer. Görsel oluşturma/düzenleme yalnızca Gemini görsel modelini kullanır.
+            </p>
+            <h4>Ask Symfonix</h4>
+            <p>
+              Yönetim başlığındaki (ve panodaki öneri çiplerindeki) salt okunur iş asistanıdır. <code>ai.assistant.view</code> gerekir. Sohbetler kullanıcı başına <code>ai_conversations</code> / <code>ai_messages</code> içinde saklanır. Model yalnızca araç sonuçlarından yanıt verir; sayı, ad veya durum uydurmaz; kullanıcının diline uyar. Kayıt oluşturmaz, e-posta veya WhatsApp göndermez. Her araç, oturum açmış kullanıcının ilgili Spatie iznine sahip olması halinde görünür.
+            </p>
+            <ul>
+              <li>Bugün işte neler oluyor? En çok geciken CRM görevleri kimin? Hangi projeler gecikti?</li>
+              <li>Bu ay satış? Geçen yıla göre gelir büyüme oranı?</li>
+              <li>Ciroya göre en iyi müşteriler? Bugün hangi lead’ler takip edilmeli?</li>
+              <li>Geciken faturalar, site ziyaretçileri, en çok satan hizmetler, çalışan raporu?</li>
+            </ul>
+            <p>Araçlar: iş özeti, günün odağı, lead/müşteri/proje/fatura/ödeme/gider/çalışan/ticket istatistikleri, geciken iş, ziyaretçiler, en çok satan hizmetler, kayıt arama ve takip taslağı.</p>
+            <h4>İçerik, teklif ve takipler</h4>
+            <ul>
+              <li><strong>TinyMCE «Yapay zeka ile oluştur»</strong> — editör HTML’ini bir istemden üretmek veya yeniden yazmak.</li>
+              <li><strong>Form doldurma</strong> — blog, sayfa, hizmet, ürün ve use case için yapılandırılmış JSON (başlıklar, İngilizce kebab-case slug, SEO, HTML gövde). Metin yönetim dilini izler.</li>
+              <li><strong>Teklif üret</strong> — şirket + deal’dan yayınlanmış hizmet/ürün (veya deal kalemleri) ile taslak. <code>sales.quotes.create</code> gerekir; kayıttan önce incelenir.</li>
+              <li><strong>Lead takibi</strong> — aktivite taslağı (tür, başlık, gövde, zaman). <code>crm.activities.create</code> gerekir.</li>
+            </ul>
+            <h4>Görseller ve genel sohbet botu</h4>
+            <p>
+              Gemini mevcut bir görseli düzenleyebilir veya istemden (en fazla 500 karakter) yeni görsel üretebilir. İsteğe bağlı marka logosu <strong>Ayarlar → Marka</strong> kaynaklıdır. İzinli hedefler: ürün, CMS sayfası, blog, use case — her yazma ilgili düzenleme iznini gerektirir.
+            </p>
+            <p>
+              Kamuya açık BotMan widget’ı aynı anahtarları kullanır ama <strong>kamuya güvenli</strong> araç seti: yayınlanmış hizmetleri listele/oku, şirket profili, web lead kaydı (ad + geçerli e-posta) ve 2–4 hızlı yanıt. CRM, finans veya İK verisi sızdırmaz. IP başına hız sınırı (varsayılan 20 / 60 sn). Yapay zeka kapalıysa (<code>AI_CHATBOT_ENABLED=false</code>) katalog yanıtı devam eder.
+            </p>
+            <p>Ortam: <code>OPENAI_API_KEY</code>, <code>OPENAI_MODEL</code>, <code>GEMINI_API_KEY</code>, <code>GEMINI_IMAGE_MODEL</code>, <code>GEMINI_ANALYSIS_MODEL</code>, <code>AI_ASSISTANT_PROVIDER=auto</code>, <code>AI_CHATBOT_ENABLED=true</code>.</p>
+            <div class="callout callout--info">
+              <span class="callout-icon" aria-hidden="true">ℹ️</span>
+              <div class="callout-content">
+                <p><strong>Güvenlik.</strong> <code>ai.assistant.view</code> yalnızca canlı operasyon verisini sorgulaması gereken personele verin. Araçlar yine modül izinlerine uyar. Genel sohbet botu yönetim araçlarını çağırmaz.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="doc-section" id="integrations">
+          <h3>API ve Entegrasyonlar</h3>
+          <p>Yönetim panelinde kaydedilen kimlik bilgileri <code>.env</code> değerlerini geçersiz kılar. Boş alanlar ortam yedeğini kullanır.</p>
+          <ul>
+            <li><strong>SMTP</strong> — APIs &amp; Integrations → E-posta (pazarlama ve bildirimler kuyruk işçisi gerektirir).</li>
+            <li><strong>WhatsApp Cloud API</strong> — erişim jetonu ve Phone Number ID; Meta’da onaylı şablonlar. Varsayılan Graph sürümü <code>v21.0</code>.</li>
+            <li><strong>OpenAI, Gemini ve Ask Symfonix</strong> — API ve Entegrasyonlar → Yapay zeka entegrasyonları. Ayrıntılar için <a href="#ai">yapay zeka</a>.</li>
+            <li><strong>Fixer</strong> — Sistem Yapılandırmaları → Finans.</li>
+            <li><strong>ZKTeco parmak izi</strong> — Sistem Yapılandırmaları → Fingerprint (TCP <code>4370</code>).</li>
+          </ul>
+        </section>
+
+        <section class="doc-section" id="getting-started">
+          <h2>Başlangıç</h2>
+          <p class="section-intro">Bu bölüm Symfonix Business Suite'i temiz bir kurulumdan çalışan yönetim paneline kadar ayağa kaldırmak için gereken temel adımları özetler.</p>
+        </section>
+
+        <section class="doc-section" id="requirements">
+          <h3>Gereksinimler</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Bağımlılık</th><th>Sürüm</th><th>Not</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>PHP</td><td>8.3+</td><td>Laravel için gerekli temel eklentilerle</td></tr>
+                <tr><td>Composer</td><td>2.x</td><td>PHP paket yönetimi</td></tr>
+                <tr><td>Node.js</td><td>18+</td><td>Frontend derleme için npm ile birlikte</td></tr>
+                <tr><td>MySQL / MariaDB</td><td>8.0+ / 10.6+</td><td>Birincil veri kaynağı</td></tr>
+                <tr><td>Redis</td><td>6+</td><td>Prodüksiyonda önerilir</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="doc-section" id="installation">
+          <h3>Kurulum</h3>
+          <ol class="steps">
+            <li>
+              <h4>Ortamı yapılandır</h4>
+              <span class="code-label">Terminal</span>
+              <pre><code>cp .env.example .env</code></pre>
+              <span class="code-label">.env</span>
+              <pre><code>DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=symfonix
+DB_USERNAME=root
+DB_PASSWORD=
+
+FINANCE_DEFAULT_CURRENCY=USD
+FINANCE_SUPPORTED_CURRENCIES=USD,EUR,GBP,TRY
+FIXER_API_KEY=
+FIXER_BASE_URL=https://data.fixer.io/api
+
+GEMINI_API_KEY=
+OPENAI_API_KEY=
+AI_ASSISTANT_PROVIDER=auto
+AI_CHATBOT_ENABLED=true
+
+DOCS_ENABLED=true</code></pre>
+            </li>
+            <li>
+              <h4>Bağımlılıkları yükle</h4>
+              <span class="code-label">Terminal</span>
+              <pre><code>composer install
+npm install && npm run build</code></pre>
+            </li>
+            <li>
+              <h4>Kurulum komutunu çalıştır</h4>
+              <p><code>app:install</code> migration'ları, izinleri, yönetici hesabını, para birimi ayarlarını ve yaklaşık başlangıç kurlarını oluşturur.</p>
+              <span class="code-label">Terminal</span>
+              <pre><code>php artisan app:install</code></pre>
+            </li>
+            <li>
+              <h4>Uygulamayı başlat</h4>
+              <span class="code-label">Terminal</span>
+              <pre><code>php artisan serve</code></pre>
+            </li>
+          </ol>
+        </section>
+
+        <section class="doc-section" id="module-deployment">
+          <h3>Modül Dağıtımı</h3>
+          <p>Modüller <code>nwidart/laravel-modules</code> standardına göre yapılandırılır ve bağımsız migration, route, view ve provider dosyalarıyla çalışır.</p>
+          <span class="code-label">Terminal</span>
+          <pre><code>php artisan module:list
+php artisan module:enable CRM
+php artisan module:disable Testimonial
+php artisan module:migrate Finance</code></pre>
+        </section>
+
+        <section class="doc-section" id="permissions">
+          <h3>Yetkiler ve Roller</h3>
+          <p>Platform, rol ve izin yönetimi için <code>Spatie Laravel Permission</code> kullanır. İzinler kurulumda <code>group.tab.action</code> kataloğundan oluşturulur (eski adlar mevcut rollere eşlenir) ve yönetim panelinden rollere atanır. Örnekler: <code>ai.assistant.view</code>, <code>sales.quotes.create</code>, <code>marketing.whatsapp.send</code>, <code>tax.rates.view</code>, <code>reporting.finance.export</code>, <code>hr.fingerprint.manage</code>. İçerik, görsel, teklif ve takip üretimi ilgili oluşturma/düzenleme anahtarlarını yeniden kullanır. Kurulum Admin ile birlikte İK, Satış, Finans, Proje ve Operasyon yöneticisi senaryo rollerini ekler.</p>
+        </section>
+
+        <section class="doc-section" id="testing">
+          <h3>Testler</h3>
+          <p>Birim ve özellik testleri <code>tests/</code> altındadır. Playwright E2E için <code>tests/README.md</code> dosyasına bakın.</p>
+          <pre><code>php artisan test
+npm run test:e2e</code></pre>
+        </section>
+
+        <section class="doc-section" id="production">
+          <h3>Prodüksiyon</h3>
+          <ol class="steps">
+            <li>
+              <h4>Prodüksiyon ortamını ayarla</h4>
+              <span class="code-label">.env</span>
+              <pre><code>APP_ENV=production
+APP_DEBUG=false
+CACHE_DRIVER=redis
+QUEUE_CONNECTION=redis
+SESSION_DRIVER=redis</code></pre>
+            </li>
+            <li>
+              <h4>Üretim bağımlılıklarını yükle</h4>
+              <span class="code-label">Terminal</span>
+              <pre><code>composer install --no-dev --optimize-autoloader
+npm ci && npm run build</code></pre>
+            </li>
+            <li>
+              <h4>Migration ve cache işlemleri</h4>
+              <span class="code-label">Terminal</span>
+              <pre><code>php artisan migrate --force
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache</code></pre>
+              <p>Kuyruk worker'ını ve Laravel scheduler'ını çalıştırın. Scheduler kurları saatlik olarak yeniler. WhatsApp ve e-posta kampanyaları ile asenkron güncellemeler worker gerektirir.</p>
+              <pre><code>* * * * * cd /path-to-symfonix && php artisan schedule:run >> /dev/null 2>&1</code></pre>
+            </li>
+          </ol>
+          <div class="callout callout--warning">
+            <span class="callout-icon" aria-hidden="true">⚠️</span>
+            <div class="callout-content">
+              <p><strong>Prodüksiyon kontrolü:</strong> <code>APP_DEBUG=false</code> olmalı, iki faktörlü doğrulama etkinleştirilmeli ve <code>.env</code> sürüm kontrolüne eklenmemelidir. Geçerli bir Fixer anahtarı yapılandırın ve kayıtlı kurlar eskidiğinde otomatik reddedilmediği için <strong>Sistem Yapılandırmaları → Finans</strong> ekranındaki son başarılı güncellemeyi izleyin. WhatsApp kimlik bilgilerini <strong>API ve Entegrasyonlar</strong> altında ayarlayın. Ask Symfonix, üretim, görseller veya genel sohbet botu kullanıyorsanız OpenAI ve/veya Gemini’yi <strong>Yapay zeka entegrasyonları</strong> altında ayarlayın ve <code>ai.assistant.view</code> iznini canlı veriyi sorgulaması gereken personelle sınırlayın. <code>/docs</code> açık olmasın istiyorsanız <code>DOCS_ENABLED=false</code> kullanın.</p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>&copy; 2026 Symfonix Business Suite. Tüm hakları saklıdır.</p>
+      <p>
+        <a href="#introduction">Dokümantasyon</a>
+        &nbsp;·&nbsp;
+        <a href="#getting-started">Başlangıç</a>
+        &nbsp;·&nbsp;
+        <a href="../index.html">English</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      'use strict';
+
+      var toggle = document.querySelector('.menu-toggle');
+      var sidebar = document.getElementById('sidebar');
+      var overlay = document.getElementById('sidebar-overlay');
+
+      function openSidebar() {
+        sidebar.classList.add('is-open');
+        overlay.classList.add('is-visible');
+        overlay.setAttribute('aria-hidden', 'false');
+        toggle.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeSidebar() {
+        sidebar.classList.remove('is-open');
+        overlay.classList.remove('is-visible');
+        overlay.setAttribute('aria-hidden', 'true');
+        toggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+
+      toggle.addEventListener('click', function () {
+        if (sidebar.classList.contains('is-open')) {
+          closeSidebar();
+        } else {
+          openSidebar();
+        }
+      });
+
+      overlay.addEventListener('click', closeSidebar);
+
+      sidebar.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+          if (window.innerWidth < 768) {
+            closeSidebar();
+          }
+        });
+      });
+
+      var sections = document.querySelectorAll('.doc-section[id], .hero');
+      var navLinks = document.querySelectorAll('.sidebar-nav a');
+
+      function setActiveNav() {
+        var scrollPos = window.scrollY + 120;
+        var current = '';
+
+        sections.forEach(function (section) {
+          if (section.offsetTop <= scrollPos) {
+            current = section.getAttribute('id');
+          }
+        });
+
+        navLinks.forEach(function (link) {
+          link.classList.remove('is-active');
+          if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('is-active');
+          }
+        });
+      }
+
+      window.addEventListener('scroll', setActiveNav, { passive: true });
+      setActiveNav();
+
+      var searchInput = document.getElementById('doc-search');
+      if (searchInput) {
+        searchInput.addEventListener('input', function () {
+          var query = this.value.toLowerCase().trim();
+          navLinks.forEach(function (link) {
+            var li = link.parentElement;
+            var text = link.textContent.toLowerCase();
+            li.style.display = !query || text.includes(query) ? '' : 'none';
+          });
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

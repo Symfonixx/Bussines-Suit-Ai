@@ -1,0 +1,114 @@
+{
+    "menu": "لوحة التحكم",
+    "title": "لوحة تحكم CRM",
+    "subtitle": "صورة كاملة عن العملاء وخط المبيعات والمبيعات وأداء الفريق.",
+    "filters": {
+        "period": "الفترة الزمنية",
+        "assignee": "مندوب المبيعات",
+        "all_reps": "كل مندوبي المبيعات",
+        "apply": "تطبيق الفلاتر",
+        "periods": {
+            "today": "اليوم",
+            "last_7_days": "آخر 7 أيام",
+            "this_month": "هذا الشهر",
+            "last_month": "الشهر الماضي",
+            "this_quarter": "هذا الربع",
+            "this_year": "هذا العام",
+            "custom": "نطاق مخصص"
+        }
+    },
+    "metrics": {
+        "total_customers": "إجمالي العملاء",
+        "new_customers": "العملاء الجدد",
+        "new_leads": "Leads الجديدة",
+        "total_leads": "إجمالي العملاء المحتملين",
+        "leads_in_progress": "Leads قيد المتابعة",
+        "active_customers": "العملاء النشطين",
+        "lost_customers": "العملاء المفقودين",
+        "total_sales": "إجمالي المبيعات",
+        "sales_this_month": "مبيعات هذا الشهر",
+        "conversion_rate": "معدل التحويل",
+        "pipeline_value": "قيمة الـ Pipeline",
+        "won_deals": "الصفقات الرابحة",
+        "lost_deals": "الصفقات الخاسرة",
+        "avg_deal_value": "متوسط قيمة الصفقة",
+        "avg_close_time": "متوسط وقت إغلاق الصفقة",
+        "outstanding_invoices": "الفواتير المستحقة",
+        "overdue_amounts": "المبالغ المتأخرة",
+        "vs_previous": "مقارنة بالفترة السابقة",
+        "leads_converted": ":converted من :total تم تحويلهم",
+        "won_value": ":count صفقة · :value",
+        "lost_value": ":count صفقة · :value",
+        "invoice_count": ":count فاتورة",
+        "days": ":value يوم"
+    },
+    "widgets": {
+        "top_customers": "العملاء الأكثر شراءً",
+        "top_customers_hint": "ترتيب العملاء حسب قيمة الصفقات الرابحة.",
+        "top_customers_empty": "لا توجد صفقات رابحة لترتيب العملاء بعد.",
+        "customer": "العميل",
+        "deals": "الصفقات",
+        "value": "القيمة"
+    },
+    "customize": {
+        "button": "تخصيص",
+        "title": "تخصيص لوحة التحكم",
+        "hint": "فعّل أو أخفِ الودجات. اسحب البطاقات على اللوحة لإعادة الترتيب.",
+        "save": "حفظ التخطيط",
+        "saved": "تم حفظ تخطيط اللوحة.",
+        "reset": "إعادة الافتراضي",
+        "visible": "ظاهر",
+        "drag_hint": "اسحب لإعادة الترتيب"
+    },
+    "charts": {
+        "pipeline_funnel": "قمع خط المبيعات",
+        "pipeline_hint": "التوزيع الحالي للعملاء المحتملين والصفقات عبر المراحل.",
+        "open_leads_by_stages": "العملاء المحتملون المفتوحون حسب المراحل",
+        "open_leads_by_stages_hint": "العملاء المحتملون النشطون حالياً في مسار المبيعات.",
+        "lead_channels": "قنوات اكتساب العملاء",
+        "lead_channels_hint": "مصادر العملاء المحتملين في الفترة المحددة.",
+        "deals": "صفقات",
+        "leads": "عملاء محتملون"
+    },
+    "funnel": {
+        "unconverted_leads": "عملاء محتملون غير محوّلين"
+    },
+    "channels": {
+        "organic_search": "البحث العضوي",
+        "direct": "مباشر",
+        "social_media": "وسائل التواصل",
+        "referral": "إحالات",
+        "paid_ads": "إعلانات مدفوعة",
+        "website": "الموقع الإلكتروني",
+        "sales": "فريق المبيعات",
+        "manual": "إدخال يدوي",
+        "unknown": "أخرى"
+    },
+    "leaderboard": {
+        "title": "أداء المبيعات",
+        "subtitle": "أداء الإغلاق المكسوب للفترة المحددة.",
+        "rep": "مندوب المبيعات",
+        "closed_deals": "صفقات مغلقة",
+        "closed_value": "قيمة الإغلاق",
+        "target": "الهدف",
+        "achievement": "الإنجاز",
+        "empty": "لا توجد صفقات مغلقة في هذه الفترة."
+    },
+    "activity": {
+        "title": "سجل نشاط العملاء",
+        "subtitle": "المكالمات والبريد والاجتماعات والملاحظات وتحديثات الصفقات في خط زمني واحد.",
+        "empty": "لا يوجد نشاط حديث.",
+        "logged": "تسجيل :type: :title",
+        "fallback": "حدث CRM مسجل",
+        "view": "عرض التفاصيل"
+    },
+    "actions": {
+        "log_call": "تسجيل مكالمة",
+        "new_deal": "صفقة جديدة",
+        "add_contact": "إضافة جهة اتصال",
+        "new_lead": "عميل محتمل جديد",
+        "new_quote": "عرض سعر جديد"
+    },
+    "unknown_rep": "غير معروف",
+    "unknown_customer": "عميل غير معروف"
+}

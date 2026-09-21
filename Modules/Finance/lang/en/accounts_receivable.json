@@ -1,0 +1,30 @@
+{
+    "menu": "Accounts Receivable",
+    "pages": {
+        "index_title": "Accounts Receivable Aging"
+    },
+    "metrics": {
+        "total_outstanding": "Total Outstanding",
+        "open_invoices": "Open Invoices",
+        "open_projects": "Uninvoiced Projects"
+    },
+    "buckets": {
+        "current": "Current",
+        "days_1_30": "1–30 Days",
+        "days_31_60": "31–60 Days",
+        "days_61_90": "61–90 Days",
+        "over_90": "90+ Days"
+    },
+    "fields": {
+        "invoice_number": "Invoice #",
+        "project": "Project",
+        "company": "Company",
+        "due_at": "Due Date",
+        "days_overdue": "Days Overdue",
+        "amount": "Amount",
+        "remaining": "Remaining",
+        "status": "Status"
+    },
+    "empty_invoices": "No open invoices.",
+    "empty_projects": "No projects with uninvoiced budget."
+}
