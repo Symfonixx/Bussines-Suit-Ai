@@ -1,6 +1,5 @@
 <template>
     <Head>
-        <link rel="stylesheet" :href="asset_path + 'site/css/module-css/page-header.css'"/>
         <title>{{ metaTitle }}</title>
         <meta name="description" :content="metaDescription">
         <meta name="robots" content="noindex,nofollow">
@@ -9,29 +8,8 @@
     </Head>
 
     <app-layout>
-        <section class="page-header">
-            <div class="page-header__bg"
-                 :style="{ backgroundImage: `url(${asset_path}images/backgrounds/contact-us-bg.jpg)`}">
-            </div>
-            <div class="container">
-                <div class="page-header__inner">
-                    <h1>{{ labels.title }}</h1>
-                    <div class="thm-breadcrumb__box">
-                        <ul class="thm-breadcrumb list-unstyled">
-                            <li>
-                                <Link :href="route('home')">
-                                    <i class="fas fa-home"></i>{{ trans('Home') }}
-                                </Link>
-                            </li>
-                            <li><span :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow-1`"></span></li>
-                            <li>{{ quote.quote_number }}</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="quote-show">
+        <PageTitle :title="labels.title" />
+<section class="quote-show">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-xl-10">
@@ -201,7 +179,8 @@
 
 <script setup>
 import {computed} from 'vue';
-import {Head, Link, useForm, usePage} from '@inertiajs/vue3';
+import {Head, Link, useForm, usePage} from '@inertiajs/vue3'
+import PageTitle from '@/Components/PageTitle.vue';
 import AppLayout from '@/Layouts/App.vue';
 
 const props = defineProps({

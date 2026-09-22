@@ -8,18 +8,72 @@ use Modules\Base\Models\Seo;
 use Modules\Base\Support\Meta;
 use Modules\Base\Support\Schema;
 use Modules\Product\Models\Product;
-use Modules\Product\Repositories\ProductRepository;
+use Modules\Product\Models\ProductCategory;
+use Modules\SearchEngine\Models\SearchKeyword;
 
 class ProductController extends Controller
 {
-    public function __construct(
-        private readonly ProductRepository $productRepository,
-    ) {}
-
     public function index(Request $request)
     {
         $locale = app()->getLocale();
-        $products = $this->productRepository->publishedPaginate(12);
+        $query = Product::query()
+            ->published()
+            ->active()
+            ->with('category:id,name,slug');
+
+        if ($request->filled('search')) {
+            $search = mb_strtolower(trim((string) $request->search), 'UTF-8');
+            $locales = array_keys(config('laravellocalization.supportedLocales', ['en' => [], 'ar' => []]));
+
+            $query->where(function ($q) use ($search, $locales) {
+                $q->where('sku', 'like', "%{$search}%");
+
+                foreach ($locales as $loc) {
+                    $q->orWhereRaw("LOWER(JSON_UNQUOTE(JSON_EXTRACT(name, '$.{$loc}'))) LIKE ?", ["%{$search}%"])
+                        ->orWhereRaw("LOWER(JSON_UNQUOTE(JSON_EXTRACT(short_description, '$.{$loc}'))) LIKE ?", ["%{$search}%"])
+                        ->orWhereRaw("LOWER(JSON_UNQUOTE(JSON_EXTRACT(description, '$.{$loc}'))) LIKE ?", ["%{$search}%"]);
+                }
+            });
+
+            if ($search !== '') {
+                $keyword = SearchKeyword::firstOrNew(['keyword' => $search]);
+                $keyword->count = ($keyword->count ?? 0) + 1;
+                $keyword->save();
+            }
+        }
+
+        if ($request->filled('category')) {
+            $query->whereHas('category', function ($q) use ($request) {
+                $q->where('slug', $request->category);
+            });
+        }
+
+        $totalProductsCount = Product::query()->published()->active()->count();
+        $products = $query->latest()->paginate(12)->through(
+            fn (Product $product) => $this->mapProduct($product, $locale)
+        );
+
+        $categories = ProductCategory::query()
+            ->withCount(['products' => function ($q) {
+                $q->published()->active();
+            }])
+            ->get()
+            ->map(function (ProductCategory $category) use ($locale) {
+                return [
+                    'id' => $category->id,
+                    'name' => $category->getTranslation('name', $locale),
+                    'slug' => $category->slug,
+                    'products_count' => $category->products_count,
+                ];
+            });
+
+        $recentProducts = Product::query()
+            ->published()
+            ->active()
+            ->latest()
+            ->limit(6)
+            ->get()
+            ->map(fn (Product $product) => $this->mapProduct($product, $locale));
 
         $siteName = Seo::get('website_name', config('app.name'));
         $canonical = route('product.index');
@@ -32,15 +86,22 @@ class ProductController extends Controller
             ->canonical($canonical)
             ->toArray();
 
-        $listItems = $products->getCollection()->take(20)->map(function (Product $product) use ($locale) {
+        $listItems = collect($products->items())->take(20)->map(function (array $product) {
             return [
-                'name' => $product->getTranslation('name', $locale) ?: $product->name,
-                'url' => route('product.show', ['slug' => $product->slug]),
+                'name' => $product['name'] ?? '',
+                'url' => isset($product['slug']) ? route('product.show', ['slug' => $product['slug']]) : '',
             ];
-        })->values()->all();
+        })->filter(fn ($item) => $item['name'] !== '' && $item['url'] !== '')->values()->all();
 
         return $this->inertia('Product::ProductIndex', [
-            'products' => $products->through(fn (Product $product) => $this->mapProduct($product, $locale)),
+            'products' => $products,
+            'categories' => $categories,
+            'recentProducts' => $recentProducts,
+            'totalProductsCount' => $totalProductsCount,
+            'filters' => [
+                'search' => $request->search,
+                'category' => $request->category,
+            ],
             'structuredData' => [
                 Schema::breadcrumbs([
                     ['name' => __('Home'), 'url' => route('home')],
@@ -125,6 +186,7 @@ class ProductController extends Controller
             'price' => $product->price,
             'currency' => $product->currency ?: 'USD',
             'billing_type' => $product->billing_type,
+            'created_at' => $product->created_at?->format('d M Y'),
             'category' => $product->category ? [
                 'id' => $product->category->id,
                 'name' => $product->category->getTranslation('name', $locale),

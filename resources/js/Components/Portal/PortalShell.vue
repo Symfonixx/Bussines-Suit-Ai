@@ -1,6 +1,5 @@
 <template>
     <Head>
-        <link rel="stylesheet" :href="asset_path + 'site/css/module-css/portal.css'" />
         <title>{{ pageTitle }}</title>
         <meta name="description" :content="pageDescription">
         <meta name="robots" content="noindex, nofollow">

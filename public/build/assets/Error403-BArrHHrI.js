@@ -1,0 +1,1 @@
+import r from"./Error-BJfTJa7w.js";import{k as o,o as t}from"./vendor-vue-7eFvYnwf.js";import"./App-BBUduNH8.js";import"./PageTitle-C4ii1H0T.js";import"./vendor-ui-xehOETvn.js";const n={__name:"Error403",setup(e){return(m,p)=>(t(),o(r))}};export{n as default};

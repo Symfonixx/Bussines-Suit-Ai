@@ -1,0 +1,161 @@
+@use "../abstracts/index" as *;
+
+
+.ic-accordion-custom {
+    position: relative;
+    width: 18px;
+    height: 18px;
+    @include flex(center, center);
+    transition: transform 0.35s linear;
+    flex-shrink: 0;
+
+    &::after,
+    &::before {
+        content: "";
+        position: absolute;
+        background-color: var(--white);
+        @include transition3;
+        border-radius: 4px;
+    }
+
+    &::before {
+        height: 100%;
+        width: 2px;
+    }
+
+    &::after {
+        height: 2px;
+        width: 100%;
+    }
+}
+
+.accordion-title {
+    @include flex(center, space-between);
+    @include transition3;
+    gap: 5px;
+    color: var(--text-5);
+
+    .icon {
+        &::before {
+            transform: rotate(90deg);
+        }
+
+        &::after {
+            transform: rotate(180deg);
+        }
+    }
+
+    &.collapsed {
+        color: var(--white);
+
+        .icon {
+
+            &::before {
+                transform: rotate(0deg);
+            }
+
+            &::after {
+                transform: rotate(0deg);
+            }
+        }
+    }
+}
+
+.faq-accordion_item {
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+
+    .img-item-1 {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 0;
+    }
+
+    .accordion-title {
+        padding: 24px 32px;
+        position: relative;
+
+        .text {
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            display: -webkit-box;
+            overflow: hidden;
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            left: 0px;
+            top: 28px;
+            height: 24px;
+            width: 2px;
+            box-shadow: 0px 0px 6px 0px #2365FF99,
+                0px 2px 12px 1px #2365FF66,
+                0px 1px 24px 2px #2365FF4D,
+                0px 2px 36px 3px #2365FF4D,
+                0px 0px 40px 30px #2365FF33;
+            background-color: var(--bg-7);
+            @include transition3;
+        }
+
+        &.collapsed {
+
+            &::after {
+                background-color: var(--white);
+                box-shadow: 0px 0px 6px 0px #FFFFFF80,
+                    0px 2px 12px 1px #FFFFFF4D,
+                    0px 2px 12px 1px #FFFFFF4D,
+                    0px 2px 36px 3px #FFFFFF33,
+                    0px 0px 40px 30px #FFFFFF1A;
+            }
+        }
+    }
+
+    .accordion-body {
+        padding: 22px 32px;
+        padding-top: 0;
+        position: relative;
+        z-index: 1;
+    }
+
+    .img-item-1 {
+        @include transition3;
+        @include hidden;
+
+        img {
+            height: 100%;
+        }
+    }
+
+    &.active {
+        .img-item-1 {
+            @include visible;
+        }
+    }
+
+    @include res(xl) {
+        .accordion-body {
+            padding: 20px 16px;
+            padding-top: 0;
+        }
+
+        .accordion-title {
+            padding: 20px 16px;
+
+            &.collapsed {
+                &::after {
+                    top: 20px;
+                }
+            }
+        }
+    }
+}
+
+.faq-accordion-list {
+    display: grid;
+    gap: 12px;
+}

@@ -1,0 +1,16 @@
+@use "../abstracts/index" as *;
+
+.sw-dot-default {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 24px;
+
+    .swiper-pagination-bullet {
+        background: var(--bg-6);
+    }
+
+    &.swiper-pagination-lock {
+        margin: 0 !important;
+    }
+}

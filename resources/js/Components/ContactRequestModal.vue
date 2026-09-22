@@ -15,113 +15,93 @@
                 </div>
                 <div class="modal-body pt-2">
                     <p v-if="description" class="product-contact-modal__description mb-4">{{ description }}</p>
-                    <form @submit.prevent="handleSubmit" class="contact-one__form">
-                        <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <h4 class="contact-one__input-title">{{ trans('Full Name') }}</h4>
-                                <div class="contact-one__input-box">
-                                    <div class="contact-one__input-icon">
-                                        <span class="icon-user-1"></span>
-                                    </div>
+                    <form @submit.prevent="handleSubmit" class="form-get_in">
+                        <div class="form-content-2">
+                            <div class="tf-grid-layout sm-col-2">
+                                <fieldset>
+                                    <label class="label-text text-body-3">{{ trans('Full Name') }}</label>
                                     <input
                                         v-model="contactForm.name"
                                         type="text"
                                         name="name"
                                         :placeholder="trans('Full Name')"
+                                        :class="{ error: contactForm.errors.name }"
                                         :disabled="contactForm.processing"
                                         required
                                     >
-                                </div>
-                                <div v-if="contactForm.errors.name" class="text-danger mt-1 small">
-                                    {{ contactForm.errors.name }}
-                                </div>
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <h4 class="contact-one__input-title">{{ trans('Email') }}</h4>
-                                <div class="contact-one__input-box">
-                                    <div class="contact-one__input-icon">
-                                        <span class="icon-email"></span>
+                                    <div v-if="contactForm.errors.name" class="text-danger mt-1 small">
+                                        {{ contactForm.errors.name }}
                                     </div>
+                                </fieldset>
+                                <fieldset>
+                                    <label class="label-text text-body-3">{{ trans('Email') }}</label>
                                     <input
                                         v-model="contactForm.email"
                                         type="email"
                                         name="email"
                                         :placeholder="trans('Email')"
+                                        :class="{ error: contactForm.errors.email }"
                                         :disabled="contactForm.processing"
                                         required
                                     >
-                                </div>
-                                <div v-if="contactForm.errors.email" class="text-danger mt-1 small">
-                                    {{ contactForm.errors.email }}
-                                </div>
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <h4 class="contact-one__input-title">{{ trans('Phone Number') }}</h4>
-                                <div class="contact-one__input-box">
-                                    <div class="contact-one__input-icon">
-                                        <span class="icon-phone-call"></span>
+                                    <div v-if="contactForm.errors.email" class="text-danger mt-1 small">
+                                        {{ contactForm.errors.email }}
                                     </div>
+                                </fieldset>
+                            </div>
+                            <div class="tf-grid-layout sm-col-2">
+                                <fieldset>
+                                    <label class="label-text text-body-3">{{ trans('Phone Number') }}</label>
                                     <input
                                         v-model="contactForm.mobile"
                                         type="text"
                                         name="mobile"
                                         :placeholder="trans('Phone Number')"
+                                        :class="{ error: contactForm.errors.mobile }"
                                         :disabled="contactForm.processing"
                                         required
                                     >
-                                </div>
-                                <div v-if="contactForm.errors.mobile" class="text-danger mt-1 small">
-                                    {{ contactForm.errors.mobile }}
-                                </div>
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <h4 class="contact-one__input-title">{{ trans('Subject') }}</h4>
-                                <div class="contact-one__input-box">
-                                    <div class="contact-one__input-icon">
-                                        <span class="icon-edit"></span>
+                                    <div v-if="contactForm.errors.mobile" class="text-danger mt-1 small">
+                                        {{ contactForm.errors.mobile }}
                                     </div>
+                                </fieldset>
+                                <fieldset>
+                                    <label class="label-text text-body-3">{{ trans('Subject') }}</label>
                                     <input
                                         v-model="contactForm.subject"
                                         type="text"
                                         name="subject"
                                         :placeholder="trans('Subject')"
+                                        :class="{ error: contactForm.errors.subject }"
                                         :disabled="contactForm.processing"
                                         required
                                     >
-                                </div>
-                                <div v-if="contactForm.errors.subject" class="text-danger mt-1 small">
-                                    {{ contactForm.errors.subject }}
-                                </div>
-                            </div>
-                            <div class="col-12 mb-3">
-                                <h4 class="contact-one__input-title">{{ trans('Message') }}</h4>
-                                <div class="contact-one__input-box text-message-box">
-                                    <div class="contact-one__input-icon">
-                                        <span class="icon-edit"></span>
+                                    <div v-if="contactForm.errors.subject" class="text-danger mt-1 small">
+                                        {{ contactForm.errors.subject }}
                                     </div>
-                                    <textarea
-                                        v-model="contactForm.message"
-                                        name="message"
-                                        :placeholder="trans('Message')"
-                                        :disabled="contactForm.processing"
-                                        required
-                                    ></textarea>
-                                </div>
+                                </fieldset>
+                            </div>
+                            <fieldset class="d-grid">
+                                <label class="label-text text-body-3">{{ trans('Message') }}</label>
+                                <textarea
+                                    v-model="contactForm.message"
+                                    name="message"
+                                    :placeholder="trans('Message')"
+                                    :class="{ error: contactForm.errors.message }"
+                                    :disabled="contactForm.processing"
+                                    required
+                                ></textarea>
                                 <div v-if="contactForm.errors.message" class="text-danger mt-1 small">
                                     {{ contactForm.errors.message }}
                                 </div>
-                            </div>
+                            </fieldset>
                         </div>
-                        <div v-if="submitSuccess" class="alert alert-success">
+                        <div v-if="submitSuccess" class="alert alert-success mt-3">
                             {{ trans('Thank you for contacting us! We will get back to you soon.') }}
                         </div>
-                        <div class="contact-one__btn-box">
-                            <button type="submit" class="thm-btn" :disabled="contactForm.processing">
-                                <span v-if="contactForm.processing">{{ trans('Sending...') }}</span>
-                                <span v-else>{{ submitLabel }}</span>
-                                <span :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow`"></span>
-                            </button>
-                        </div>
+                        <button type="submit" class="tf-btn style-2 animate-btn style-high mt-3" :disabled="contactForm.processing">
+                            {{ contactForm.processing ? trans('Sending...') : submitLabel }}
+                        </button>
                     </form>
                 </div>
             </div>
@@ -241,78 +221,26 @@ defineExpose({
 
 <style scoped>
 .product-contact-modal .modal-content {
-    border: 0;
+    border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 16px;
     overflow: hidden;
-    background: #fff;
+    background: #0d1117;
+    color: #fff;
 }
 
 .product-contact-modal .modal-title {
     font-weight: 700;
-    color: #0b192c;
+    color: #fff;
 }
 
-.product-contact-modal .modal-body :deep(.text-muted) {
-    color: #475569 !important;
+.product-contact-modal .btn-close {
+    filter: invert(1);
 }
 
 .product-contact-modal__description {
-    color: #475569;
+    color: rgba(255, 255, 255, 0.7);
     font-size: 0.95rem;
     line-height: 1.6;
     margin-bottom: 1.25rem;
-}
-
-.product-contact-modal :deep(.contact-one__input-title) {
-    color: #0b192c;
-    font-size: 14px;
-    font-weight: 600;
-    margin-bottom: 8px;
-}
-
-.product-contact-modal :deep(.contact-one__input-box) {
-    margin-bottom: 0;
-}
-
-.product-contact-modal :deep(.contact-one__input-box::before) {
-    display: none;
-}
-
-.product-contact-modal :deep(.contact-one__input-box input[type="text"]),
-.product-contact-modal :deep(.contact-one__input-box input[type="email"]),
-.product-contact-modal :deep(.contact-one__input-box textarea) {
-    background-color: #f8fafc;
-    border: 1px solid #cbd5e1;
-    color: #1e293b;
-    border-radius: 12px;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
-}
-
-.product-contact-modal :deep(.contact-one__input-box input[type="text"]::placeholder),
-.product-contact-modal :deep(.contact-one__input-box input[type="email"]::placeholder),
-.product-contact-modal :deep(.contact-one__input-box textarea::placeholder) {
-    color: #94a3b8;
-    opacity: 1;
-}
-
-.product-contact-modal :deep(.contact-one__input-box input[type="text"]:focus),
-.product-contact-modal :deep(.contact-one__input-box input[type="email"]:focus),
-.product-contact-modal :deep(.contact-one__input-box textarea:focus) {
-    background-color: #fff;
-    border-color: #2189ca;
-    box-shadow: 0 0 0 3px rgba(33, 137, 202, 0.15);
-    outline: none;
-}
-
-.product-contact-modal :deep(.contact-one__input-icon span) {
-    color: #64748b;
-}
-
-.product-contact-modal :deep(.contact-one__input-box:focus-within .contact-one__input-icon span) {
-    color: #2189ca;
-}
-
-.product-contact-modal :deep(.contact-one__btn-box) {
-    margin-top: 8px;
 }
 </style>

@@ -148,16 +148,19 @@ Developed By: Hadi Hilal
     {{-- Ziggy routes are shared via Inertia props and installed in app.js — do not dump them here. --}}
 
     {{-- jQuery before Vite so header menu bindings always have $ available --}}
-    <script src="{{ asset('site/js/jquery-3.6.0.min.js') }}"></script>
+    <script src="{{ asset('qore/js/jquery.min.js') }}"></script>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-    {{-- Slim font request: common weights only (full variable italic axis is huge) --}}
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
-          rel="stylesheet" media="print" onload="this.media='all'">
-    <noscript>
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    </noscript>
+    {{-- Qore theme CSS --}}
+    <link rel="stylesheet" href="{{ asset('qore/fonts/fonts.css') }}">
+    <link rel="stylesheet" href="{{ asset('qore/icon/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('qore/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('qore/css/animate.css') }}">
+    <link rel="stylesheet" href="{{ asset('qore/css/odometer.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('qore/css/swiper-bundle.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('qore/css/styles.css') }}">
+    <link rel="stylesheet" href="{{ asset('qore/css/symfonix.css') }}">
 
     @inertiaHead
 
@@ -179,56 +182,9 @@ Developed By: Hadi Hilal
         @endforeach
     @endif
 
-    {{-- Critical above-the-fold CSS (sync) --}}
-    <link rel="stylesheet" href="{{ asset('site/css/bootstrap.min.css') }}"/>
-    <link rel="stylesheet" href="{{ asset('site/css/font-awesome-all.css') }}"/>
-    <link rel="stylesheet" href="{{ asset('site/css/flaticon.css') }}">
-    <link rel="stylesheet" href="{{ asset('site/css/module-css/banner.css') }}"/>
-    <link rel="stylesheet" href="{{ asset('site/css/module-css/footer.css') }}"/>
-    <link rel="stylesheet" href="{{ asset('site/css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('site/css/responsive.css') }}"/>
+    {{-- Site CSS replaced by Qore stack above --}}
 
     {{-- Non-critical CSS: deferred until after first paint --}}
-    <link rel="stylesheet" href="{{ asset('site/css/animate.min.css') }}" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="{{ asset('site/css/custom-animate.css') }}" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="{{ asset('site/css/owl.carousel.min.css') }}" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="{{ asset('site/css/owl.theme.default.min.css') }}" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="{{ asset('site/css/module-css/slider.css') }}" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="{{ asset('site/css/module-css/services.css') }}" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="{{ asset('site/css/module-css/sliding-text.css') }}" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="{{ asset('site/css/module-css/about.css') }}" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="{{ asset('site/css/module-css/process.css') }}" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="{{ asset('site/css/module-css/contact.css') }}" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="{{ asset('site/css/module-css/testimonial.css') }}" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="{{ asset('site/css/module-css/newsletter.css') }}" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="{{ asset('site/css/module-css/team.css') }}" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="{{ asset('site/css/module-css/blog.css') }}" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="{{ asset('site/css/module-css/why-choose.css') }}" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="{{ asset('site/css/module-css/feature.css') }}" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="{{ asset('site/css/module-css/cta.css') }}" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="{{ asset('site/css/module-css/page-header.css') }}" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="{{ asset('site/css/module-css/clients.css') }}" media="print" onload="this.media='all'">
-    <noscript>
-        <link rel="stylesheet" href="{{ asset('site/css/animate.min.css') }}"/>
-        <link rel="stylesheet" href="{{ asset('site/css/custom-animate.css') }}"/>
-        <link rel="stylesheet" href="{{ asset('site/css/owl.carousel.min.css') }}"/>
-        <link rel="stylesheet" href="{{ asset('site/css/owl.theme.default.min.css') }}"/>
-        <link rel="stylesheet" href="{{ asset('site/css/module-css/slider.css') }}"/>
-        <link rel="stylesheet" href="{{ asset('site/css/module-css/services.css') }}"/>
-        <link rel="stylesheet" href="{{ asset('site/css/module-css/sliding-text.css') }}"/>
-        <link rel="stylesheet" href="{{ asset('site/css/module-css/about.css') }}"/>
-        <link rel="stylesheet" href="{{ asset('site/css/module-css/process.css') }}"/>
-        <link rel="stylesheet" href="{{ asset('site/css/module-css/contact.css') }}"/>
-        <link rel="stylesheet" href="{{ asset('site/css/module-css/testimonial.css') }}"/>
-        <link rel="stylesheet" href="{{ asset('site/css/module-css/newsletter.css') }}"/>
-        <link rel="stylesheet" href="{{ asset('site/css/module-css/team.css') }}"/>
-        <link rel="stylesheet" href="{{ asset('site/css/module-css/blog.css') }}"/>
-        <link rel="stylesheet" href="{{ asset('site/css/module-css/why-choose.css') }}"/>
-        <link rel="stylesheet" href="{{ asset('site/css/module-css/feature.css') }}"/>
-        <link rel="stylesheet" href="{{ asset('site/css/module-css/cta.css') }}"/>
-        <link rel="stylesheet" href="{{ asset('site/css/module-css/page-header.css') }}"/>
-        <link rel="stylesheet" href="{{ asset('site/css/module-css/clients.css') }}"/>
-    </noscript>
     <style>
         #symfonixbot-launcher-wrap {
             position: fixed;
@@ -559,7 +515,7 @@ Developed By: Hadi Hilal
         <noscript>
             <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
         </noscript>
-        <link rel="stylesheet" href="{{ asset('site/css/rtl.css') }}" media="print" onload="this.media='all'">
+        <link rel="stylesheet" href="{{ asset('qore/css/symfonix.css') }}" media="print" onload="this.media='all'">
         <style>
             #symfonixbot-container {
                 font-family: 'Cairo', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
@@ -568,7 +524,7 @@ Developed By: Hadi Hilal
     @endif
     {!! $settings->get('header_scripts') !!}
 </head>
-<body class="custom-cursor">
+<body class="counter-scroll">
 <style>
     /* Hide crawl fallback when Inertia SSR already filled #app */
     #main-content:has(#app:not(:empty)) ~ #geo-crawl-fallback {
@@ -585,23 +541,13 @@ Developed By: Hadi Hilal
         display: none !important;
     }
     #geo-crawl-fallback nav ul { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 0.75rem 1.25rem; }
-    #geo-crawl-fallback a { color: #2189ca; }
-
-    /* Show desktop nav earlier — theme default only kicks in at 1200px */
-    @media (min-width: 992px) {
-        .main-menu .main-menu__list,
-        .stricky-header .main-menu__list {
-            display: flex !important;
-        }
-        .main-menu .mobile-nav__toggler {
-            display: none !important;
-        }
-    }
+    #geo-crawl-fallback a { color: #5997FF; }
 </style>
 
-<div class="custom-cursor__cursor"></div>
-<div class="custom-cursor__cursor-two"></div>
-
+<button id="goTop" type="button" aria-label="{{ __('Scroll back to top of page') }}">
+    <span class="border-progress"></span>
+    <span class="icon icon-arrow-top"></span>
+</button>
 
 <main id="main-content">
     @inertia
@@ -666,21 +612,18 @@ Developed By: Hadi Hilal
     </div>
 </div>
 
-<a href="#main-content" data-target="html" class="scroll-to-target scroll-to-top d-none d-lg-flex" aria-label="{{ __('Scroll back to top of page') }}">
-    <span class="scroll-to-top__wrapper"><span class="scroll-to-top__inner"></span></span>
-    <span class="scroll-to-top__text"> {{__('Go Back Top')}}</span>
-</a>
-
-<script src="{{ asset('site/js/bootstrap.bundle.min.js') }}" defer></script>
-<script src="{{ asset('site/js/jquery.appear.min.js') }}" defer></script>
-<script src="{{ asset('site/js/wow.js') }}" defer></script>
-<script src="{{ asset('site/js/owl.carousel.min.js') }}" defer></script>
-<script src="{{ asset('site/js/marquee.min.js') }}" defer></script>
-<script src="{{ asset('site/js/gsap/gsap.js') }}" defer></script>
-<script src="{{ asset('site/js/gsap/ScrollTrigger.js') }}" defer></script>
-<script src="{{ asset('site/js/gsap/SplitText.js') }}" defer></script>
-<script>window.__symfonixMobileNavBound = true;</script>
-<script src="{{ asset('site/js/script.js') }}" defer></script>
+<script src="{{ asset('qore/js/bootstrap.min.js') }}" defer></script>
+<script src="{{ asset('qore/js/lazysize.min.js') }}" defer></script>
+<script src="{{ asset('qore/js/infinityslide.js') }}" defer></script>
+<script src="{{ asset('qore/js/gsap.min.js') }}" defer></script>
+<script src="{{ asset('qore/js/wow.min.js') }}" defer></script>
+<script src="{{ asset('qore/js/ScrollTrigger.min.js') }}" defer></script>
+<script src="{{ asset('qore/js/ScrollSmooth.js') }}" defer></script>
+<script src="{{ asset('qore/js/SplitText.min.js') }}" defer></script>
+<script src="{{ asset('qore/js/odometer.min.js') }}" defer></script>
+<script src="{{ asset('qore/js/swiper-bundle.min.js') }}" defer></script>
+<script src="{{ asset('qore/js/carousel.js') }}" defer></script>
+<script src="{{ asset('qore/js/main.js') }}" defer></script>
 <script>
     (function () {
         const endpoint = '{{ route('botman.handle') }}?locale={{ app()->getLocale() }}';

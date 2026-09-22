@@ -5,6 +5,8 @@
             :value="modelValue"
             :type="showPassword ? 'text' : 'password'"
             :name="name"
+            class="style-large"
+            :class="inputClass"
             :placeholder="placeholder"
             :disabled="disabled"
             :required="required"
@@ -19,13 +21,14 @@
             :disabled="disabled"
             @click="showPassword = !showPassword"
         >
-            <i :class="showPassword ? 'fas fa-eye-slash' : 'fas fa-eye'"></i>
+            {{ showPassword ? hideText : showText }}
         </button>
     </div>
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
+import { usePage } from '@inertiajs/vue3';
 
 defineProps({
     modelValue: { type: String, default: '' },
@@ -35,11 +38,16 @@ defineProps({
     disabled: { type: Boolean, default: false },
     required: { type: Boolean, default: false },
     autocomplete: { type: String, default: '' },
+    inputClass: { type: [String, Object, Array], default: '' },
     showLabel: { type: String, default: 'Show password' },
     hideLabel: { type: String, default: 'Hide password' },
 });
 
 const emit = defineEmits(['update:modelValue']);
-
+const page = usePage();
 const showPassword = ref(false);
+
+const trans = (key) => page.props.translations?.[key] || key;
+const showText = computed(() => trans('Show'));
+const hideText = computed(() => trans('Hide'));
 </script>

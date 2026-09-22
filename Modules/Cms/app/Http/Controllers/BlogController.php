@@ -153,6 +153,7 @@ class BlogController extends Controller
         $relatedBlogs = Blog::published()
             ->where('category_id', $blog->category_id)
             ->where('id', '!=', $blog->id)
+            ->with('category')
             ->latest()
             ->limit(3)
             ->get();
@@ -162,6 +163,7 @@ class BlogController extends Controller
             $additionalBlogs = Blog::query()->published()
                 ->where('id', '!=', $blog->id)
                 ->whereNotIn('id', $relatedBlogs->pluck('id'))
+                ->with('category')
                 ->latest()
                 ->limit(3 - $relatedBlogs->count())
                 ->get();
@@ -265,8 +267,10 @@ class BlogController extends Controller
                     'title' => $blog->title,
                     'slug' => $blog->slug,
                     'image_link' => $blog->image_link,
+                    'description' => $blog->description,
                     'reading_time' => $this->getReadingTimeMinutes($blog, $locale),
                     'comments_count' => 0,
+                    'created_at' => $blog->created_at->format('d M Y'),
                     'created_at_day' => $blog->created_at->format('d'),
                     'created_at_month' => $blog->created_at->format('M'),
                     'category' => $blog->category ? [

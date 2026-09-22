@@ -1,35 +1,23 @@
 <template>
     <Head>
         <title>{{ metaTitle }}</title>
-        <link rel="stylesheet" :href="asset_path + 'site/css/module-css/page-header.css'"/>
+        <meta name="description" :content="metaDescription">
+        <meta name="keywords" :content="metaKeywords">
+        <meta name="robots" :content="metaRobots">
+        <link v-if="metaCanonical" rel="canonical" :href="metaCanonical">
+        <meta property="og:title" :content="metaTitle">
+        <meta property="og:description" :content="metaDescription">
+        <meta v-if="metaImage" property="og:image" :content="metaImage">
+        <meta v-if="metaCanonical" property="og:url" :content="metaCanonical">
+        <meta property="og:type" content="article">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" :content="metaTitle">
+        <meta name="twitter:description" :content="metaDescription">
+        <meta v-if="metaImage" name="twitter:image" :content="metaImage">
     </Head>
     <app-layout>
-        <div class="page-header">
-            <div class="page-header__bg"
-                :style="{ backgroundImage: `url(${asset_path}images/backgrounds/services-bg.jpg)`}">
-            </div>
-            <div class="container">
-                <div class="page-header__inner">
-                    <div class="thm-breadcrumb__box">
-                        <ul class="thm-breadcrumb list-unstyled">
-                            <li>
-                                <Link :href="route('home')">
-                                    <i class="fas fa-home"></i>{{ trans("Home") }}
-                                </Link>
-                            </li>
-                            <li><span :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow-1`"></span></li>
-                            <li>
-                                <Link :href="route('services.index')">{{ trans("Our Services") }}</Link>
-                            </li>
-                            <li><span :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow-1`"></span></li>
-                            <li>{{ getServiceTitle(service) }}</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Service Details Start -->
+        <PageTitle :title="getServiceTitle(service)" />
+<!-- Service Details Start -->
         <section class="services-details">
 
             <div class="container">
@@ -126,7 +114,6 @@
                          class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms">
                         <ServiceCardThree
                             :title="getServiceTitle(relatedService)"
-                            :short-desc="relatedService.short_desc"
                             :description="getServiceDescription(relatedService)"
                             :highlights="getServiceHighlights(relatedService)"
                             :link="getServiceUrl(relatedService)"
@@ -134,6 +121,8 @@
                             :is-rtl="locale === 'ar'"
                             :reading-time="relatedService.reading_time"
                             :reading-time-label="trans('min read')"
+                            :category-name="getCategoryName(relatedService.category)"
+                            :button-label="trans('View Details')"
                         />
                     </div>
                 </div>
@@ -216,6 +205,7 @@
 <script setup>
 import {computed, onMounted, nextTick} from 'vue'
 import {usePage, Link, Head} from '@inertiajs/vue3'
+import PageTitle from '@/Components/PageTitle.vue'
 import AppLayout from '@/Layouts/App.vue'
 import ServiceCardThree from '@/Components/Services/ServiceCardThree.vue'
 import CtaTwo from '@/Components/CtaTwo.vue'
@@ -334,19 +324,7 @@ const normalizeKeywords = (rawKeywords) => {
 }
 
 const getServiceHighlights = (serviceItem) => {
-    const keywords = normalizeKeywords(translateField(serviceItem?.keywords))
-    if (keywords.length) {
-        return keywords
-    }
-
-    return [
-        trans("Web Development"),
-        trans("App Development"),
-        trans("Graphics Design"),
-        trans("Performance Audits"),
-        trans("Customer Insights"),
-        trans("Continuous Improvement"),
-    ]
+    return normalizeKeywords(translateField(serviceItem?.keywords))
 }
 
 onMounted(() => {

@@ -1,242 +1,256 @@
 <template>
     <Head>
         <title>{{ metaTitle }}</title>
-        <link rel="stylesheet" :href="asset_path + 'site/css/module-css/page-header.css'"/>
+        <meta name="description" :content="metaDescription">
+        <meta name="keywords" :content="metaKeywords">
+        <meta name="robots" :content="metaRobots">
+        <link v-if="metaCanonical" rel="canonical" :href="metaCanonical">
+        <meta property="og:title" :content="metaTitle">
+        <meta property="og:description" :content="metaDescription">
+        <meta v-if="metaImage" property="og:image" :content="metaImage">
+        <meta v-if="metaCanonical" property="og:url" :content="metaCanonical">
+        <meta property="og:type" content="article">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" :content="metaTitle">
+        <meta name="twitter:description" :content="metaDescription">
+        <meta v-if="metaImage" name="twitter:image" :content="metaImage">
     </Head>
     <app-layout>
-        <section class="page-header">
-            <div class="page-header__bg" :style="{ backgroundImage: `url(${asset_path}images/contact-header-bg.jpg)`}">
-            </div>
+        <PageTitle
+            :title="blog.title"
+            :crumbs="[
+                { label: trans('Blogs'), href: route('blogs.index') },
+                { label: blog.title },
+            ]"
+        />
+
+        <section class="section-page-blog flat-spacing-2">
             <div class="container">
-                <div class="page-header__inner">
-                    <div class="thm-breadcrumb__box">
-                        <ul class="thm-breadcrumb list-unstyled">
-                            <li>
-                                <Link :href="route('home')"><i class="fas fa-home"></i>{{ trans("Home") }}</Link>
-                            </li>
-                            <li><span  :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow-1`"></span></li>
-                            <li>
-                                <Link :href="route('blogs.index')">{{ trans("Blogs") }}</Link>
-                            </li>
-                            <li><span  :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow-1`"></span></li>
-                            <li>{{ blog.title }}</li>
-                        </ul>
+                <div class="content-1200">
+                    <div class="blog-detail_heading">
+                        <h1 class="title_detail text-linear font-3">{{ blog.title }}</h1>
+                        <div class="br-line has-dot"></div>
+                        <div class="meta_detail">
+                            <div v-if="blog.created_at_formatted || blog.created_at" class="meta meta__date">
+                                <i class="icon icon-Clock"></i>
+                                <span class="meta-text text-body-3">{{ blog.created_at_formatted || blog.created_at }}</span>
+                            </div>
+                            <div v-if="blog.reading_time" class="meta meta__date">
+                                <i class="icon icon-Clock"></i>
+                                <span class="meta-text text-body-3">{{ blog.reading_time }} {{ trans('min read') }}</span>
+                            </div>
+                            <div v-if="blog.category" class="meta meta__tag">
+                                <i class="icon icon-Tag"></i>
+                                <span class="meta-text text-body-3">{{ blog.category.name }}</span>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </section>
 
-        <!--Blog Details Start-->
-        <section class="blog-details">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-8 col-lg-7">
-                        <div class="blog-details__left">
-                            <div class="blog-details__img">
-                                <img :src="blog.image_link" :alt="blog.title" loading="lazy" decoding="async">
-                            </div>
-                            <div class="blog-details__single-content">
+                    <div class="page-blog_content detail">
+                        <div class="col-left">
+                            <article class="main-blog_detail">
+                                <p v-if="blog.description" class="detail_text text-main-2">
+                                    {{ blog.description }}
+                                </p>
+                                <div v-if="blog.image_link" class="detail_image">
+                                    <img
+                                        :src="blog.image_link"
+                                        :alt="blog.title"
+                                        width="732"
+                                        height="412"
+                                        loading="lazy"
+                                        decoding="async"
+                                    >
+                                </div>
+                                <div class="blog-show__content detail_text text-main-6" v-html="blog.content"></div>
 
-                                <ul class="blog-details__meta list-unstyled">
-                                    <li>
-                                        <Link :href="route('blogs.show', blog.slug)"><span
-                                            class="far fa-calendar-alt"></span>{{ blog.created_at_formatted }}
-                                        </Link>
-                                    </li>
-
-                                    <li  >
-                                        <Link >
-                                            <span class="far fa-clock"></span>{{ blog.reading_time }}
-                                            {{ trans('min read') }}
-                                        </Link>
-                                    </li>
-
-                                </ul>
-                                <h1 class="blog-details__title">
-                                    <Link :href="route('blogs.show', blog.slug)">{{ blog.title }}</Link>
-                                </h1>
-                                <div class="blog-details__text" v-html="blog.content"></div>
-                            </div>
-
-                            <div v-if="blog.keywords" class="blog-details__tag-and-share">
-                                <div class="blog-details__tag">
-                                    <h3 class="blog-details__tag-title">{{ trans("Keywords") }}:</h3>
-                                    <ul class="blog-details__tag-list list-unstyled">
-                                        <li v-for="(keyword, index) in getKeywords(blog.keywords)" :key="index">
-                                            <Link :href="route('blogs.index', { search: keyword.trim() })">
-                                                {{ keyword.trim() }}
+                                <div v-if="keywords.length" class="detail_tag">
+                                    <div class="br-line has-dot"></div>
+                                    <ul class="tag-list">
+                                        <li class="text-body-3 text-white">{{ trans('Tags') }}:</li>
+                                        <li v-for="(keyword, index) in keywords" :key="index">
+                                            <Link
+                                                :href="route('blogs.index', { search: keyword })"
+                                                class="text-body-3 link"
+                                            >
+                                                {{ keyword }}
                                             </Link>
                                         </li>
                                     </ul>
                                 </div>
-                                <div class="blog-details__share-box">
-                                    <h3 class="blog-details__share-title">{{ trans("Share On:") }}</h3>
-                                    <div class="blog-details__share">
-                                        <a :href="getShareUrl('facebook')" target="_blank"><span
-                                            class="icon-facebook"></span></a>
-                                        <a :href="getShareUrl('twitter')" target="_blank"><span
-                                            class="fab fa-twitter"></span></a>
-                                        <a :href="getShareUrl('linkedin')" target="_blank"><span
-                                            class="icon-linkedin"></span></a>
+
+                                <div class="blog-show__share">
+                                    <span class="text-body-3 text-white">{{ trans('Share On:') }}</span>
+                                    <div class="blog-show__share-links">
+                                        <a :href="getShareUrl('facebook')" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                                            <span class="icon icon-facebook"></span>
+                                        </a>
+                                        <a :href="getShareUrl('twitter')" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+                                            <i class="fab fa-twitter"></i>
+                                        </a>
+                                        <a :href="getShareUrl('linkedin')" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                                            <span class="icon icon-linkedin"></span>
+                                        </a>
                                     </div>
                                 </div>
+                            </article>
+
+                            <div v-if="previousPost || nextPost" class="blog-show__nav">
+                                <Link
+                                    v-if="previousPost"
+                                    :href="route('blogs.show', previousPost.slug)"
+                                    class="blog-show__nav-item"
+                                >
+                                    <span class="text-body-3">{{ trans('Prev Blog') }}</span>
+                                    <strong class="link">{{ previousPost.title }}</strong>
+                                </Link>
+                                <Link
+                                    v-if="nextPost"
+                                    :href="route('blogs.show', nextPost.slug)"
+                                    class="blog-show__nav-item blog-show__nav-item--next"
+                                >
+                                    <span class="text-body-3">{{ trans('Next Blog') }}</span>
+                                    <strong class="link">{{ nextPost.title }}</strong>
+                                </Link>
                             </div>
 
-                            <div v-if="previousPost || nextPost" class="blog-details__prev-and-next">
-                                <div v-if="previousPost" class="blog-details__prev-box">
-                                    <div class="blog-details__prev-img">
-                                        <img :src="previousPost.image_link" :alt="previousPost.title">
-                                    </div>
-                                    <div class="blog-details__prev-content">
-                                        <div class="blog-details__prev-arrow">
-                                            <span class="icon-left-arrow"></span>
-                                            <Link :href="route('blogs.show', previousPost.slug)">{{
-                                                    trans("Prev Blog")
-                                                }}
-                                            </Link>
-                                        </div>
-                                        <h4 class="blog-details__prev-title">{{ previousPost.title }}</h4>
-                                    </div>
-                                </div>
-                                <div v-if="nextPost" class="blog-details__next-box">
-                                    <div class="blog-details__next-content">
-                                        <div class="blog-details__next-arrow">
-                                            <Link :href="route('blogs.show', nextPost.slug)">{{
-                                                    trans("Next Blog")
-                                                }}
-                                            </Link>
-                                            <span :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow `"></span>
-                                        </div>
-                                        <h4 class="blog-details__next-title">{{ nextPost.title }}</h4>
-                                    </div>
-                                    <div class="blog-details__next-img">
-                                        <img :src="nextPost.image_link" :alt="nextPost.title">
-                                    </div>
+                            <div v-if="relatedBlogs.length" class="blog-show__related">
+                                <h4 class="title text-linear font-3">{{ trans('Related Blogs') }}</h4>
+                                <div class="blog-list">
+                                    <BlogCard
+                                        v-for="relatedBlog in relatedBlogs"
+                                        :key="relatedBlog.id"
+                                        :blog="relatedBlog"
+                                        :locale="locale"
+                                    />
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-5">
-                        <div class="sidebar">
-                            <!--Start Sidebar Single-->
-                            <div class="sidebar__single sidebar__search">
-                                <div class="sidebar__title-box">
-                                    <div class="sidebar__title-shape"></div>
-                                    <h3 class="sidebar__title">{{ trans("Search") }} </h3>
+
+                        <aside class="col-right">
+                            <div class="blog-sidebar sidebar-content-wrap">
+                                <div class="sidebar-item">
+                                    <h5 class="sb-title font-3 text-linear">{{ trans('Search') }}</h5>
+                                    <div class="br-line has-dot"></div>
+                                    <form class="form-search" @submit.prevent="handleSearch">
+                                        <input
+                                            v-model="searchQuery"
+                                            class="style-large type-radius-2"
+                                            type="search"
+                                            :placeholder="trans('Search blog...')"
+                                        >
+                                        <button
+                                            type="submit"
+                                            class="btn_submit tf-btn text-body-3 style-2 animate-btn animate-dark"
+                                            :aria-label="trans('Search')"
+                                        >
+                                            <i class="icon icon-MagnifyingGlass"></i>
+                                        </button>
+                                    </form>
                                 </div>
-                                <p class="sidebar__search-text">{{
-                                        trans("Search blogs to discover a vast world of online content on countless topics.")
-                                    }}</p>
-                                <form @submit.prevent="handleSearch" class="sidebar__search-form">
-                                    <input type="search" v-model="searchQuery" :placeholder="trans('Search Blogs')">
-                                    <button type="submit"><i class="fa fa-search"></i></button>
-                                </form>
-                            </div>
-                            <!--End Sidebar Single-->
-                            <!--Start Sidebar Single-->
-                            <div class="sidebar__single sidebar__category">
-                                <div class="sidebar__title-box">
-                                    <div class="sidebar__title-shape"></div>
-                                    <h3 class="sidebar__title">{{ trans("Category") }} </h3>
+
+                                <div class="sidebar-item">
+                                    <h5 class="sb-title font-3 text-linear">{{ trans('Category') }}</h5>
+                                    <div class="br-line has-dot"></div>
+                                    <ul class="sb-category">
+                                        <li v-for="category in categories" :key="category.id">
+                                            <Link :href="route('blogs.index', { category: category.slug })">
+                                                <span>{{ category.name }} ({{ category.blogs_count || 0 }})</span>
+                                                <i class="icon icon-ArrowUpRight"></i>
+                                            </Link>
+                                        </li>
+                                    </ul>
                                 </div>
-                                <ul class="sidebar__category-list list-unstyled">
-                                    <li v-for="category in categories" :key="category.id">
-                                        <Link :href="route('blogs.index', { category: category.slug })">{{
-                                                category.name
-                                            }} <span>({{ category.blogs_count }})</span></Link>
-                                    </li>
-                                </ul>
-                            </div>
-                            <!--End Sidebar Single-->
-                            <!--Start Sidebar Single-->
-                            <div class="sidebar__single sidebar__post">
-                                <div class="sidebar__title-box">
-                                    <div class="sidebar__title-shape"></div>
-                                    <h3 class="sidebar__title">{{ trans("Recent Post") }} </h3>
-                                </div>
-                                <ul class="sidebar__post-list list-unstyled">
-                                    <li v-for="recentPost in recentPosts" :key="recentPost.id">
-                                        <div class="sidebar__post-image">
-                                            <img :src="recentPost.image_link" :alt="recentPost.title">
-                                        </div>
-                                        <div class="sidebar__post-content">
-                                            <p class="sidebar__post-date"><span
-                                                class="icon-calendar"></span>{{ recentPost.created_at }}</p>
-                                            <h3 class="sidebar__post-title">
-                                                <Link :href="route('blogs.show', recentPost.slug)">{{
-                                                        recentPost.title
-                                                    }}
+
+                                <div v-if="recentPosts.length" class="sidebar-item">
+                                    <h5 class="sb-title font-3 text-linear">{{ trans('Recent posts') }}</h5>
+                                    <div class="br-line has-dot"></div>
+                                    <ul class="sb-recent">
+                                        <li
+                                            v-for="post in recentPosts"
+                                            :key="post.id"
+                                            class="sb-recent_item hover-img"
+                                        >
+                                            <Link :href="route('blogs.show', post.slug)" class="recent__image img-style">
+                                                <img
+                                                    v-if="post.image_link"
+                                                    :src="post.image_link"
+                                                    :alt="post.title"
+                                                    width="94"
+                                                    height="94"
+                                                    loading="lazy"
+                                                >
+                                            </Link>
+                                            <div class="recent__content">
+                                                <div v-if="post.created_at" class="entry_date">
+                                                    <i class="icon icon-Clock"></i>
+                                                    <span class="date text-body-3">{{ post.created_at }}</span>
+                                                </div>
+                                                <Link :href="route('blogs.show', post.slug)" class="entry_name link">
+                                                    {{ post.title }}
                                                 </Link>
-                                            </h3>
-                                        </div>
-                                    </li>
-                                </ul>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
-                            <!--End Sidebar Single-->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!--Blog Details End-->
-        <section class="mt-5">
-            <div v-if="relatedBlogs && relatedBlogs.length > 0" class="container">
-                <div class="related-blogs mt-20 mt-xs-10">
-                    <h4 class="mb-5">{{ trans("Related Blogs") }}:</h4>
-                    <div class="row">
-                        <div v-for="relatedBlog in relatedBlogs" :key="relatedBlog.id" class="col-md-4 mb-30">
-                            <HomeBlogCard
-                                :post="relatedBlog"
-                                variant="featured"
-                                :locale="locale"
-                                :asset-path="asset_path"
-                                :image-fallback-index="1"
-                            />
-                        </div>
+                        </aside>
                     </div>
                 </div>
             </div>
         </section>
 
         <CtaTwo />
-
     </app-layout>
 </template>
 
 <script setup>
-import {computed, ref} from 'vue'
-import {usePage, Link, router, Head} from '@inertiajs/vue3'
+import { computed, ref } from 'vue'
+import { Head, Link, router, usePage } from '@inertiajs/vue3'
+import PageTitle from '@/Components/PageTitle.vue'
 import AppLayout from '@/Layouts/App.vue'
-import HomeBlogCard from '@/Components/HomeBlogCard.vue'
+import BlogCard from '@/Components/BlogCard.vue'
 import CtaTwo from '@/Components/CtaTwo.vue'
 
 const page = usePage()
-const trans = (key) => page.props.translations[key] || key;
-const asset_path = computed(() => page.props.asset_path || '')
+const trans = (key) => page.props.translations[key] || key
 const locale = computed(() => page.props.locale || 'en')
-const blog = computed(() => page.props.blog)
+const blog = computed(() => page.props.blog || {})
 const relatedBlogs = computed(() => page.props.relatedBlogs || [])
 const categories = computed(() => page.props.categories || [])
 const recentPosts = computed(() => page.props.recentPosts || [])
 const previousPost = computed(() => page.props.previousPost)
 const nextPost = computed(() => page.props.nextPost)
 const meta = computed(() => page.props.meta || {})
+const seo = computed(() => page.props.seo || {})
+const settings = computed(() => page.props.settings || {})
+
 const metaTitle = computed(() => meta.value.title || blog.value?.title || '')
+const metaDescription = computed(() => meta.value.description || blog.value?.description || seo.value.website_desc || '')
+const metaKeywords = computed(() => meta.value.keywords || blog.value?.keywords || seo.value.website_keywords || '')
+const metaImage = computed(() => meta.value?.og?.image || blog.value?.image_link || settings.value?.meta_img || '')
+const metaCanonical = computed(() => meta.value.canonical || '')
+const metaRobots = computed(() => meta.value.robots || 'index, follow')
 
 const searchQuery = ref('')
 
-const getKeywords = (keywords) => {
-    if (!keywords) return []
-    if (typeof keywords === 'string') {
-        return keywords.split(',').slice(0, 3)
+const keywords = computed(() => {
+    const raw = blog.value?.keywords
+    if (!raw) {
+        return []
+    }
+    if (typeof raw === 'string') {
+        return raw.split(',').map((item) => item.trim()).filter(Boolean).slice(0, 6)
+    }
+    if (Array.isArray(raw)) {
+        return raw.map((item) => String(item).trim()).filter(Boolean).slice(0, 6)
     }
     return []
-}
+})
 
 const getShareUrl = (platform) => {
-    const url = encodeURIComponent(window.location.href)
-    const title = encodeURIComponent(blog.value.title)
+    const url = encodeURIComponent(typeof window !== 'undefined' ? window.location.href : '')
+    const title = encodeURIComponent(blog.value.title || '')
 
     switch (platform) {
         case 'twitter':
@@ -245,16 +259,14 @@ const getShareUrl = (platform) => {
             return `https://www.facebook.com/sharer/sharer.php?u=${url}`
         case 'linkedin':
             return `https://www.linkedin.com/shareArticle?mini=true&url=${url}&title=${title}`
-        case 'pinterest':
-            return `https://pinterest.com/pin/create/button/?url=${url}&description=${title}`
         default:
             return '#'
     }
 }
 
 const handleSearch = () => {
-    if (searchQuery.value) {
-        router.get(route('blogs.index'), {search: searchQuery.value})
+    if (searchQuery.value?.trim()) {
+        router.get(route('blogs.index'), { search: searchQuery.value.trim() })
     }
 }
 </script>
@@ -262,15 +274,90 @@ const handleSearch = () => {
 <script>
 export default {
     components: {
-        AppLayout, HomeBlogCard, CtaTwo
-    }
-};
+        AppLayout,
+        BlogCard,
+        CtaTwo,
+    },
+}
 </script>
 
+<style scoped>
+.blog-show__content :deep(img) {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+}
 
+.blog-show__content :deep(p) {
+    margin-bottom: 1.25rem;
+}
 
+.blog-show__content :deep(h2),
+.blog-show__content :deep(h3),
+.blog-show__content :deep(h4) {
+    margin: 1.5rem 0 1rem;
+}
 
+.blog-show__share {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 32px;
+    flex-wrap: wrap;
+}
 
+.blog-show__share-links {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
 
+.blog-show__share-links a {
+    color: inherit;
+    opacity: 0.8;
+}
 
+.blog-show__share-links a:hover {
+    opacity: 1;
+}
 
+.blog-show__nav {
+    display: grid;
+    gap: 16px;
+    margin-top: 40px;
+}
+
+@media (min-width: 768px) {
+    .blog-show__nav {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.blog-show__nav-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+}
+
+.blog-show__nav-item--next {
+    text-align: end;
+}
+
+.blog-show__related {
+    margin-top: 48px;
+}
+
+.blog-show__related .title {
+    margin-bottom: 24px;
+}
+
+@media (min-width: 992px) {
+    .col-right .blog-sidebar {
+        position: sticky;
+        top: 120px;
+    }
+}
+</style>

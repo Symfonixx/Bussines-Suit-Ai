@@ -1,6 +1,6 @@
 <template>
     <Head>
-        <title>{{metaTitle}}</title>
+        <title>{{ metaTitle }}</title>
         <meta name="description" :content="metaDescription">
         <meta name="keywords" :content="metaKeywords">
         <meta name="robots" :content="metaRobots">
@@ -16,979 +16,483 @@
         <meta v-if="metaImage" name="twitter:image" :content="metaImage">
     </Head>
     <app-layout>
-        <!--Banner One Start -->
-        <section class="banner-one">
-            <div class="banner-one__bg" aria-hidden="true">
-                <img :src="asset_path + 'images/home/banner-bg.webp'"
-                     alt=""
-                     width="1920"
-                     height="1080"
-                     fetchpriority="high"
-                     decoding="async"
-                     class="banner-one__bg-img">
-            </div>
-
-            <div
-                class="banner-one__shape-bg float-bob-y"
-                :style="{
-            backgroundImage: `url(${asset_path}images/shapes/banner-one-shape-bg.png)`
-        }"
-            ></div>
-
-            <div class="container">
-                <div class="banner-one__inner">
-                    <h1 class="banner-one__title px-4">
-                        {{ trans('Transform complex technical ideas into intelligent systems') }} <br/>
-                        <span>{{
-                                trans('Help companies build practical technology solutions in Web, AI, automation, and cloud computing — designed for growth and sustainability')
-                            }}</span>
-                    </h1>
-
-                    <div class="banner-one__btn-box mb-5">
-                        <Link :href="route('contact-us')" class="thm-btn contact-btn mx-2">
-                            <span :class="locale === 'ar' ? 'icon-message ms-2' : 'icon-message me-2'"></span>
-                            {{ trans('Book your free consultation') }}
-                        </Link>
-                        <Link :href="route('services.index')" class="thm-btn  ">
-                            <span :class="locale === 'ar' ? 'icon-search ms-2' : 'icon-search me-2'"></span>
-                            {{ trans('Explore Our Services') }}
-                        </Link>
+        <section class="section-hero">
+            <SectMeta number="1" :label="trans('HERO')" />
+            <span class="br-line"></span>
+            <div class="sect-tagline">
+                <div class="container">
+                    <div class="sect-tagline_inner">
+                        <span class="hafl-plus pst-left_bot wow bounceInScale"></span>
+                        <span class="hafl-plus pst-right_bot wow bounceInScale"></span>
+                        <p class="s-name text-caption font-2">
+                            <span class="bar-group type-left"><span class="bar_center"></span></span>
+                            <span class="hacker-text_transform no-delay">{{ trans('Our Tech Solutions') }}</span>
+                            <span class="bar-group type-right"><span class="bar_center"></span></span>
+                        </p>
                     </div>
                 </div>
             </div>
+            <span class="br-line"></span>
+            <div class="sect-main">
+                <div class="container">
+                    <div class="sect-title wow fadeInUp">
+                        <h1 class="s-title font-3">
+                            {{ trans('Transform complex technical ideas into intelligent systems') }}
+                            <br>
+                            <span class="text-change_wrap">
+                                <span class="text-change_rotating">{{ trans('Web Development') }}</span>
+                                <span class="text-change_rotating">{{ trans('AI automation') }}</span>
+                                <span class="text-change_rotating">{{ trans('Cloud services') }}</span>
+                            </span>
+                        </h1>
+                        <p class="s-sub_title">
+                            {{ trans('Help companies build practical technology solutions in Web, AI, automation, and cloud computing — designed for growth and sustainability') }}
+                        </p>
+                    </div>
+                </div>
+                <span class="br-line"></span>
+                <div class="container">
+                    <div class="sect-content position-relative">
+                        <div class="box-ask-wrap">
+                            <div class="box-ask text-center p-4">
+                                <div class="d-flex flex-wrap justify-content-center gap-3">
+                                    <Link :href="route('contact-us')" class="tf-btn style-2 style-high animate-btn animate-dark">
+                                        {{ trans('Book your free consultation') }}
+                                    </Link>
+                                    <Link :href="route('services.index')" class="tf-btn style-high animate-btn">
+                                        {{ trans('Explore Our Services') }}
+                                    </Link>
+                                </div>
+                            </div>
+                            <span class="hafl-plus pst-left_bot item_bot wow bounceInScale"></span>
+                            <span class="hafl-plus pst-right_bot item_bot wow bounceInScale"></span>
+                            <span class="hafl-plus pst-left_top item_top wow bounceInScale"></span>
+                            <span class="hafl-plus pst-right_top item_top wow bounceInScale"></span>
+                        </div>
+                        <span class="line_section"></span>
+                    </div>
+                </div>
+            </div>
+            <span class="br-line"></span>
+            <div v-if="clients.length" class="tf-brand">
+                <div class="container">
+                    <div class="tf-brand_inner">
+                        <h5 class="title text-caption font-2 letter-space-0 fw-normal wow fadeInUp">
+                            {{ trans('Trusted by companies we build with') }}
+                        </h5>
+                        <div class="infiniteSlide infiniteSlide_brand" data-clone="3">
+                            <div v-for="client in clients" :key="client.id" class="image-brand">
+                                <img :src="client.logo_link" :alt="client.name" loading="lazy">
+                            </div>
+                        </div>
+                        <span class="hafl-plus pst-left_bot item_bot wow bounceInScale"></span>
+                        <span class="hafl-plus pst-right_bot item_bot wow bounceInScale"></span>
+                    </div>
+                </div>
+            </div>
+            <span class="br-line"></span>
+            <HackerStrip />
+            <span class="br-line"></span>
         </section>
 
-
-        <!--About Three Start -->
-        <section class="about-three">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-6">
-                        <div :class="`about-three__left wow slideIn${locale !== 'ar' ? 'Left' : 'Right'}`"
-                             data-wow-delay="100ms"
-                             data-wow-duration="2500ms">
-                            <div class="about-three__img-box">
-                                <div class="about-three__img">
-                                    <picture>
-                                        <source :srcset="asset_path + 'images/home/about_us-640.webp'" type="image/webp">
-                                        <img :src="asset_path + 'images/home/about_us.jpg'"
-                                             :alt="trans('About us')"
-                                             width="640"
-                                             height="640"
-                                             loading="lazy"
-                                             decoding="async">
-                                    </picture>
+        <section v-if="featuredCategories.length" class="section-feature" id="features">
+            <SectMeta number="2" :label="trans('FEATURES')" />
+            <span class="br-line"></span>
+            <div class="sect-tagline">
+                <div class="container">
+                    <div class="sect-tagline_inner">
+                        <span class="hafl-plus pst-left_bot wow bounceInScale"></span>
+                        <span class="hafl-plus pst-right_bot wow bounceInScale"></span>
+                        <p class="s-name text-caption font-2">
+                            <span class="bar-group type-left"><span class="bar_center"></span></span>
+                            <span class="hacker-text_transform no-delay">{{ trans('What We Do') }} — {{ trans('Core Services') }}</span>
+                            <span class="bar-group type-right"><span class="bar_center"></span></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <span class="br-line"></span>
+            <div class="sect-main flat-animate-tab">
+                <div class="s-img_item wow bounceInScale">
+                    <img class="lazyload" :src="asset_path + 'qore/images/section/smoke-blue.webp'" :data-src="asset_path + 'qore/images/section/smoke-blue.webp'" alt="">
+                </div>
+                <div class="container">
+                    <div class="sect-title wow fadeInUp">
+                        <h2 class="s-title font-3">{{ trans('What We Do') }}</h2>
+                        <p class="s-sub_title">
+                            {{ trans("Transform your business with our innovative IT solutions, tailored to address your unique challenges and drive growth in today's digital landscape.") }}
+                        </p>
+                    </div>
+                    <div class="tab-content">
+                        <div
+                            v-for="(category, index) in featuredCategories"
+                            :key="category.id"
+                            class="tab-pane"
+                            :class="{ 'active show': index === 0 }"
+                            :id="`service-cat-${category.id}`"
+                            role="tabpanel"
+                        >
+                            <div class="image-with-text">
+                                <img
+                                    v-if="category.image_link"
+                                    :src="category.image_link"
+                                    :alt="translateField(category.title)"
+                                    width="920"
+                                    height="420"
+                                    loading="lazy"
+                                    decoding="async"
+                                >
+                                <div class="sect-title box-text">
+                                    <h4 class="s-title">{{ translateField(category.title) }}</h4>
+                                    <p class="s-sub_title text-body-3">{{ translateField(category.description) }}</p>
+                                    <Link :href="route('services.index', { category: category.slug })" class="tf-btn animate-btn mt-3">
+                                        {{ trans('View All Services') }}
+                                    </Link>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-6">
-                        <div class="about-three__right">
-                            <div class="section-title  sec-title-animation animation-style1">
-                                <div class="section-title__tagline-box">
-                                    <div class="section-title__tagline-shape-1"></div>
-                                    <span class="section-title__tagline">{{ trans('Our Tech Solutions') }}</span>
-                                    <div class="section-title__tagline-shape-2"></div>
-                                </div>
-                                <h2 class="section-title__title title-animation">
-                                    {{ trans('Why Choose Symfonix for Web, AI, and Cloud') }}
-                                </h2>
+                    <ul class="tab-can_do" role="tablist">
+                        <li
+                            v-for="(category, index) in featuredCategories"
+                            :key="`tab-${category.id}`"
+                            class="nav-tab-item"
+                            :class="{ active: index === 0 }"
+                            role="presentation"
+                        >
+                            <div
+                                class="btn_tab"
+                                :class="{ active: index === 0 }"
+                                data-bs-toggle="tab"
+                                :data-bs-target="`#service-cat-${category.id}`"
+                                role="tab"
+                            >
+                                {{ translateField(category.title) }}
                             </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <span class="br-line"></span>
+            <HackerStrip />
+            <span class="br-line"></span>
+        </section>
 
-                            <p class="about-three__text">
-                                {{
-                                    trans("Transform your business with our innovative IT solutions, tailored to address your unique challenges and drive growth in today's digital landscape.")
-                                }}
+        <section class="section-benefit">
+            <SectMeta number="3" :label="trans('BENEFITS')" />
+            <span class="br-line"></span>
+            <div class="sect-tagline">
+                <div class="container">
+                    <div class="sect-tagline_inner">
+                        <span class="hafl-plus pst-left_bot wow bounceInScale"></span>
+                        <span class="hafl-plus pst-right_bot wow bounceInScale"></span>
+                        <p class="s-name text-caption font-2">
+                            <span class="bar-group type-left"><span class="bar_center"></span></span>
+                            <span class="hacker-text_transform no-delay">{{ trans('Why Choose Us') }}</span>
+                            <span class="bar-group type-right"><span class="bar_center"></span></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <span class="br-line"></span>
+            <div class="sect-main">
+                <div class="container">
+                    <div class="place-video">
+                        <div class="visual-object">
+                            <div class="object_img wow bounceInScale">
+                                <div class="image">
+                                    <img :src="asset_path + 'qore/images/section/visual-object.png'" :alt="trans('Why Choose Us')" width="424" height="424" loading="lazy" decoding="async">
+                                </div>
+                                <span class="hafl-plus start-0 top-0 rotate-top_left wow bounceInScale"></span>
+                                <span class="hafl-plus end-0 top-0 rotate-top_right wow bounceInScale"></span>
+                            </div>
+                        </div>
+                        <div class="sect-title wow fadeInUp">
+                            <h2 class="s-title font-3">{{ trans('Why Choose Symfonix for Web, AI, and Cloud') }}</h2>
+                            <p class="s-sub_title">
+                                {{ trans('We deliver exceptional products and services that consistently exceed expectations. Backed by years of experience and a proven track record, we are your reliable partner for success.') }}
                             </p>
+                        </div>
+                    </div>
+                    <div class="position-relative">
+                        <div class="grid-box_icon tf-grid-layout sm-col-2 md-col-3">
+                            <div class="box-icon-text wow fadeInUp">
+                                <div class="icon"><img :src="asset_path + 'qore/images/section/secure.svg'" alt=""></div>
+                                <div class="content">
+                                    <p class="title text-main-2">{{ trans('Developing Secure & Scalable Systems') }}</p>
+                                    <p class="sub-title text-body-3">{{ trans('Unmatched Quality') }} — {{ trans('We deliver exceptional products and services that exceed expectations every time.') }}</p>
+                                </div>
+                            </div>
+                            <div class="box-icon-text wow fadeInUp">
+                                <div class="icon"><img :src="asset_path + 'qore/images/section/ai-core.svg'" alt=""></div>
+                                <div class="content">
+                                    <p class="title text-main-2">{{ trans('Innovative IT Solutions Expert') }}</p>
+                                    <p class="sub-title text-body-3">{{ trans('Trusted Expertise') }} — {{ trans('Backed by years of experience and a proven track record, we are your reliable partner for success.') }}</p>
+                                </div>
+                            </div>
+                            <div class="box-icon-text wow fadeInUp">
+                                <div class="icon"><img :src="asset_path + 'qore/images/section/control.svg'" alt=""></div>
+                                <div class="content">
+                                    <p class="title text-main-2">{{ trans('User-Centric Approach') }}</p>
+                                    <p class="sub-title text-body-3">{{ trans('Your satisfaction is our priority, and we tailor solutions to meet your unique needs. Your happiness comes first.') }}</p>
+                                </div>
+                            </div>
+                            <div class="box-icon-text wow fadeInUp">
+                                <div class="icon"><img :src="asset_path + 'qore/images/section/platform.svg'" alt=""></div>
+                                <div class="content">
+                                    <p class="title text-main-2">{{ trans('Harmony over chaos') }}</p>
+                                    <p class="sub-title text-body-3">{{ trans('Every solution must be coherent. No messy stacks, no duct-tape architectures.') }}</p>
+                                </div>
+                            </div>
+                            <div class="box-icon-text wow fadeInUp">
+                                <div class="icon"><img :src="asset_path + 'qore/images/section/speed.svg'" alt=""></div>
+                                <div class="content">
+                                    <p class="title text-main-2">{{ trans('Speed that scales') }}</p>
+                                    <p class="sub-title text-body-3">{{ trans('From personalized solutions to expert execution, we prioritize quality, reliability, and customer satisfaction') }}</p>
+                                </div>
+                            </div>
+                            <div class="box-icon-text wow fadeInUp">
+                                <div class="icon"><img :src="asset_path + 'qore/images/section/evolving.svg'" alt=""></div>
+                                <div class="content">
+                                    <p class="title text-main-2">{{ trans('Always evolving') }}</p>
+                                    <p class="sub-title text-body-3">{{ trans('AI, cloud, and software evolve fast. We evolve faster.') }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <span class="hafl-plus pst-left_bot item_bot wow bounceInScale"></span>
+                        <span class="hafl-plus pst-right_bot item_bot wow bounceInScale"></span>
+                    </div>
+                </div>
+            </div>
+            <span class="br-line"></span>
+            <HackerStrip />
+            <span class="br-line"></span>
+        </section>
 
-                            <ul class="about-three__points list-unstyled">
-                                            <li>
-                                    <div class="icon">
-                                        <span class="icon-tick-inside-circle"></span>
+        <section class="section-how-to" id="howToUse">
+            <SectMeta number="4" :label="trans('HOW TO')" />
+            <span class="br-line"></span>
+            <div class="sect-tagline">
+                <div class="container">
+                    <div class="sect-tagline_inner">
+                        <span class="hafl-plus pst-left_bot wow bounceInScale"></span>
+                        <span class="hafl-plus pst-right_bot wow bounceInScale"></span>
+                        <p class="s-name text-caption font-2">
+                            <span class="bar-group type-left"><span class="bar_center"></span></span>
+                            <span class="hacker-text_transform no-delay">{{ trans('How do we deliver reliable, future-ready IT solutions?') }}</span>
+                            <span class="bar-group type-right"><span class="bar_center"></span></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <span class="br-line"></span>
+            <div class="sect-main flat-animate-tab">
+                <div class="s-img_item wow bounceInScale">
+                    <img class="lazyload" :src="asset_path + 'qore/images/section/gradient-ring-bg.webp'" :data-src="asset_path + 'qore/images/section/gradient-ring-bg.webp'" alt="">
+                </div>
+                <div class="container">
+                    <div class="sect-title wow fadeInUp">
+                        <h2 class="s-title font-3 m-0">{{ trans('How do we deliver reliable, future-ready IT solutions?') }}</h2>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 offset-xl-1 col-xl-4">
+                            <div class="tab-content mb-md-0 sticky-top wow fadeInUp">
+                                <div class="tab-pane active show" id="home-step1" role="tabpanel">
+                                    <div class="image-how_to wow bounceInScale">
+                                        <img class="lazyload" :src="asset_path + 'qore/images/section/step-1.webp'" :data-src="asset_path + 'qore/images/section/step-1.webp'" :alt="trans('Discover')">
+                                        <span class="hafl-plus start-0 top-0 rotate-top_left"></span>
+                                        <span class="hafl-plus end-0 top-0 rotate-top_right"></span>
+                                        <span class="hafl-plus start-0 bottom-0 item_bot rotate-bot_left"></span>
+                                        <span class="hafl-plus end-0 bottom-0 item_bot rotate-bot_right"></span>
                                     </div>
-                                    <div class="content">
-                                        <h2 class="h3">{{ trans('Developing Secure & Scalable Systems') }}</h2>
-                                        <!--                                        <p>{{ trans('Support & Consulting') }}</p>-->
+                                </div>
+                                <div class="tab-pane" id="home-step2" role="tabpanel">
+                                    <div class="image-how_to">
+                                        <img class="lazyload" :src="asset_path + 'qore/images/section/step-2.webp'" :data-src="asset_path + 'qore/images/section/step-2.webp'" :alt="trans('Build')">
+                                        <span class="hafl-plus start-0 top-0 rotate-top_left"></span>
+                                        <span class="hafl-plus end-0 top-0 rotate-top_right"></span>
+                                        <span class="hafl-plus start-0 bottom-0 item_bot rotate-bot_left"></span>
+                                        <span class="hafl-plus end-0 bottom-0 item_bot rotate-bot_right"></span>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="home-step3" role="tabpanel">
+                                    <div class="image-how_to">
+                                        <img class="lazyload" :src="asset_path + 'qore/images/section/step-3.webp'" :data-src="asset_path + 'qore/images/section/step-3.webp'" :alt="trans('Launch')">
+                                        <span class="hafl-plus start-0 top-0 rotate-top_left"></span>
+                                        <span class="hafl-plus end-0 top-0 rotate-top_right"></span>
+                                        <span class="hafl-plus start-0 bottom-0 item_bot rotate-bot_left"></span>
+                                        <span class="hafl-plus end-0 bottom-0 item_bot rotate-bot_right"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 offset-xl-2 col-xl-4">
+                            <ul class="tab-how_to position-relative mx-1 wow fadeInUp" role="tablist">
+                                <li class="nav-tab-item" role="presentation">
+                                    <div data-bs-toggle="tab" data-bs-target="#home-step1" class="btn_tab active" role="tab">
+                                        <p class="number-step text-caption font-2">STEP 01</p>
+                                        <h5 class="name">{{ trans('Discover') }}</h5>
+                                        <p class="desc">{{ trans('Transform complex technical ideas into intelligent systems') }}</p>
                                     </div>
                                 </li>
-                                <li>
-                                    <div class="icon">
-                                        <span class="icon-tick-inside-circle"></span>
-                                    </div>
-                                    <div class="content">
-                                        <h2 class="h3">{{ trans('Innovative IT Solutions Expert') }}</h2>
-                                        <!--                                        <p>{{ trans('Support & Consulting') }}</p>-->
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <span class="icon-tick-inside-circle"></span>
-                                    </div>
-                                    <div class="content">
-                                        <h2 class="h3">{{ trans('Cloud Solutions for Modern') }}</h2>
-                                        <!--                                        <p>{{ trans('Enterprises') }}</p>-->
+                                <li class="br-line has-dot"></li>
+                                <li class="nav-tab-item" role="presentation">
+                                    <div data-bs-toggle="tab" data-bs-target="#home-step2" class="btn_tab" role="tab">
+                                        <p class="number-step text-caption font-2">STEP 02</p>
+                                        <h5 class="name">{{ trans('Build') }}</h5>
+                                        <p class="desc">{{ trans('Developing Secure & Scalable Systems') }}</p>
                                     </div>
                                 </li>
-                                <li>
-                                    <div class="icon">
-                                        <span class="icon-tick-inside-circle"></span>
-                                    </div>
-                                    <div class="content">
-                                        <h2 class="h3">{{ trans('AI-Driven Business Automation') }}</h2>
-                                        <!--                                        <p>{{ trans('AI-Driven Business Automation') }}</p>-->
+                                <li class="br-line has-dot"></li>
+                                <li class="nav-tab-item" role="presentation">
+                                    <div data-bs-toggle="tab" data-bs-target="#home-step3" class="btn_tab" role="tab">
+                                        <p class="number-step text-caption font-2">STEP 03</p>
+                                        <h5 class="name">{{ trans('Launch') }}</h5>
+                                        <p class="desc">{{ trans('Help companies build practical technology solutions in Web, AI, automation, and cloud computing — designed for growth and sustainability') }}</p>
                                     </div>
                                 </li>
                             </ul>
-                            <div class="about-three__btn-and-call-box">
-                                <div class="about-three__btn-box">
-                                    <a :href="route('about-us')" class="thm-btn">
-                                        {{ trans('Get in Touch') }}
-                                        <span :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow `"></span>
-                                    </a>
+                        </div>
+                    </div>
+                    <div class="position-relative has-hafl_plus">
+                        <span class="hafl-plus pst-left_bot item_bot wow bounceInScale"></span>
+                        <span class="hafl-plus pst-right_bot item_bot wow bounceInScale"></span>
+                    </div>
+                </div>
+            </div>
+            <span class="br-line"></span>
+            <HackerStrip />
+            <span class="br-line"></span>
+        </section>
+
+        <section v-if="products.length" class="section-pricing" id="pricing">
+            <SectMeta number="5" :label="trans('PRODUCTS')" />
+            <span class="br-line"></span>
+            <div class="sect-main">
+                <div class="container">
+                    <div class="sect-title wow fadeInUp">
+                        <h2 class="s-title font-3 m-0">{{ trans('B2B Solutions Built for Scale') }}</h2>
+                    </div>
+                    <div class="grid-pricing">
+                        <div v-for="product in products" :key="product.id" class="wg-plan wow fadeInUp">
+                            <div class="content">
+                                <div class="plan-header">
+                                    <div v-if="product.main_image_link" class="image mb-3">
+                                        <img :src="product.main_image_link" :alt="product.name" loading="lazy">
+                                    </div>
+                                    <p class="plan_type text-body-1">{{ product.category?.name || trans('Product') }}</p>
+                                    <h3 class="price-amount" style="font-size: 1.75rem;">{{ product.name }}</h3>
+                                    <p class="plan-description">{{ product.short_description }}</p>
+                                    <Link :href="route('product.show', product.slug)" class="tf-btn style-3 style-high animate-btn w-100">
+                                        <span class="text-body-3">{{ trans('View Details') }}</span>
+                                    </Link>
                                 </div>
-                                <div class="about-three__call-box">
-                                    <div class="icon">
-                                        <span class="icon-customer-service-headset"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center mt-4">
+                        <Link :href="route('product.index')" class="tf-btn animate-btn">{{ trans('View All Products') }}</Link>
+                    </div>
+                </div>
+            </div>
+            <span class="br-line"></span>
+            <HackerStrip />
+            <span class="br-line"></span>
+        </section>
+
+        <section v-if="useCases.length" class="section-feature">
+            <SectMeta number="6" :label="trans('CASE STUDIES')" />
+            <span class="br-line"></span>
+            <div class="sect-main">
+                <div class="container">
+                    <div class="sect-title wow fadeInUp">
+                        <h2 class="s-title font-3">{{ trans("How We've Empowered Businesses with Innovative Tech Solutions") }}</h2>
+                    </div>
+                    <div class="tf-grid-layout sm-col-2">
+                        <UseCaseCard v-for="item in useCases" :key="item.id" :item="item" />
+                    </div>
+                    <div class="text-center mt-4">
+                        <Link :href="route('use-cases.index')" class="tf-btn animate-btn">{{ trans('Case Studies') }}</Link>
+                    </div>
+                </div>
+            </div>
+            <span class="br-line"></span>
+            <HackerStrip />
+            <span class="br-line"></span>
+        </section>
+
+        <section v-if="testimonials.length" class="section-testimonial">
+            <SectMeta number="7" :label="trans('TESTIMONIALS')" />
+            <span class="br-line"></span>
+            <div class="sect-main">
+                <div class="container">
+                    <div class="sect-title wow fadeInUp">
+                        <h2 class="s-title font-3 m-0">{{ trans('What Our Clients Say') }}</h2>
+                    </div>
+                    <div class="testimonial-slide-wrap">
+                        <div class="overflow-hidden has-overlay_linear type-2 mx-1">
+                            <div class="infiniteSlide infiniteSlide-tes">
+                                <div v-for="testimonial in testimonials" :key="testimonial.id" class="wg-testimonial">
+                                    <div class="tes-author">
+                                        <div class="author_image">
+                                            <img :src="testimonial.avatar_link" :alt="translateField(testimonial.name)">
+                                        </div>
+                                        <div class="author_info">
+                                            <span class="link name">{{ translateField(testimonial.name) }}</span>
+                                            <p class="text-body-3">{{ translateField(testimonial.position) }}</p>
+                                        </div>
                                     </div>
-                                    <div class="content">
-                                        <span>{{ trans('Call Any Time') }}</span>
-                                        <p><a dir="ltr" :href="`tel:${settings.phone}`">{{ settings.phone }}</a></p>
-                                    </div>
+                                    <p class="tes-text">{{ translateField(testimonial.quote) }}</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <span class="br-line"></span>
+            <HackerStrip />
+            <span class="br-line"></span>
         </section>
-        <!--About Three End -->
 
-        <!--Services Three Start -->
-        <section class="services-three" v-if="servicesCategories && servicesCategories.length">
-
-            <div class="container">
-                <div class="section-title text-center sec-title-animation animation-style1">
-                    <div class="section-title__tagline-box">
-                        <div class="section-title__tagline-shape-1"></div>
-                        <span class="section-title__tagline">{{ trans('Our Services') }}</span>
-                        <div class="section-title__tagline-shape-2"></div>
+        <section v-if="posts.length" class="section-page-blog home-blogs">
+            <SectMeta number="8" :label="trans('BLOG')" />
+            <span class="br-line"></span>
+            <div class="sect-main">
+                <div class="container">
+                    <div class="sect-title wow fadeInUp">
+                        <h2 class="s-title font-3">{{ trans('Blogs') }}</h2>
                     </div>
-                    <h2 class="section-title__title title-animation core-services-title">
-                        {{ trans('What We Do') }}! <span>{{ trans('Core Services') }}</span>
-                    </h2>
-                </div>
-                <div class="services-three__carousel owl-theme owl-carousel">
-                    <div
-                        v-for="servicesCategory in servicesCategories"
-                        :key="servicesCategory.id"
-                        class="item"
-                    >
-                        <ServiceCardThree
-                            :title="translateField(servicesCategory.title)"
-                            :short-desc="translateField(servicesCategory.description)"
-                            :description="translateField(servicesCategory.description)"
-                            :highlights="getCategoryHighlights(servicesCategory)"
-                            :link="route('services.index', { category: servicesCategory.slug })"
-                            :image="servicesCategory.image_link"
-                            :is-rtl="locale === 'ar'"
+                    <div class="tf-grid-layout sm-col-2 md-col-3 home-blogs__grid">
+                        <BlogCard
+                            v-for="post in posts.slice(0, 3)"
+                            :key="post.id"
+                            :blog="post"
+                            :show-description="true"
                         />
                     </div>
-                </div>
-                <div class="text-center mt-4">
-                    <Link :href="route('services.index')" class="thm-btn">
-                        {{ trans('View All Services') }}
-                        <span :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow `"></span>
-                    </Link>
+                    <div class="text-center mt-4">
+                        <Link :href="route('blogs.index')" class="tf-btn animate-btn">{{ trans('Blogs') }}</Link>
+                    </div>
                 </div>
             </div>
+            <span class="br-line"></span>
+            <HackerStrip />
+            <span class="br-line"></span>
         </section>
-        <!--Services Three End -->
-
-        <!-- Products Start -->
-        <section class="home-products products-page" v-if="products && products.length">
-            <div class="products-page__bg" aria-hidden="true">
-                <div class="products-page__orb products-page__orb--one"></div>
-                <div class="products-page__orb products-page__orb--two"></div>
-                <div class="products-page__orb products-page__orb--three"></div>
-            </div>
-            <div class="container position-relative">
-                <div class="section-title text-center sec-title-animation animation-style1 home-products__head">
-                    <div class="section-title__tagline-box">
-                        <div class="section-title__tagline-shape-1"></div>
-                        <span class="section-title__tagline">{{ trans('Our Products') }}</span>
-                        <div class="section-title__tagline-shape-2"></div>
-                    </div>
-                    <h2 class="section-title__title title-animation">
-                        {{ trans('B2B Solutions Built for Scale') }}
-                    </h2>
-                    <p class="home-products__intro">
-                        {{ trans('Discover enterprise-ready platforms and services designed to grow with your business.') }}
-                    </p>
-                </div>
-
-                <div class="home-products__grid">
-                    <div class="row g-4">
-                        <div
-                            v-for="(product, index) in products"
-                            :key="product.id"
-                            class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp"
-                            :data-wow-delay="`${(index % 3 + 1) * 100}ms`"
-                        >
-                            <ProductCard :item="product" :locale="locale" />
-                        </div>
-                    </div>
-                </div>
-
-                <div class="text-center home-products__cta">
-                    <Link :href="route('product.index')" class="thm-btn">
-                        {{ trans('View All Products') }}
-                        <span :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow `"></span>
-                    </Link>
-                </div>
-            </div>
-        </section>
-        <!-- Products End -->
-
-        <!-- Case Studies Start -->
-        <section class="home-case-studies use-cases-page" v-if="useCases && useCases.length">
-            <div class="use-cases-page__bg" aria-hidden="true">
-                <div class="use-cases-page__orb use-cases-page__orb--one"></div>
-                <div class="use-cases-page__orb use-cases-page__orb--two"></div>
-            </div>
-            <div class="container position-relative">
-                <div class="section-title text-center sec-title-animation animation-style1">
-                    <div class="section-title__tagline-box">
-                        <div class="section-title__tagline-shape-1"></div>
-                        <span class="section-title__tagline">{{ trans('Case Studies') }}</span>
-                        <div class="section-title__tagline-shape-2"></div>
-                    </div>
-                    <h2 class="section-title__title title-animation">
-                        {{ trans('How We\'ve Empowered Businesses with Innovative Tech Solutions') }}
-                    </h2>
-                    <p class="home-case-studies__intro">
-                        {{ trans('Explore our success stories and real-world solutions we\'ve delivered for businesses.') }}
-                    </p>
-                </div>
-
-                <div class="use-cases-page__grid">
-                    <div class="row g-4">
-                        <div
-                            v-for="item in useCases"
-                            :key="item.id"
-                            class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp"
-                            data-wow-delay="100ms"
-                        >
-                            <UseCaseCard :item="item" :locale="locale" />
-                        </div>
-                    </div>
-                </div>
-
-                <div class="text-center home-case-studies__cta">
-                    <Link :href="route('use-cases.index')" class="thm-btn">
-                        {{ trans('View All Case Studies') }}
-                        <span :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow `"></span>
-                    </Link>
-                </div>
-            </div>
-        </section>
-        <!-- Case Studies End -->
-
-        <!--Why Choose Two Start -->
-        <section class="why-choose-two">
-            <div class="why-choose-two__shape-1 float-bob-y">
-                <img :src="asset_path + 'images/shapes/why-choose-two-shape-1.png'"
-                     :alt="trans('Decorative shape')"
-                     width="120"
-                     height="120"
-                     loading="lazy"
-                     decoding="async"
-                     aria-hidden="true">
-            </div>
-
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-6">
-                        <div :class="`why-choose-two__left wow ${locale !== 'ar' ? 'Left' : 'Right'}`"
-                             data-wow-delay="100ms"
-                             data-wow-duration="2500ms">
-                            <div class="why-choose-two__img">
-                                <picture>
-                                    <source :srcset="asset_path + 'images/home/why_choose_us-640.webp'" type="image/webp">
-                                    <img :src="asset_path + 'images/home/why_choose_us.jpg'"
-                                         :alt="trans('Why choose us')"
-                                         width="640"
-                                         height="640"
-                                         loading="lazy"
-                                         decoding="async">
-                                </picture>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-6">
-                        <div class="why-choose-two__right">
-                            <div class="section-title text-left sec-title-animation animation-style2">
-                                <div class="section-title__tagline-box">
-                                    <div class="section-title__tagline-shape-1"></div>
-                                    <span class="section-title__tagline">{{ trans('Why Choose Us') }}</span>
-                                    <div class="section-title__tagline-shape-2"></div>
-                                </div>
-                                <h2 class="section-title__title title-animation">
-                                    {{ trans('How do we deliver reliable, future-ready IT solutions?') }}
-                                </h2>
-                            </div>
-                            <p class="why-choose-one__text">
-                                {{
-                                    trans('We deliver exceptional products and services that consistently exceed expectations. Backed by years of experience and a proven track record, we are your reliable partner for success.')
-                                }}
-                            </p>
-                            <ul class="list-unstyled why-choose-two__points">
-                                <li>
-                                    <div class="icon">
-                                        <span class="icon-quality"></span>
-                                    </div>
-                                    <div class="content">
-                                        <h3 class="h4">{{ trans('Unmatched Quality') }}</h3>
-                                        <p>
-                                            {{
-                                                trans('We deliver exceptional products and services that exceed expectations every time.')
-                                            }}
-                                        </p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <span class="icon-team"></span>
-                                    </div>
-                                    <div class="content">
-                                        <h3 class="h4">{{ trans('Trusted Expertise') }}</h3>
-                                        <p>
-                                            {{
-                                                trans('Backed by years of experience and a proven track record, we are your reliable partner for success.')
-                                            }}
-                                        </p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <span class="icon-customer-centricity"></span>
-                                    </div>
-                                    <div class="content">
-                                        <h3 class="h4">{{ trans('User-Centric Approach') }}</h3>
-                                        <p>
-                                            {{
-                                                trans('Your satisfaction is our priority, and we tailor solutions to meet your unique needs. Your happiness comes first.')
-                                            }}
-                                        </p>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--Why Choose Two End -->
-
-        <!-- Team Two Start -->
-        <section class="team-two d-none" v-if="teams && teams.length > 0">
-            <div class="team-two__bg-shape float-bob-y"
-                 :style="{ backgroundImage: `url(${asset_path}images/shapes/team-two-bg-shape.png)` }">
-            </div>
-
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-5">
-                        <div class="team-two__left">
-                            <div class="section-title text-left sec-title-animation animation-style2">
-                                <div class="section-title__tagline-box">
-                                    <div class="section-title__tagline-shape-1"></div>
-                                    <span class="section-title__tagline">{{ trans('Our Members') }}</span>
-                                    <div class="section-title__tagline-shape-2"></div>
-                                </div>
-                                <h2 class="section-title__title title-animation">
-                                    {{ trans('Meet Our Team.') }} <span>{{ trans('Get to') }}</span><br>
-                                    <span>{{ trans('Know the Talented') }}</span>
-                                    {{ trans('Minds Behind Our Team') }}
-                                </h2>
-                            </div>
-                            <p class="team-two__text">
-                                {{
-                                    trans('Our dedicated team combines expertise, creativity, and passion to deliver exceptional results and ensure your satisfaction every step of the way.')
-                                }}
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-xl-7">
-                        <div class="team-two__right">
-                            <div class="team-two__carousel owl-theme owl-carousel">
-                                <!--Team Two Single Start-->
-                                <div class="item" v-for="team in teams" :key="team.id">
-                                    <div class="team-two__single">
-                                        <div class="team-two__img-box">
-                                            <div class="team-two__img">
-                                                <img :src="team.avatar_link"
-                                                     :alt="translateField(team.name)"
-                                                     width="200"
-                                                     height="200"
-                                                     loading="lazy"
-                                                     decoding="async">
-                                            </div>
-                                            <div class="team-two__social">
-                                                <a v-if="team.facebook" :href="team.facebook" target="_blank" rel="noopener noreferrer" :aria-label="`${translateField(team.name)} Facebook`">
-                                                    <span class="icon-facebook"></span>
-                                                </a>
-                                                <a v-if="team.behance" :href="team.behance" target="_blank" rel="noopener noreferrer" :aria-label="`${translateField(team.name)} Behance`">
-                                                    <span class="icon-dribble"></span>
-                                                </a>
-                                                <a v-if="team.linked_in" :href="team.linked_in" target="_blank" rel="noopener noreferrer" :aria-label="`${translateField(team.name)} LinkedIn`">
-                                                    <span class="icon-linkedin"></span>
-                                                </a>
-                                                <a v-if="team.github" :href="team.github" target="_blank" rel="noopener noreferrer" :aria-label="`${translateField(team.name)} GitHub`">
-                                                    <span class="icon-github"></span>
-                                                </a>
-                                            </div>
-                                            <div class="team-two__title-box">
-                                                <h3><span>{{ translateField(team.name) }}</span></h3>
-                                                <p>{{ translateField(team.position) }}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--Team Two Single End-->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Team Two End -->
-
-        <!--Feature One Start -->
-        <section class="feature-one">
-
-            <div class="feature-one__shape-2 float-bob-y">
-                <img :src="asset_path + 'images/shapes/feature-one-shape-2.png'"
-                     :alt="trans('Decorative shape')"
-                     width="120"
-                     height="120"
-                     loading="lazy"
-                     decoding="async"
-                     aria-hidden="true">
-            </div>
-            <div class="container">
-                <div class="row">
-                    <!--Feature One Single Start -->
-                    <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms">
-                        <div class="feature-one__single">
-                            <div class="feature-one__img">
-                                <picture>
-                                    <source :srcset="asset_path + 'images/home/website.webp'" type="image/webp">
-                                    <img :src="asset_path + 'images/home/website.png'"
-                                         :alt="trans('Web Development')"
-                                         width="80"
-                                         height="80"
-                                         loading="lazy"
-                                         decoding="async">
-                                </picture>
-                            </div>
-                            <h3 class="feature-one__title">
-                                <a :href="route('services.index')">
-                                    {{ trans('Web Development') }}
-                                </a>
-                            </h3>
-                            <p class="feature-one__text">
-                                {{
-                                    trans('Custom web solutions built with cutting-edge technology to drive your business forward.')
-                                }}
-                            </p>
-                        </div>
-                    </div>
-                    <!--Feature One Single End -->
-                    <!--Feature One Single Start -->
-                    <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="300ms">
-                        <div class="feature-one__single">
-                            <div class="feature-one__img">
-                                <picture>
-                                    <source :srcset="asset_path + 'images/home/app-development.webp'" type="image/webp">
-                                    <img :src="asset_path + 'images/home/app-development.png'"
-                                         :alt="trans('Mobile Development')"
-                                         width="80"
-                                         height="80"
-                                         loading="lazy"
-                                         decoding="async">
-                                </picture>
-                            </div>
-                            <h3 class="feature-one__title">
-                                <a :href="route('services.index')">
-                                    {{ trans('Mobile Development') }}
-                                </a>
-                            </h3>
-                            <p class="feature-one__text">
-                                {{
-                                    trans('Native and cross-platform mobile applications that deliver exceptional user experiences.')
-                                }}
-                            </p>
-                        </div>
-                    </div>
-                    <!--Feature One Single End -->
-                    <!--Feature One Single Start -->
-                    <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="500ms">
-                        <div class="feature-one__single">
-                            <div class="feature-one__img">
-                                <picture>
-                                    <source :srcset="asset_path + 'images/home/microchip.webp'" type="image/webp">
-                                    <img :src="asset_path + 'images/home/microchip.png'"
-                                         :alt="trans('AI Agents & Automation')"
-                                         width="80"
-                                         height="80"
-                                         loading="lazy"
-                                         decoding="async">
-                                </picture>
-                            </div>
-                            <h3 class="feature-one__title">
-                                <a :href="route('services.index')">
-                                    {{ trans('AI Agents & Automation') }}
-                                </a>
-                            </h3>
-                            <p class="feature-one__text">
-                                {{
-                                    trans('Intelligent automation solutions powered by AI to streamline your business processes.')
-                                }}
-                            </p>
-                        </div>
-                    </div>
-                    <!--Feature One Single End -->
-                    <!--Feature One Single Start -->
-                    <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="700ms">
-                        <div class="feature-one__single">
-                            <div class="feature-one__img">
-                                <picture>
-                                    <source :srcset="asset_path + 'images/home/cloud.webp'" type="image/webp">
-                                    <img :src="asset_path + 'images/home/cloud.png'"
-                                         :alt="trans('Cloud & Infrastructure')"
-                                         width="80"
-                                         height="80"
-                                         loading="lazy"
-                                         decoding="async">
-                                </picture>
-                            </div>
-                            <h3 class="feature-one__title">
-                                <a :href="route('services.index')">
-                                    {{ trans('Cloud & Infrastructure') }}
-                                </a>
-                            </h3>
-                            <p class="feature-one__text">
-                                {{
-                                    trans('Secure, scalable, and efficient cloud services to power your growth and digital transformation.')
-                                }}
-                            </p>
-                        </div>
-                    </div>
-                    <!--Feature One Single End -->
-                </div>
-            </div>
-        </section>
-        <!--Feature One End -->
-        <!--CTA One Start -->
-        <section class="cta-one">
-            <div class="cta-one__shape-bg float-bob-y"
-                 :style="{ backgroundImage: `url(${asset_path}images/shapes/cta-one-shape-bg.png)` }">
-            </div>
-            <div class="container">
-                <div class="cta-one__inner">
-                    <h3 class="cta-one__title">
-                        {{ trans('Let the Symfonix experts review your technical idea') }}
-                    </h3>
-                    <div class="cta-one__contact-info">
-                        <div class="cta-one__contact-icon">
-                            <span class="icon-customer-service-headset"></span>
-                        </div>
-                        <div class="cta-one__contact-details">
-                            <p>{{ trans('Book your free consultation') }}</p>
-                            <h4><a dir="ltr" :href="`tel:${settings.phone}`">{{ settings.phone }}</a></h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--CTA One End -->
-
-        <!-- Testimonial One Start -->
-        <section class="testimonial-one pb-5" v-if="testimonials && testimonials.length">
-
-            <div class="testimonial-one__shape-2 float-bob-y">
-                <img :src="asset_path + 'images/shapes/testimonial-one-shape-2.png'"
-                     :alt="trans('Decorative shape')"
-                     width="120"
-                     height="120"
-                     loading="lazy"
-                     decoding="async"
-                     aria-hidden="true">
-            </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-3"></div>
-                    <div class="col-xl-9">
-                        <div class="testimonial-one__content-box">
-                            <div class="section-title text-left sec-title-animation animation-style2">
-                                <div class="section-title__tagline-box">
-                                    <div class="section-title__tagline-shape-1"></div>
-                                    <span class="section-title__tagline">{{ trans('Testimonials') }}</span>
-                                    <div class="section-title__tagline-shape-2"></div>
-                                </div>
-                                <h2 class="section-title__title title-animation">
-                                    {{ trans('What Our Clients Say') }}
-                                </h2>
-                            </div>
-                            <div class="testimonial-one__carousel owl-theme owl-carousel">
-                                <!-- Testimonial One Single Start -->
-                                <div class="item" v-for="testimonial in testimonials" :key="testimonial.id">
-                                    <div class="testimonial-one__single">
-                                        <div class="testimonial-one__img-box">
-                                            <div class="testimonial-one__img">
-                                                <img :src="testimonial.avatar_link"
-                                                     :alt="translateField(testimonial.name)"
-                                                     width="180"
-                                                     height="180"
-                                                     loading="lazy"
-                                                     decoding="async">
-                                            </div>
-                                        </div>
-                                        <div class="testimonial-one__content">
-
-                                            <p class="testimonial-one__text">
-                                                “{{ translateField(testimonial.quote) }}”
-                                            </p>
-                                            <div class="testimonial-one__bottom">
-                                                <div class="testimonial-one__quote-and-client-info">
-                                                    <div class="testimonial-one__quote">
-                                                        <span class="icon-left"></span>
-                                                    </div>
-                                                    <div class="testimonial-one__client-info">
-                                                        <p class="testimonial-one__client-sub-title">
-                                                            {{ translateField(testimonial.position) }}
-                                                        </p>
-                                                        <h3 class="testimonial-one__client-name">
-                                                            {{ translateField(testimonial.name) }}
-                                                        </h3>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Testimonial One Single End -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Testimonial One End -->
-
-        <!-- Blog Two Start -->
-        <section class="blog-two blog-three" v-if="posts && posts.length">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-6">
-                        <div :class="`blog-two__left wow fadeIn${locale !== 'ar' ? 'Left' : 'Right'}`"
-                             data-wow-delay="100ms">
-                            <div class="section-title text-left sec-title-animation animation-style1">
-                                <div class="section-title__tagline-box">
-                                    <div class="section-title__tagline-shape-1"></div>
-                                    <span class="section-title__tagline">{{ trans('Our Blogs') }}</span>
-                                    <div class="section-title__tagline-shape-2"></div>
-                                </div>
-                                <h2 class="section-title__title title-animation">
-                                    {{ trans('Explore Our Latest Blogs for Expert Insights') }}
-                                </h2>
-                            </div>
-                            <p class="blog-two-text">
-                                {{
-                                    trans('Dive into our collection of blogs where we share expert insights, helpful tips, and the latest trends in the industry')
-                                }}
-                            </p>
-                            <div class="blog-two__top-btn-box">
-                                <Link :href="route('blogs.index')" class="thm-btn">
-                                    {{ trans('View All Blogs') }}
-                                    <span :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow `"></span>
-                                </Link>
-                            </div>
-
-                            <!-- Featured blog (left) -->
-                            <div class="blog-two__left-content-box d-none d-md-block" v-if="featuredPost">
-                                <HomeBlogCard
-                                    :post="featuredPost"
-                                    variant="featured"
-                                    :locale="locale"
-                                    :asset-path="asset_path"
-                                    :image-fallback-index="1"
-                                />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-6">
-                        <div class="blog-two__right">
-                            <!-- Right-side compact posts -->
-                            <HomeBlogCard
-                                v-for="(post, idx) in sidePosts"
-                                :key="post.id || idx"
-                                :post="post"
-                                variant="compact"
-                                :locale="locale"
-                                :asset-path="asset_path"
-                                :image-fallback-index="idx + 2"
-                                :animation-class="idx % 2 === 0 ? 'fadeInLeft' : 'fadeInRight'"
-                                :animation-delay="`${(idx + 1) * 100}ms`"
-                            />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Blog Two End -->
-
-        <!-- Contact Two Start -->
-        <section class="contact-two">
-            <div class="contact-two__sliding-text-list marquee_mode-2">
-                <div class="contact-two__sliding-text-item">
-                    <h2 data-hover="Branding" class="contact-two__sliding-text-title">
-                        {{ trans('GET IN TOUCH *') }}
-                    </h2>
-                </div>
-                <div class="contact-two__sliding-text-item">
-                    <h2 data-hover="Branding" class="contact-two__sliding-text-title">
-                        {{ trans('GET IN TOUCH *') }}
-                    </h2>
-                </div>
-                <div class="contact-two__sliding-text-item">
-                    <h2 data-hover="Branding" class="contact-two__sliding-text-title">
-                        {{ trans('GET IN TOUCH *') }}
-                    </h2>
-                </div>
-            </div>
-
-            <div class="contact-two__shape-1 float-bob-y">
-                <img :src="asset_path + 'images/shapes/contact-two-shape-1.png'"
-                     :alt="trans('Decorative shape')"
-                     width="120"
-                     height="120"
-                     loading="lazy"
-                     decoding="async"
-                     aria-hidden="true">
-            </div>
-
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-6">
-                        <div class="contact-two__left">
-                            <div class="section-title text-left sec-title-animation animation-style2">
-                                <div class="section-title__tagline-box">
-                                    <div class="section-title__tagline-shape-1"></div>
-                                    <span class="section-title__tagline">
-                                        {{ trans('Get In Touch') }}
-                                    </span>
-                                    <div class="section-title__tagline-shape-2"></div>
-                                </div>
-                                <h2 class="section-title__title title-animation">
-                                    {{ trans('Contact Us') }}
-                                </h2>
-                            </div>
-                            <p class="contact-two__text">
-                                {{ trans("Fill out the form below and we'll get back to you as soon as possible") }}
-                            </p>
-                            <ul class="contact-two__contact-list list-unstyled">
-                                <li v-if="settings.email">
-                                    <div class="icon">
-                                        <span class="icon-mail"></span>
-                                    </div>
-                                    <div class="content">
-                                        <h3 class="h4">{{ trans('Email') }}</h3>
-                                        <p>
-                                            <a dir="ltr" :href="`mailto:${settings.email}`">
-                                                {{ settings.email }}
-                                            </a>
-                                        </p>
-                                    </div>
-                                </li>
-                                <li v-if="settings.phone">
-                                    <div class="icon">
-                                        <span class="icon-phone-call"></span>
-                                    </div>
-                                    <div class="content">
-                                        <h3 class="h4">{{ trans('Phone') }}</h3>
-                                        <p>
-                                            <a dir="ltr" :href="`tel:${settings.phone}`">
-                                                {{ settings.phone }}
-                                            </a>
-                                        </p>
-                                    </div>
-                                </li>
-                                <li v-if="settings.address">
-                                    <div class="icon">
-                                        <span class="icon-pin"></span>
-                                    </div>
-                                    <div class="content">
-                                        <h3 class="h4">{{ trans('Our Location') }}</h3>
-                                        <p>{{ settings.address }}</p>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-xl-6">
-                        <div :class="`contact-two__right wow slideIn${locale === 'ar' ? 'Left' : 'Right'}`"
-                             data-wow-delay="100ms"
-                             data-wow-duration="2500ms">
-                            <form class="contact-form-validated contact-one__form"
-                                  @submit.prevent="handleContactSubmit">
-                                <div class="row">
-                                    <div class="col-xl-6 col-lg-6">
-                                        <h3 class="h4 contact-one__input-title">{{ trans("Full Name") }}</h3>
-                                        <div class="contact-one__input-box">
-                                            <div class="contact-one__input-icon">
-                                                <span class="icon-user-1"></span>
-                                            </div>
-                                            <input
-                                                v-model="contactForm.name"
-                                                type="text"
-                                                name="name"
-                                                :placeholder="trans('Full Name')"
-                                                :class="{ 'error': contactForm.errors.name }"
-                                                :disabled="contactForm.processing"
-                                                required>
-                                        </div>
-                                        <div v-if="contactForm.errors.name" class="text-danger mt-1 small">
-                                            {{ contactForm.errors.name }}
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-6 col-lg-6">
-                                        <h3 class="h4 contact-one__input-title">
-                                            {{ trans('Email') }}
-                                        </h3>
-                                        <div class="contact-one__input-box">
-                                            <div class="contact-one__input-icon">
-                                                <span class="icon-email"></span>
-                                            </div>
-                                            <input
-                                                type="email"
-                                                name="email"
-                                                v-model="contactForm.email"
-                                                :placeholder="trans('Email')"
-                                                :disabled="contactForm.processing"
-                                                :class="{ 'error': contactForm.errors.email }"
-                                                required
-                                            >
-                                            <div v-if="contactForm.errors.email" class="text-danger mt-1 small">
-                                                {{ contactForm.errors.email }}
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-6 col-lg-6">
-                                        <h3 class="h4 contact-one__input-title">{{ trans("Phone Number") }}</h3>
-                                        <div class="contact-one__input-box">
-                                            <div class="contact-one__input-icon">
-                                                <span class="icon-phone-call"></span>
-                                            </div>
-                                            <input
-                                                v-model="contactForm.mobile"
-                                                type="text"
-                                                name="mobile"
-                                                :placeholder="trans('Phone Number')"
-                                                :class="{ 'error': contactForm.errors.mobile }"
-                                                :disabled="contactForm.processing"
-                                                required>
-                                        </div>
-                                        <div v-if="contactForm.errors.mobile" class="text-danger mt-1 small">
-                                            {{ contactForm.errors.mobile }}
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-6 col-lg-6">
-                                        <h3 class="h4 contact-one__input-title">
-                                            {{ trans('Subject') }}
-                                        </h3>
-                                        <div class="contact-one__input-box">
-                                            <div class="contact-one__input-icon">
-                                                <span class="icon-edit"></span>
-                                            </div>
-                                            <input
-                                                type="text"
-                                                name="subject"
-                                                v-model="contactForm.subject"
-                                                :placeholder="trans('Subject')"
-                                                :disabled="contactForm.processing"
-                                                :class="{ 'error': contactForm.errors.subject }"
-                                                required
-                                            >
-                                            <div v-if="contactForm.errors.subject" class="text-danger mt-1 small">
-                                                {{ contactForm.errors.subject }}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-12">
-                                    <h3 class="h4 contact-one__input-title">{{ trans("Message") }}</h3>
-                                    <div class="contact-one__input-box text-message-box">
-                                        <div class="contact-one__input-icon">
-                                            <span class="icon-edit"></span>
-                                        </div>
-                                        <textarea
-                                            v-model="contactForm.message"
-                                            name="message"
-                                            :placeholder="trans('Write your message')"
-                                            :class="{ 'error': contactForm.errors.message }"
-                                            :disabled="contactForm.processing"
-                                            required></textarea>
-                                    </div>
-                                    <div v-if="contactForm.errors.message" class="text-danger mt-1 small">
-                                        {{ contactForm.errors.message }}
-                                    </div>
-                                    <div class="contact-one__btn-box">
-                                        <button
-                                            type="submit"
-                                            class="thm-btn"
-                                            :disabled="contactForm.processing"
-                                            :class="{ 'opacity-50': contactForm.processing }">
-                                            <span v-if="contactForm.processing">
-                                                <i class="fa-solid fa-spinner fa-spin me-2"></i>{{
-                                                    trans("Sending...")
-                                                }}
-                                            </span>
-                                            <span v-else>
-                                                <span>{{ trans("Submit") }}</span> <i
-                                                :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow mx-1`"></i>
-                                            </span>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div v-if="contactSubmitSuccess" class="col-12 mt-3">
-                                    <div class="alert alert-success">
-                                        {{ trans("Thank you for contacting us! We will get back to you soon.") }}
-                                    </div>
-                                </div>
-                            </form>
-                            <div class="result"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Contact Two End -->
-
-        <ClientsSection :clients="clients" />
     </app-layout>
 </template>
 
 <script setup>
-import {computed, onMounted, nextTick, ref} from 'vue'
-import {usePage, useForm, Link, Head} from '@inertiajs/vue3'
-import HomeBlogCard from '@/Components/HomeBlogCard.vue'
-import ServiceCardThree from '@/Components/Services/ServiceCardThree.vue'
-import ClientsSection from '@/Components/ClientsSection.vue'
+import { computed } from 'vue'
+import { Head, Link, usePage } from '@inertiajs/vue3'
+import AppLayout from '@/Layouts/App.vue'
+import SectMeta from '@/Components/SectMeta.vue'
+import HackerStrip from '@/Components/HackerStrip.vue'
+import BlogCard from '@/Components/BlogCard.vue'
+import UseCaseCard from '@/Components/UseCaseCard.vue'
 
 const page = usePage()
-const trans = (key) => page.props.translations[key] || key;
+const trans = (key) => page.props.translations[key] || key
 const seo = computed(() => page.props.seo)
 const settings = computed(() => page.props.settings || {})
 const asset_path = computed(() => page.props.asset_path || '')
@@ -996,597 +500,26 @@ const locale = computed(() => page.props.locale)
 const posts = computed(() => page.props.posts || [])
 const servicesCategories = computed(() => page.props.servicesCategories || [])
 const testimonials = computed(() => page.props.testimonials || [])
-const teams = computed(() => page.props.teams || [])
 const useCases = computed(() => page.props.useCases || [])
 const products = computed(() => page.props.products || [])
 const clients = computed(() => page.props.clients || [])
 const meta = computed(() => page.props.meta || {})
+const featuredCategories = computed(() => servicesCategories.value.slice(0, 6))
 
-const metaTitle = computed(() => {
-    return meta.value.title || `${trans("Home")} | ${seo.value.website_name || ''}`.trim()
-})
-const metaDescription = computed(() => {
-    return meta.value.description
-        || trans('Empowering businesses with modern web, mobile, AI, and cloud solutions.')
-        || seo.value.website_desc
-        || ''
-})
-const metaKeywords = computed(() => {
-    return meta.value.keywords
-        || trans('IT solutions, web development, mobile apps, AI automation, cloud services')
-        || seo.value.website_keywords
-        || ''
-})
-const metaImage = computed(() => {
-    return meta.value?.og?.image || meta.value?.twitter?.image || settings.value?.meta_img || ''
-})
+const metaTitle = computed(() => meta.value.title || `${trans('Home')} | ${seo.value.website_name || ''}`.trim())
+const metaDescription = computed(() => meta.value.description || trans('Empowering businesses with modern web, mobile, AI, and cloud solutions.') || seo.value.website_desc || '')
+const metaKeywords = computed(() => meta.value.keywords || trans('IT solutions, web development, mobile apps, AI automation, cloud services') || seo.value.website_keywords || '')
+const metaImage = computed(() => meta.value?.og?.image || meta.value?.twitter?.image || settings.value?.meta_img || '')
 const metaCanonical = computed(() => meta.value.canonical || '')
 const metaRobots = computed(() => meta.value.robots || 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1')
 
-const featuredPost = computed(() => posts.value?.[0] || null)
-const sidePosts = computed(() => (posts.value || []).slice(1, 5))
-
-
 const translateField = (value) => {
-    if (!value) {
-        return '';
+    if (!value) return ''
+    if (typeof value === 'string') return value
+    const loc = locale.value
+    if (typeof value === 'object' && value !== null && value[loc]) {
+        return value[loc]
     }
-
-    // If it's already a string, just return it.
-    if (typeof value === 'string') {
-        return value;
-    }
-
-    // If it's an object/array of translations, pick the current locale if available.
-    const loc = locale.value;
-    if (typeof value === 'object' && value !== null) {
-        if (value[loc]) {
-            return value[loc];
-        }
-    }
-
-    return '';
-};
-
-const getCategoryHighlights = (category) => {
-    if (!category || !Array.isArray(category.services)) {
-        return [];
-    }
-    return category.services
-        .map((service) => translateField(service.title))
-        .filter(Boolean);
-};
-
-
-// Contact form (shared with Support::ContactUsController)
-const contactSubmitSuccess = ref(false)
-
-const contactForm = useForm({
-    name: '',
-    email: '',
-    mobile: '',
-    subject: '',
-    message: '',
-})
-
-const handleContactSubmit = () => {
-    if (contactForm.processing) {
-        return false;
-    }
-
-    if (!contactForm.name || !contactForm.name.trim()) return false;
-    if (!contactForm.email || !contactForm.email.trim()) return false;
-    if (!contactForm.mobile || !contactForm.mobile.trim()) return false;
-    if (!contactForm.subject || !contactForm.subject.trim()) return false;
-    if (!contactForm.message || !contactForm.message.trim()) return false;
-
-    let contactUrl = route('contact-us.store');
-    contactForm.post(contactUrl, {
-        preserveScroll: true,
-        preserveState: true,
-        onBefore: () => {
-            contactSubmitSuccess.value = false;
-        },
-        onSuccess: () => {
-            contactSubmitSuccess.value = true;
-            contactForm.reset();
-            contactForm.clearErrors();
-            setTimeout(() => {
-                contactSubmitSuccess.value = false;
-            }, 5000);
-        },
-        onError: () => {
-            contactSubmitSuccess.value = false;
-        },
-    });
-
-    return false;
-};
-
-onMounted(() => {
-    nextTick(() => {
-        const isRTL = page.props.locale === 'ar';
-        const applyOwlDotAriaLabels = ($carousel) => {
-            if (!$carousel || !$carousel.length) {
-                return;
-            }
-
-            $carousel.find('.owl-dot').each(function (index) {
-                $(this).attr('aria-label', `${trans('Go to slide')} ${index + 1}`);
-            });
-        };
-
-        const waitForTheme = (predicate, tries = 40) => new Promise((resolve) => {
-            const tick = () => {
-                if (predicate()) {
-                    resolve(true);
-                    return;
-                }
-                if (tries-- <= 0) {
-                    resolve(false);
-                    return;
-                }
-                setTimeout(tick, 150);
-            };
-            tick();
-        });
-
-        const initHomeWidgets = () => {
-        // Initialize Services Owl Carousel
-        if (typeof $ !== 'undefined' && typeof $.fn?.owlCarousel === 'function' && $('.services-three__carousel').length) {
-            const $servicesCarousel = $('.services-three__carousel');
-            if (!$servicesCarousel.hasClass('owl-loaded')) {
-            $servicesCarousel.owlCarousel({
-                loop: servicesCategories.value.length > 3,
-                margin: 30,
-                nav: false,
-                dots: true,
-                smartSpeed: 500,
-                autoplay: true,
-                autoplayTimeout: 7000,
-                rtl: isRTL,
-                responsive: {
-                    0: {items: 1},
-                    768: {items: 2},
-                    992: {items: 3},
-                    1200: {items: 3}
-                }
-            }).on('initialized.owl.carousel refreshed.owl.carousel', function () {
-                applyOwlDotAriaLabels($(this));
-            });
-            applyOwlDotAriaLabels($servicesCarousel);
-            }
-        }
-
-        // Initialize Team Owl Carousel
-        if (typeof $ !== 'undefined' && typeof $.fn?.owlCarousel === 'function' && $('.team-two__carousel').length && teams.value.length > 0) {
-            const $teamCarousel = $('.team-two__carousel');
-            if (!$teamCarousel.hasClass('owl-loaded')) {
-            $teamCarousel.owlCarousel({
-                loop: teams.value.length > 3,
-                margin: 30,
-                nav: false,
-                dots: true,
-                smartSpeed: 500,
-                autoplay: true,
-                autoplayTimeout: 7000,
-                rtl: isRTL,
-                responsive: {
-                    0: {items: 1},
-                    768: {items: 2},
-                    992: {items: 2},
-                    1200: {items: 3}
-                }
-            }).on('initialized.owl.carousel refreshed.owl.carousel', function () {
-                applyOwlDotAriaLabels($(this));
-            });
-            applyOwlDotAriaLabels($teamCarousel);
-            }
-        }
-
-        // Initialize Testimonials Owl Carousel
-        if (typeof $ !== 'undefined' && typeof $.fn?.owlCarousel === 'function' && $('.testimonial-one__carousel').length) {
-            const $testimonialCarousel = $('.testimonial-one__carousel');
-            if (!$testimonialCarousel.hasClass('owl-loaded')) {
-            $testimonialCarousel.owlCarousel({
-                loop: testimonials.value.length > 1,
-                margin: 30,
-                nav: false,
-                dots: true,
-                smartSpeed: 500,
-                autoplay: true,
-                autoplayTimeout: 7000,
-                rtl: isRTL,
-                responsive: {
-                    0: {items: 1},
-                    768: {items: 1},
-                    992: {items: 1},
-                    1200: {items: 1}
-                }
-            }).on('initialized.owl.carousel refreshed.owl.carousel', function () {
-                applyOwlDotAriaLabels($(this));
-            });
-            applyOwlDotAriaLabels($testimonialCarousel);
-            }
-        }
-
-        // Initialize WOW animations
-        if (typeof WOW !== 'undefined') {
-            new WOW().init();
-        }
-
-        // Initialize GSAP title animations
-        // Use the same comprehensive implementation as script.js but handle Arabic properly
-        if (typeof gsap !== 'undefined' && typeof SplitText !== 'undefined') {
-            const titleAnimations = document.querySelectorAll(".sec-title-animation .title-animation");
-            if (titleAnimations.length) {
-                titleAnimations.forEach(quote => {
-                    // Reset if needed
-                    if (quote.animation) {
-                        quote.animation.progress(1).kill();
-                        if (quote.split) quote.split.revert();
-                    }
-
-                    // Handle Arabic text - capitalize and set proper styling
-                    if (isRTL) {
-                        const text = quote.textContent;
-                        if (/[\u0600-\u06FF]/.test(text)) {
-                            quote.style.textTransform = 'none';
-                            quote.style.fontVariant = 'normal';
-                            // Don't set fontSize to inherit - let CSS handle it
-                            // quote.style.fontSize = 'inherit'; // REMOVED - was causing small font size
-                        }
-                    }
-
-                    var getclass = quote.closest('.sec-title-animation').className;
-                    var animation = getclass.split('animation-');
-                    if (animation[1] == "style4") return;
-
-                    // Check if text contains Arabic characters
-                    const text = quote.textContent;
-                    const hasArabic = /[\u0600-\u06FF]/.test(text);
-
-                    // Skip SplitText char splitting on RTL pages (and for Arabic text).
-                    // SplitText reverses char/word nodes under direction:rtl, which garbles
-                    // Latin fallback strings that lack an Arabic translation.
-                    if (isRTL || hasArabic) {
-                        // No character splitting — animate the whole element
-                        gsap.set(quote, {
-                            perspective: 400,
-                            opacity: 0,
-                            y: isRTL ? -50 : 50
-                        });
-
-                        quote.animation = gsap.to(quote, {
-                            scrollTrigger: {
-                                trigger: quote,
-                                start: "top 90%",
-                                toggleActions: "play none none none"
-                            },
-                            y: 0,
-                            opacity: 1,
-                            duration: 1,
-                            ease: Back.easeOut
-                        });
-                    } else {
-                        // For non-Arabic: Use character splitting
-                        quote.split = new SplitText(quote, {
-                            type: "lines,words,chars",
-                            linesClass: "split-line"
-                        });
-
-                        gsap.set(quote, {
-                            perspective: 400
-                        });
-
-                        const xValue = isRTL ? "-50" : "50";
-                        const yValue = isRTL ? "-90%" : "90%";
-
-                        if (animation[1] == "style1") {
-                            gsap.set(quote.split.chars, {
-                                opacity: 0,
-                                y: yValue,
-                                rotateX: "-40deg"
-                            });
-                        }
-                        if (animation[1] == "style2") {
-                            gsap.set(quote.split.chars, {
-                                opacity: 0,
-                                x: xValue
-                            });
-                        }
-                        if (animation[1] == "style3") {
-                            gsap.set(quote.split.chars, {
-                                opacity: 0,
-                            });
-                        }
-
-                        quote.animation = gsap.to(quote.split.chars, {
-                            scrollTrigger: {
-                                trigger: quote,
-                                start: "top 90%",
-                                toggleActions: "play none none none"
-                            },
-                            x: "0",
-                            y: "0",
-                            rotateX: "0",
-                            opacity: 1,
-                            duration: 1,
-                            ease: Back.easeOut,
-                            stagger: 0.02
-                        });
-                    }
-                });
-            }
-        }
-
-        // Refresh ScrollTrigger after a short delay
-        setTimeout(() => {
-            if (typeof ScrollTrigger !== 'undefined') {
-                ScrollTrigger.refresh();
-            }
-        }, 300);
-
-        // Initialize Marquee
-        if (typeof $ !== 'undefined' && $('.marquee_mode-2').length && $.fn.marquee) {
-            $('.marquee_mode-2').marquee({
-                speed: 50,
-                gap: 50,
-                delayBeforeStart: 0,
-                direction: isRTL ? 'right' : 'left',
-                duplicated: true,
-                pauseOnHover: true,
-                startVisible: true
-            });
-        }
-
-        // Initialize simple count-up animation for latest-counter__content numbers
-        try {
-            if (typeof window !== 'undefined') {
-                const counters = document.querySelectorAll('.latest-counter__content .count');
-
-                const animateCount = (el) => {
-                    if (!el || el.dataset.countInitialized === '1') return;
-
-                    const rawText = el.textContent || '';
-                    const target = parseInt(rawText.replace(/[^\d]/g, ''), 10);
-                    if (!target || isNaN(target)) return;
-
-                    el.dataset.countInitialized = '1';
-
-                    // Increase duration for a slower, smoother count-up
-                    const duration = 8000; // ms
-                    const start = 0;
-                    const startTime = performance.now();
-
-                    const step = (now) => {
-                        const progress = Math.min((now - startTime) / duration, 1);
-                        const value = Math.floor(start + (target - start) * progress);
-                        el.textContent = value.toString();
-
-                        if (progress < 1) {
-                            requestAnimationFrame(step);
-                        } else {
-                            el.textContent = target.toString();
-                        }
-                    };
-
-                    requestAnimationFrame(step);
-                };
-
-                if (counters.length) {
-                    if ('IntersectionObserver' in window) {
-                        const observer = new IntersectionObserver((entries, obs) => {
-                            entries.forEach((entry) => {
-                                if (entry.isIntersecting) {
-                                    animateCount(entry.target);
-                                    obs.unobserve(entry.target);
-                                }
-                            });
-                        }, {threshold: 0.3});
-
-                        counters.forEach((el) => observer.observe(el));
-                    } else {
-                        counters.forEach((el) => animateCount(el));
-                    }
-                }
-            }
-        } catch (e) {
-            // Fail silently if the browser doesn't support required APIs
-        }
-        };
-
-        waitForTheme(() => typeof window.$ !== 'undefined' && typeof window.$.fn?.owlCarousel === 'function')
-            .then((ready) => {
-                if (ready) {
-                    initHomeWidgets();
-                }
-            });
-    });
-});
-
+    return ''
+}
 </script>
-
-<script>
-
-
-import AppLayout from '@/Layouts/App.vue';
-import UseCaseCard from '@/Components/UseCaseCard.vue';
-import ProductCard from '@/Components/ProductCard.vue';
-
-export default {
-    components: {
-        AppLayout,
-        UseCaseCard,
-        ProductCard,
-    }
-
-};
-</script>
-
-<style scoped>
-.home-products {
-    position: relative;
-    display: block;
-    padding: 140px 0 140px;
-    overflow: hidden;
-    z-index: 1;
-}
-
-.home-products__head {
-    margin-bottom: 58px;
-}
-
-.home-products__head :deep(.section-title__title) {
-    color: #fff;
-}
-
-.home-products__head :deep(.section-title__tagline) {
-    color: rgba(255, 255, 255, 0.85);
-}
-
-.home-products__intro {
-    max-width: 720px;
-    margin: 18px auto 0;
-    font-size: 1.05rem;
-    line-height: 1.7;
-    color: rgba(255, 255, 255, 0.78);
-}
-
-.home-products__grid {
-    position: relative;
-    z-index: 1;
-}
-
-.home-products :deep(.product-card) {
-    margin-bottom: 30px;
-}
-
-.home-products__cta {
-    position: relative;
-    z-index: 1;
-    margin-top: 40px;
-}
-
-.home-products .products-page__bg {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-        145deg,
-        #0b192c 0%,
-        #0f2844 35%,
-        #155a8a 65%,
-        rgba(33, 137, 202, 0.55) 85%,
-        rgba(127, 196, 87, 0.2) 100%
-    );
-    pointer-events: none;
-}
-
-.home-products .products-page__orb {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(80px);
-    opacity: 0.45;
-}
-
-.home-products .products-page__orb--one {
-    width: 420px;
-    height: 420px;
-    top: -120px;
-    left: -80px;
-    background: #2189ca;
-}
-
-.home-products .products-page__orb--two {
-    width: 360px;
-    height: 360px;
-    top: 40%;
-    right: -100px;
-    background: #7fc457;
-}
-
-.home-products .products-page__orb--three {
-    width: 280px;
-    height: 280px;
-    bottom: -60px;
-    left: 35%;
-    background: #1a5f8a;
-}
-
-.home-case-studies {
-    position: relative;
-    display: block;
-    padding: 140px 0 140px;
-    overflow: hidden;
-    z-index: 1;
-}
-
-.home-case-studies .section-title {
-    margin-bottom: 58px;
-}
-
-.home-case-studies__intro {
-    max-width: 720px;
-    margin: 18px auto 0;
-    color: rgba(255, 255, 255, 0.78);
-    line-height: 1.7;
-}
-
-.use-cases-page {
-    position: relative;
-    overflow: hidden;
-}
-
-.use-cases-page__bg {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-        145deg,
-        #0b192c 0%,
-        #0f2844 35%,
-        #155a8a 65%,
-        rgba(33, 137, 202, 0.55) 85%,
-        rgba(127, 196, 87, 0.2) 100%
-    );
-    pointer-events: none;
-}
-
-.use-cases-page__orb {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(80px);
-    opacity: 0.45;
-}
-
-.use-cases-page__orb--one {
-    width: 420px;
-    height: 420px;
-    top: -120px;
-    left: -80px;
-    background: #2189ca;
-}
-
-.use-cases-page__orb--two {
-    width: 360px;
-    height: 360px;
-    top: 40%;
-    right: -100px;
-    background: #7fc457;
-}
-
-.use-cases-page__grid {
-    position: relative;
-    z-index: 1;
-}
-
-.home-case-studies :deep(.use-case-card) {
-    margin-bottom: 30px;
-}
-
-.home-case-studies__cta {
-    position: relative;
-    z-index: 1;
-    margin-top: 40px;
-}
-</style>
-

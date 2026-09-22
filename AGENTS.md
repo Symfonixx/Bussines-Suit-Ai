@@ -1,5 +1,5 @@
 ### Project Overview
-Symfonix is a modular Laravel 13 business management platform for agencies, combining a multilingual public CMS, CRM (quotes, WhatsApp/email marketing, forecasts), project management, multi-currency finance, tax, reporting, client portal, HR (including fingerprint attendance), support ticketing, and AI (Ask Symfonix, content generation, image editing, public chatbot).
+Symfonix Business AI is a modular Laravel 13 business management platform for agencies, combining a multilingual public CMS, CRM (quotes, WhatsApp/email marketing, forecasts), project management, multi-currency finance, tax, reporting, client portal, HR (including fingerprint attendance), support ticketing, and AI (Ask Symfonix, content generation, image editing, public chatbot).
 
 ### Tech Stack
 - **Backend:** PHP 8.3+, Laravel 13, `nwidart/laravel-modules`

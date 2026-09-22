@@ -1,0 +1,189 @@
+@use "../abstracts/index"as *;
+
+
+.flat-animate-tab {
+
+    .tab-content {
+        position: relative;
+    }
+
+    .tab-pane {
+        display: block;
+        pointer-events: none;
+        opacity: 0;
+        visibility: hidden;
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        right: 0;
+        -webkit-transform: translateY(30px);
+        -ms-transform: translateY(30px);
+        transform: translateY(30px);
+        transition-timing-function: ease-in;
+        transition-duration: 0.2s;
+
+        &.active {
+            pointer-events: auto;
+            opacity: 1;
+            visibility: visible;
+            position: relative;
+            z-index: 2;
+            -webkit-transform: none;
+            -ms-transform: none;
+            transform: none;
+            transition-timing-function: ease-out;
+            transition-duration: 0.3s;
+            transition-delay: 0.3s;
+        }
+    }
+}
+
+.tab-can_do {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    padding: 0px 12px;
+
+    .nav-tab-item {
+        padding: 32px 0px;
+        position: relative;
+
+        &::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            height: 2px;
+            width: 70%;
+            background-color: var(--text-2);
+            box-shadow: 0px -0.66px 1.6px 0px #F4F7F524;
+
+            box-shadow: 0px -1.5px 3.6px 0px #F4F7F505,
+                0px -2.5px 6.25px 0px #F4F7F540,
+                0px -4.2px 10.5px 0px #F4F7F54D,
+                0px -12px 24px 0px #F4F7F58F,
+                0px -10px 24px 0px #F4F7F57A,
+                0px -16px 40px 0px #F4F7F5A3,
+                0px -33px 80px 0px #F4F7F599;
+
+            @include transition3;
+            @include hidden;
+        }
+
+        &.active {
+            &::after {
+                @include visible;
+            }
+        }
+    }
+
+    .btn_tab {
+
+        &.active,
+        &:hover {
+            background: linear-gradient(0deg, #141415, #141415),
+                linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0) 100%);
+        }
+    }
+
+    @include res(lg) {
+        justify-content: start;
+        overflow-x: auto;
+        white-space: nowrap;
+        gap: 24px;
+    }
+}
+
+
+.tab-how_to {
+    padding-left: 16px;
+    padding-right: 16px;
+
+    .btn_tab {
+        display: grid;
+        gap: 12px;
+        cursor: pointer;
+
+        .name {
+            position: relative;
+
+            &::before {
+                content: attr(data-text);
+                position: absolute;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(90.9deg, #9F9DFB 0%, #709AF5 50%, #A5DCF3 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+                color: transparent;
+                z-index: 2;
+                pointer-events: none;
+                opacity: 0;
+                @include transition3;
+            }
+        }
+
+        &.active {
+            .name {
+                &::before {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+
+    .nav-tab-item {
+        &:not(:first-child) {
+            .btn_tab {
+                padding-top: 48px;
+            }
+        }
+
+        &:not(:last-child) {
+            .btn_tab {
+                padding-bottom: 48px;
+            }
+        }
+    }
+
+
+
+    .name {
+        color: var(--text-2);
+    }
+
+    @include res(xl) {
+        .nav-tab-item {
+            &:not(:first-child) {
+                .btn_tab {
+                    padding-top: 24px;
+                }
+            }
+
+            &:not(:last-child) {
+                .btn_tab {
+                    padding-bottom: 24px;
+                }
+            }
+        }
+    }
+
+    @include res(md) {
+        .desc {
+            font-size: 14px;
+        }
+    }
+}
+
+.image-how_to {
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}

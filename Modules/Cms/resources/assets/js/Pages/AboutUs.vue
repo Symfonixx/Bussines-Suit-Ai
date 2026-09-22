@@ -1,7 +1,5 @@
 <template>
     <Head>
-        <link rel="stylesheet" :href="asset_path + 'site/css/module-css/page-header.css'"/>
-
         <title>{{ metaTitle }}</title>
         <meta name="description" :content="metaDescription">
         <meta name="keywords" :content="metaKeywords">
@@ -18,382 +16,219 @@
         <meta v-if="metaImage" name="twitter:image" :content="metaImage">
     </Head>
     <app-layout>
+        <PageTitle :title="trans('About Us')" />
 
-        <!--Page Header Start-->
-        <section class="page-header">
-            <div class="page-header__bg"
-                 :style="{ backgroundImage: `url(${asset_path}images/backgrounds/about-us-bg.jpg)` }">
+        <section class="section-hero-about flat-spacing-2">
+            <div class="img-item-1">
+                <img loading="lazy" width="1296" height="606" :src="asset_path + 'qore/images/item/color-bg-1.png'" :alt="trans('About Us')">
             </div>
-            <div class="container">
-                <div class="page-header__inner">
-                    <h1>{{ trans('About Us') }}</h1>
-                    <div class="thm-breadcrumb__box">
-                        <ul class="thm-breadcrumb list-unstyled">
-                            <li>
-                                <Link :href="route('home')" v-if="typeof route !== 'undefined'">
-                                    <i class="fas fa-home"></i>{{ trans('Home') }}
-                                </Link>
-                                <a :href="`/${locale === 'ar' ? 'ar' : ''}`" v-else>
-                                    <i class="fas fa-home"></i>{{ trans('Home') }}
-                                </a>
-                            </li>
-                            <li><span :class="`icon-${isRtl ? 'left' : 'right'}-arrow-1`"></span></li>
-                            <li>{{ trans('About Us') }}</li>
-                        </ul>
-                    </div>
-                </div>
+            <div class="img-item-2">
+                <img loading="lazy" width="1296" height="606" :src="asset_path + 'qore/images/item/pixel-texture.png'" :alt="trans('About Us')">
             </div>
-        </section>
-        <!--Page Header End-->
-
-        <!--About Four Start-->
-        <section class="about-four">
-            <div class="about-four__bg-shape"
-                 :style="{ backgroundImage: `url(${asset_path}images/shapes/about-four-bg-shape.png)` }"></div>
-
             <div class="container">
                 <div class="row">
-                    <div class="col-xl-6">
-                        <div :class="`about-four__left wow slideIn${isRtl ? 'Right' : 'Left'}`"
-                             data-wow-delay="100ms" data-wow-duration="2500ms">
-                            <div class="about-four__img-box">
-                                <div class="about-four__img">
-                                    <img :src="asset_path +  'images/about/about-four-img-1.jpg'"
-                                         :alt="trans('About our company')">
-                                </div>
-
-                                <div class="about-four__img-2">
-                                    <img :src="asset_path +  'images/about/about-four-img-12.jpg'"   :alt="trans('About our company')">
-                                </div>
-                                <div class="about-four__experience">
-                                    <div class="about-four__experience-inner">
-
-                                        <p class="about-four__experience-count-text">10 {{ trans('Years of') }}
-                                            <br> {{ trans('Experience') }}</p>
-                                    </div>
-                                </div>
-                            </div>
-
+                    <div class="col-lg-10 mx-auto">
+                        <div class="sect-title wow fadeInUp">
+                            <h2 class="s-title font-3 text-linear">
+                                {{ trans('Supercharge Your Business Growth with Our Cutting-Edge IT Solutions') }}
+                            </h2>
+                            <p class="s-sub_title">
+                                {{ trans('Symfonix is a technology company that designs, builds, and scales digital systems where web, mobile, AI, and cloud work together instead of fighting each other. The name says it all: a symphony of technologies, orchestrated with intention.') }}
+                            </p>
+                        </div>
+                        <div class="image px-16 px-lg-0">
+                            <img loading="lazy" width="1078" height="606" :src="asset_path + 'qore/images/section/hero-about.png'" :alt="trans('About our company')">
                         </div>
                     </div>
-                    <div class="col-xl-6">
-                        <div class="about-four__right">
-                            <div class="section-title text-left sec-title-animation animation-style2">
-                                <div class="section-title__tagline-box">
-                                    <div class="section-title__tagline-shape-1"></div>
-                                    <span class="section-title__tagline">{{ trans('About Us') }}</span>
-                                    <div class="section-title__tagline-shape-2"></div>
-                                </div>
-                                <h2 class="section-title__title title-animation" v-if="!isRtl">
-                                    {{ trans('Supercharge') }} <span>{{ trans('Your Business') }}</span><br>
-                                    <span>{{ trans('Growth with Our') }}</span>
-                                    {{ trans('Cutting-Edge IT') }}<br> {{ trans('Solutions') }}
-                                </h2>
-                            </div>
-                            <p class="about-four__text">
-                                {{
-                                    trans('Symfonix is a technology company that designs, builds, and scales digital systems where web, mobile, AI, and cloud work together instead of fighting each other. The name says it all: a symphony of technologies, orchestrated with intention.')
-                                }}
+                    <div class="col-lg-4 offset-lg-1">
+                        <div class="px-16 px-lg-0">
+                            <p class="text-caption caption font-2 text-main-2">
+                                {{ trans('About Us') }}
                             </p>
-
-                            <h4 class="about-four__text mt-4">
-                                {{ trans('Core Values (This is non-negotiable stuff)') }}
-                            </h4>
-                            <ul class="about-four__points-2 list-unstyled about-four__points-box">
-                                <li>
-                                    <div class="icon">
-                                        <span class="icon-technical-support"></span>
-                                    </div>
-                                    <div class="content">
-                                        <h5>{{ trans('Harmony over chaos') }}</h5>
-                                        <p>{{
-                                                trans('Every solution must be coherent. No messy stacks, no duct-tape architectures.')
-                                            }}</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <span class="icon-quality"></span>
-                                    </div>
-                                    <div class="content">
-                                        <h5>{{ trans('Engineering first') }}</h5>
-                                        <p>{{
-                                                trans('Pretty UI is great, but solid architecture, performance, and maintainability come first.')
-                                            }}</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <span class="icon-customer-centricity"></span>
-                                    </div>
-                                    <div class="content">
-                                        <h5>{{ trans('Truth & clarity') }}</h5>
-                                        <p>{{
-                                                trans("We say what's possible, what's risky, and what's unnecessary. No tech theater.")
-                                            }}</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <span class="icon-support"></span>
-                                    </div>
-                                    <div class="content">
-                                        <h5>{{ trans('Continuous learning') }}</h5>
-                                        <p>{{
-                                                trans('AI, cloud, and software evolve fast. We evolve faster.')
-                                            }}</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <span class="icon-real-estate-agency"></span>
-                                    </div>
-                                    <div class="content">
-                                        <h5>{{ trans('Global mindset, local roots') }}</h5>
-                                        <p>{{
-                                                trans('Built in Syria. Designed for the world.')
-                                            }}</p>
-                                    </div>
-                                </li>
-                            </ul>
+                            <h5 class="title-2 text-linear-2 font-3">
+                                10 {{ trans('Years of') }} {{ trans('Experience') }}
+                            </h5>
+                            <p class="text-body-3 mb-lg-0">
+                                {{ trans('Built in Syria. Designed for the world.') }}
+                            </p>
                         </div>
+                    </div>
+                    <div class="col-lg-5 offset-lg-1">
+                        <h4 class="font-3 px-16 px-lg-0">
+                            {{ trans('Core Values (This is non-negotiable stuff)') }}
+                        </h4>
+                        <p class="s-sub_title px-16 px-lg-0">
+                            {{ trans('Pretty UI is great, but solid architecture, performance, and maintainability come first.') }}
+                            {{ trans("We say what's possible, what's risky, and what's unnecessary. No tech theater.") }}
+                        </p>
                     </div>
                 </div>
             </div>
         </section>
-        <!--About Four End-->
 
-        <!--Why Choose Three Start-->
-        <section class="why-choose-three">
-            <div class="why-choose-three__bg-shape float-bob-x"
-                 :style="{ backgroundImage: `url(${asset_path}images/shapes/why-choose-three-bg-shape.png)` }"></div>
-            <div class="container">
-                <div class="section-title text-center sec-title-animation animation-style1">
-                    <div class="section-title__tagline-box">
-                        <div class="section-title__tagline-shape-1"></div>
-                        <span class="section-title__tagline">{{ trans('Why Choose Us') }}</span>
-                        <div class="section-title__tagline-shape-2"></div>
+        <div class="section-break">
+            <div class="position-relative z-5">
+                <div class="container">
+                    <div class="has-hafl_plus">
+                        <span class="hafl-plus pst-left_bot item_bot wow bounceInScale"></span>
+                        <span class="hafl-plus pst-right_bot item_bot wow bounceInScale"></span>
                     </div>
-                    <h2 class="section-title__title title-animation" v-if="!isRtl">
-                        {{ trans('Your Business with') }} <span>{{ trans('Reliable &') }}</span><br>
-                        <span>{{ trans('Future-Ready') }}</span>
-                        {{ trans('IT Solutions') }}
+                </div>
+            </div>
+            <span class="br-line"></span>
+            <HackerStrip />
+            <div class="position-relative z-5">
+                <div class="container">
+                    <div class="has-hafl_plus">
+                        <span class="hafl-plus pst-left_bot item_top wow bounceInScale"></span>
+                        <span class="hafl-plus pst-right_bot item_top wow bounceInScale"></span>
+                    </div>
+                </div>
+            </div>
+            <span class="br-line"></span>
+        </div>
+
+        <section class="flat-spacing-3">
+            <div class="container">
+                <div class="sect-title wow fadeInUp">
+                    <h2 class="s-title font-3">
+                        {{ trans('Why Choose Symfonix for Web, AI, and Cloud') }}
                     </h2>
+                    <p class="s-sub_title">
+                        {{ trans('We deliver exceptional products and services that consistently exceed expectations. Backed by years of experience and a proven track record, we are your reliable partner for success.') }}
+                    </p>
                 </div>
-                <div class="row">
-                    <div class="col-xl-3 wow fadeInLeft" data-wow-delay="100ms">
-                        <div class="why-choose-three__single-left">
-                            <div class="why-choose-three__single">
-                                <div class="why-choose-three__icon">
-                                    <span class="icon-quality"></span>
-                                </div>
-                                <h3 class="why-choose-three__title">{{ trans('Unmatched Quality') }}</h3>
-                                <div class="why-choose-three__bdr"></div>
-                                <p class="why-choose-three__text">
-                                    {{
-                                        trans('We deliver exceptional products and services that exceed expectations every time.')
-                                    }}
-                                </p>
-                            </div>
-                            <div class="why-choose-three__single">
-                                <div class="why-choose-three__icon">
-                                    <span class="icon-team"></span>
-                                </div>
-                                <h3 class="why-choose-three__title">{{ trans('Trusted Expertise') }}</h3>
-                                <div class="why-choose-three__bdr"></div>
-                                <p class="why-choose-three__text">
-                                    {{
-                                        trans('Backed by years of experience and a proven track record, we are your reliable partner for success.')
-                                    }}
-                                </p>
-                            </div>
+                <div class="grid-box_icon tf-grid-layout sm-col-2 md-col-3 pb-0">
+                    <div
+                        v-for="item in benefitItems"
+                        :key="item.title"
+                        class="box-icon-text wow fadeInUp"
+                    >
+                        <div class="icon">
+                            <img :src="asset_path + item.icon" :alt="trans(item.title)">
                         </div>
-                    </div>
-                    <div class="col-xl-6 wow fadeInUp" data-wow-delay="200ms">
-                        <div class="why-choose-three__img">
-                            <img :src="asset_path +  'images/about/tech-concept.jpg'"
-                                 :alt="trans('Technology concept')">
-                        </div>
-                    </div>
-                    <div class="col-xl-3 wow fadeInRight" data-wow-delay="100ms">
-                        <div class="why-choose-three__single-left">
-                            <div class="why-choose-three__single">
-                                <div class="why-choose-three__icon">
-                                    <span class="icon-customer-centricity"></span>
-                                </div>
-                                <h3 class="why-choose-three__title">{{ trans('User-Centric Approach') }}</h3>
-                                <div class="why-choose-three__bdr"></div>
-                                <p class="why-choose-three__text">
-                                    {{
-                                        trans('Your satisfaction is our priority, and we tailor solutions to meet your unique needs. Your happiness comes first.')
-                                    }}
-                                </p>
-                            </div>
-                            <div class="why-choose-three__single">
-                                <div class="why-choose-three__icon">
-                                    <span class="icon-support"></span>
-                                </div>
-                                <h3 class="why-choose-three__title">{{ trans('Trusted by Many') }}</h3>
-                                <div class="why-choose-three__bdr"></div>
-                                <p class="why-choose-three__text">
-                                    {{
-                                        trans('We have built a strong reputation over the years by consistently delivering excellent results.')
-                                    }}
-                                </p>
-                            </div>
+                        <div class="content">
+                            <p class="title text-main-2">{{ trans(item.title) }}</p>
+                            <p class="sub-title text-body-3">{{ trans(item.text) }}</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <!--Why Choose Three End-->
 
-        <!-- Team Two Start -->
-        <section class="team-two" v-if="teams && teams.length > 0">
-            <div class="team-two__bg-shape float-bob-y"
-                 :style="{ backgroundImage: `url(${asset_path}images/shapes/team-two-bg-shape.png)` }">
-            </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-5">
-                        <div class="team-two__left">
-                            <div class="section-title text-left sec-title-animation animation-style2">
-                                <div class="section-title__tagline-box">
-                                    <div class="section-title__tagline-shape-1"></div>
-                                    <span class="section-title__tagline">{{ trans('Our Members') }}</span>
-                                    <div class="section-title__tagline-shape-2"></div>
-                                </div>
-                                <h2 class="section-title__title title-animation">
-                                    {{ trans('Meet Our Team.') }} <span>{{ trans('Get to') }}</span><br>
-                                    <span>{{ trans('Know the Talented') }}</span>
-                                    {{ trans('Minds Behind Our Team') }}
-                                </h2>
-                            </div>
-                            <p class="team-two__text">
-                                {{
-                                    trans('Our dedicated team combines expertise, creativity, and passion to deliver exceptional results and ensure your satisfaction every step of the way.')
-                                }}
-                            </p>
-                        </div>
+        <div class="section-break">
+            <div class="position-relative z-5">
+                <div class="container">
+                    <div class="has-hafl_plus">
+                        <span class="hafl-plus pst-left_bot item_bot wow bounceInScale"></span>
+                        <span class="hafl-plus pst-right_bot item_bot wow bounceInScale"></span>
                     </div>
-                    <div class="col-xl-7">
-                        <div class="team-two__right">
-                            <div class="team-two__carousel owl-theme owl-carousel">
-                                <!--Team Two Single Start-->
-                                <div class="item" v-for="team in teams" :key="team.id">
-                                    <div class="team-two__single">
-                                        <div class="team-two__img-box">
-                                            <div class="team-two__img">
-                                                <img :src="team.avatar_link" :alt="translateField(team.name)">
-                                            </div>
-                                            <div class="team-two__social">
-                                                <a v-if="team.facebook" :href="team.facebook" target="_blank">
-                                                    <span class="icon-facebook"></span>
-                                                </a>
-                                                <a v-if="team.behance" :href="team.behance" target="_blank">
-                                                    <span class="icon-dribble"></span>
-                                                </a>
-                                                <a v-if="team.linked_in" :href="team.linked_in" target="_blank">
-                                                    <span class="icon-linkedin"></span>
-                                                </a>
-                                                <a v-if="team.github" :href="team.github" target="_blank">
-                                                    <span class="icon-github"></span>
-                                                </a>
-                                            </div>
-                                            <div class="team-two__title-box">
-                                                <h3><a href="#">{{ translateField(team.name) }}</a></h3>
-                                                <p>{{ translateField(team.position) }}</p>
-                                            </div>
-                                        </div>
+                </div>
+            </div>
+            <span class="br-line"></span>
+            <HackerStrip />
+            <div class="position-relative z-5">
+                <div class="container">
+                    <div class="has-hafl_plus">
+                        <span class="hafl-plus pst-left_bot item_top wow bounceInScale"></span>
+                        <span class="hafl-plus pst-right_bot item_top wow bounceInScale"></span>
+                    </div>
+                </div>
+            </div>
+            <span class="br-line"></span>
+        </div>
+
+        <section v-if="teams.length" class="section-team flat-spacing-3">
+            <div class="container">
+                <h2 class="s-title only-title font-3 text-center">
+                    {{ trans('Meet Our Team.') }}
+                </h2>
+                <p class="s-sub_title text-center mb-5">
+                    {{ trans('Our dedicated team combines expertise, creativity, and passion to deliver exceptional results and ensure your satisfaction every step of the way.') }}
+                </p>
+                <div class="row">
+                    <div class="col-xl-10 mx-auto">
+                        <div class="tf-grid-layout sm-col-2 lg-col-3 px-16 px-xl-0">
+                            <component
+                                v-for="team in teams"
+                                :key="team.id"
+                                :is="teamLink(team) ? 'a' : 'div'"
+                                :href="teamLink(team) || undefined"
+                                :target="teamLink(team) ? '_blank' : undefined"
+                                :rel="teamLink(team) ? 'noopener noreferrer' : undefined"
+                                class="card-team hover-img4"
+                            >
+                                <div class="content">
+                                    <div class="team_image img-style4">
+                                        <img loading="lazy" width="886" height="951" :src="team.avatar_link" :alt="translateField(team.name)">
+                                    </div>
+                                    <div class="team_info">
+                                        <h5 class="name text-linear font-3">{{ translateField(team.name) }}</h5>
+                                        <p class="text-body-3">{{ translateField(team.position) }}</p>
                                     </div>
                                 </div>
-                                <!--Team Two Single End-->
-                            </div>
+                            </component>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <!-- Team Two End -->
 
-        <!-- Process One Start -->
-        <section class="process-one">
-            <div class="process-one__shape-1">
-                <img :src="asset_path + 'images/shapes/process-one-shape-1.png'" :alt="trans('Process illustration')">
-            </div>
-
-            <div class="process-one__bg-shape"
-                 :style="{ backgroundImage: `url(${asset_path}images/shapes/process-one-bg-shape.png)` }"></div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-5">
-                        <div class="process-one__left">
-                            <div class="section-title text-left sec-title-animation animation-style2">
-                                <div class="section-title__tagline-box">
-                                    <div class="section-title__tagline-shape-1"></div>
-                                    <span class="section-title__tagline">{{ trans('Working Process') }}</span>
-                                    <div class="section-title__tagline-shape-2"></div>
-                                </div>
-                                <h2 class="section-title__title title-animation">
-                                    {{ trans('How We\'ve') }}
-                                    <span>{{ trans('Empowered') }}</span><br>
-                                    <span>{{ trans('Businesses with Innovative') }}</span><br>
-                                    {{ trans('Tech Solutions') }}
-                                </h2>
-                            </div>
-                            <p class="process-one__text">
-                                {{
-                                    trans('From personalized solutions to expert execution, we prioritize quality, reliability, and customer satisfaction')
-                                }}
-                            </p>
-                            <div class="process-one__btn-box">
-                                <Link :href="route('contact-us')" class="thm-btn" v-if="typeof route !== 'undefined'">
-                                    {{ trans('Get in Touch') }}
-                                    <span :class="`icon-${isRtl ? 'left' : 'right'}-arrow`"></span>
-                                </Link>
-                                <a :href="`/${locale === 'ar' ? 'ar' : ''}/contact-us`" class="thm-btn" v-else>
-                                    {{ trans('Get in Touch') }}
-                                    <span :class="`icon-${isRtl ? 'left' : 'right'}-arrow`"></span>
-                                </a>
-                            </div>
-                        </div>
+        <div class="section-break">
+            <div class="position-relative z-5">
+                <div class="container">
+                    <div class="has-hafl_plus">
+                        <span class="hafl-plus pst-left_bot item_bot wow bounceInScale"></span>
+                        <span class="hafl-plus pst-right_bot item_bot wow bounceInScale"></span>
                     </div>
-                    <div class="col-xl-7">
-                        <div class="process-one__right">
-                            <ul class="process-one__process-list list-unstyled">
-                                <li>
-                                    <div class="process-one__process-count"></div>
-                                    <div class="process-one__process-content">
-                                        <h3 class="process-one__process-title">{{ trans('Discovery & Strategy') }}</h3>
-                                        <p class="process-one__process-text">
-                                            {{
-                                                trans('We analyze your business needs, identify challenges, and craft a strategic roadmap for the best IT solutions.')
-                                            }}
-                                        </p>
+                </div>
+            </div>
+            <span class="br-line"></span>
+            <HackerStrip />
+            <div class="position-relative z-5">
+                <div class="container">
+                    <div class="has-hafl_plus">
+                        <span class="hafl-plus pst-left_bot item_top wow bounceInScale"></span>
+                        <span class="hafl-plus pst-right_bot item_top wow bounceInScale"></span>
+                    </div>
+                </div>
+            </div>
+            <span class="br-line"></span>
+        </div>
+
+        <section class="section-how-to flat-spacing-3">
+            <div class="sect-main">
+                <div class="container">
+                    <div class="sect-title wow fadeInUp">
+                        <h2 class="s-title font-3">{{ trans("How We've Empowered Businesses with Innovative Tech Solutions") }}</h2>
+                        <p class="s-sub_title">
+                            {{ trans('From personalized solutions to expert execution, we prioritize quality, reliability, and customer satisfaction') }}
+                        </p>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8 col-xl-6 mx-auto">
+                            <ul class="tab-how_to position-relative mx-1 wow fadeInUp">
+                                <li class="nav-tab-item">
+                                    <div class="btn_tab active">
+                                        <p class="number-step text-caption font-2">STEP 01</p>
+                                        <h5 class="name">{{ trans('Discovery & Strategy') }}</h5>
+                                        <p class="desc">{{ trans('We analyze your business needs, identify challenges, and craft a strategic roadmap for the best IT solutions.') }}</p>
                                     </div>
                                 </li>
-                                <li>
-                                    <div class="process-one__process-content">
-                                        <h3 class="process-one__process-title">{{ trans('Development') }}</h3>
-                                        <p class="process-one__process-text">
-                                            {{
-                                                trans('Our expert team designs, develops, and integrates cutting-edge technology tailored to your goals.')
-                                            }}
-                                        </p>
+                                <li class="br-line has-dot"></li>
+                                <li class="nav-tab-item">
+                                    <div class="btn_tab">
+                                        <p class="number-step text-caption font-2">STEP 02</p>
+                                        <h5 class="name">{{ trans('Development') }}</h5>
+                                        <p class="desc">{{ trans('Our expert team designs, develops, and integrates cutting-edge technology tailored to your goals.') }}</p>
                                     </div>
-                                    <div class="process-one__process-count"></div>
                                 </li>
-                                <li>
-                                    <div class="process-one__process-count"></div>
-                                    <div class="process-one__process-content">
-                                        <h3 class="process-one__process-title">{{
-                                                trans('Optimization & Support')
-                                            }}</h3>
-                                        <p class="process-one__process-text">
-                                            {{
-                                                trans('We ensure seamless performance with continuous improvements, maintenance, and dedicated support.')
-                                            }}
-                                        </p>
+                                <li class="br-line has-dot"></li>
+                                <li class="nav-tab-item">
+                                    <div class="btn_tab">
+                                        <p class="number-step text-caption font-2">STEP 03</p>
+                                        <h5 class="name">{{ trans('Optimization & Support') }}</h5>
+                                        <p class="desc">{{ trans('We ensure seamless performance with continuous improvements, maintenance, and dedicated support.') }}</p>
                                     </div>
                                 </li>
                             </ul>
@@ -402,113 +237,189 @@
                 </div>
             </div>
         </section>
-        <!-- Process One End -->
-     <!--CTA One Start -->
-        <section class="cta-one">
-            <div class="cta-one__shape-bg float-bob-y"
-                 :style="{ backgroundImage: `url(${asset_path}images/shapes/cta-one-shape-bg.png)` }">
-            </div>
-            <div class="container">
-                <div class="cta-one__inner">
-                    <h3 class="cta-one__title">
-                        {{ trans('To make requests for further information, contact us') }}
-                    </h3>
-                    <div class="cta-one__contact-info">
-                        <div class="cta-one__contact-icon">
-                            <span class="icon-customer-service-headset"></span>
-                        </div>
-                        <div class="cta-one__contact-details">
-                            <p>{{ trans('Call Us For Any inquiry') }}</p>
-                            <h4><a dir="ltr" :href="`tel:${settings.phone}`">{{settings.phone}}</a></h4>
-                        </div>
+
+        <div class="section-break">
+            <div class="position-relative z-5">
+                <div class="container">
+                    <div class="has-hafl_plus">
+                        <span class="hafl-plus pst-left_bot item_bot wow bounceInScale"></span>
+                        <span class="hafl-plus pst-right_bot item_bot wow bounceInScale"></span>
                     </div>
                 </div>
             </div>
-        </section>
-        <!--CTA One End -->
-        <!-- Testimonial One Start -->
-        <section class="testimonial-one pb-3" v-if="testimonials && testimonials.length > 0">
-
-            <div class="testimonial-one__shape-2 float-bob-y">
-                <img :src="asset_path + 'images/shapes/testimonial-one-shape-2.png'" :alt="trans('Decorative shape')">
+            <span class="br-line"></span>
+            <HackerStrip />
+            <div class="position-relative z-5">
+                <div class="container">
+                    <div class="has-hafl_plus">
+                        <span class="hafl-plus pst-left_bot item_top wow bounceInScale"></span>
+                        <span class="hafl-plus pst-right_bot item_top wow bounceInScale"></span>
+                    </div>
+                </div>
             </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-3"></div>
-                    <div class="col-xl-9">
-                        <div class="testimonial-one__content-box">
-                            <div class="section-title text-left sec-title-animation animation-style2">
-                                <div class="section-title__tagline-box">
-                                    <div class="section-title__tagline-shape-1"></div>
-                                    <span class="section-title__tagline">{{ trans('Testimonials') }}</span>
-                                    <div class="section-title__tagline-shape-2"></div>
-                                </div>
-                                <h2 class="section-title__title title-animation">
-                                    {{ trans('What Our Clients Say') }}
-                                </h2>
-                            </div>
-                            <div class="testimonial-one__carousel owl-theme owl-carousel">
-                                <!-- Testimonial One Single Start -->
-                                <div class="item" v-for="testimonial in testimonials" :key="testimonial.id">
-                                    <div class="testimonial-one__single">
-                                        <div class="testimonial-one__img-box">
-                                            <div class="testimonial-one__img">
-                                                <img :src="testimonial.avatar_link" :alt="translateField(testimonial.name)">
-                                            </div>
+            <span class="br-line"></span>
+        </div>
+
+        <section v-if="testimonials.length" class="section-testimonial tes-2 flat-spacing-3">
+            <div class="sect-main">
+                <div class="s-img_item wow bounceInScale">
+                    <img class="lazyload img-2" :src="asset_path + 'qore/images/section/color-bg.webp'" :data-src="asset_path + 'qore/images/section/color-bg.webp'" :alt="trans('Testimonials')">
+                </div>
+                <div class="container">
+                    <div class="sect-title wow fadeInUp pt-0">
+                        <h2 class="s-title font-3 m-0">{{ trans('What Our Clients Say') }}</h2>
+                    </div>
+                    <div class="testimonial-slide-wrap pb-0">
+                        <div class="overflow-hidden has-overlay_linear type-2 mx-1">
+                            <div class="infiniteSlide infiniteSlide-tes">
+                                <div v-for="testimonial in testimonials" :key="'tes-a-' + testimonial.id" class="wg-testimonial">
+                                    <div class="tes-author">
+                                        <div class="author_image">
+                                            <img :src="testimonial.avatar_link" :alt="translateField(testimonial.name)">
                                         </div>
-                                        <div class="testimonial-one__content">
-
-                                            <p class="testimonial-one__text">
-                                                “{{ translateField(testimonial.quote) }}”
-                                            </p>
-                                            <div class="testimonial-one__bottom">
-                                                <div class="testimonial-one__quote-and-client-info">
-                                                    <div class="testimonial-one__quote">
-                                                        <span class="icon-left"></span>
-                                                    </div>
-                                                    <div class="testimonial-one__client-info">
-                                                        <p class="testimonial-one__client-sub-title">
-                                                            {{ translateField(testimonial.position) }}
-                                                        </p>
-                                                        <h3 class="testimonial-one__client-name">
-                                                            <a href="#">{{ translateField(testimonial.name) }}</a>
-                                                        </h3>
-                                                    </div>
-                                                </div>
-
-                                            </div>
+                                        <div class="author_info">
+                                            <span class="link name">{{ translateField(testimonial.name) }}</span>
+                                            <p class="text-body-3">{{ translateField(testimonial.position) }}</p>
                                         </div>
                                     </div>
+                                    <p class="tes-text">{{ translateField(testimonial.quote) }}</p>
                                 </div>
-                                <!-- Testimonial One Single End -->
+                            </div>
+                            <div class="infiniteSlide infiniteSlide-tes mb-0" data-style="right">
+                                <div v-for="testimonial in reversedTestimonials" :key="'tes-b-' + testimonial.id" class="wg-testimonial">
+                                    <div class="tes-author">
+                                        <div class="author_image">
+                                            <img :src="testimonial.avatar_link" :alt="translateField(testimonial.name)">
+                                        </div>
+                                        <div class="author_info">
+                                            <span class="link name">{{ translateField(testimonial.name) }}</span>
+                                            <p class="text-body-3">{{ translateField(testimonial.position) }}</p>
+                                        </div>
+                                    </div>
+                                    <p class="tes-text">{{ translateField(testimonial.quote) }}</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <!-- Testimonial One End -->
 
-        <ClientsSection :clients="clients" />
+        <div v-if="testimonials.length && clients.length" class="section-break">
+            <div class="position-relative z-5">
+                <div class="container">
+                    <div class="has-hafl_plus">
+                        <span class="hafl-plus pst-left_bot item_bot wow bounceInScale"></span>
+                        <span class="hafl-plus pst-right_bot item_bot wow bounceInScale"></span>
+                    </div>
+                </div>
+            </div>
+            <span class="br-line"></span>
+            <HackerStrip />
+            <div class="position-relative z-5">
+                <div class="container">
+                    <div class="has-hafl_plus">
+                        <span class="hafl-plus pst-left_bot item_top wow bounceInScale"></span>
+                        <span class="hafl-plus pst-right_bot item_top wow bounceInScale"></span>
+                    </div>
+                </div>
+            </div>
+            <span class="br-line"></span>
+        </div>
+
+        <div v-if="clients.length" class="tf-brand">
+            <div class="container">
+                <div class="tf-brand_inner">
+                    <h5 class="title text-caption font-2 letter-space-0 fw-normal wow fadeInUp">
+                        {{ trans('Trusted by companies we build with') }}
+                    </h5>
+                    <div class="infiniteSlide infiniteSlide_brand" data-clone="3">
+                        <div v-for="client in clients" :key="client.id" class="image-brand">
+                            <img :src="client.logo_link" :alt="client.name" loading="lazy">
+                        </div>
+                    </div>
+                    <span class="hafl-plus pst-left_bot item_bot wow bounceInScale"></span>
+                    <span class="hafl-plus pst-right_bot item_bot wow bounceInScale"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-break">
+            <div class="position-relative z-5">
+                <div class="container">
+                    <div class="has-hafl_plus">
+                        <span class="hafl-plus pst-left_bot item_bot wow bounceInScale"></span>
+                        <span class="hafl-plus pst-right_bot item_bot wow bounceInScale"></span>
+                    </div>
+                </div>
+            </div>
+            <span class="br-line"></span>
+            <HackerStrip />
+            <div class="position-relative z-5">
+                <div class="container">
+                    <div class="has-hafl_plus">
+                        <span class="hafl-plus pst-left_bot item_top wow bounceInScale"></span>
+                        <span class="hafl-plus pst-right_bot item_top wow bounceInScale"></span>
+                    </div>
+                </div>
+            </div>
+            <span class="br-line"></span>
+        </div>
+
+        <section class="section-image-text flat-spacing-3">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 mx-auto">
+                        <div class="px-16 px-xl-0">
+                            <div class="banner-image-v01">
+                                <div class="img-abs img-bg">
+                                    <img loading="lazy" width="1078" height="369" :src="asset_path + 'qore/images/item/item-bg-3.png'" :alt="trans('Contact Us')">
+                                </div>
+                                <div class="content">
+                                    <h3 class="title text-linear font-3">
+                                        {{ trans('To make requests for further information, contact us') }}
+                                    </h3>
+                                    <p class="sub-title">
+                                        {{ trans('Call Us For Any inquiry') }}
+                                        <template v-if="settings.phone">
+                                            <br>
+                                            <a dir="ltr" :href="`tel:${settings.phone}`">{{ settings.phone }}</a>
+                                        </template>
+                                    </p>
+                                    <Link :href="route('contact-us')" class="tf-btn text-body-3 style-2 style-high-2 animate-btn animate-dark">
+                                        {{ trans('Get in Touch') }}
+                                    </Link>
+                                </div>
+                                <div class="image">
+                                    <img loading="lazy" width="498" height="308" :src="asset_path + 'qore/images/section/build-in/build-1.jpg'" :alt="trans('Get in Touch')">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </app-layout>
 </template>
 
 <script setup>
-import {computed, onMounted, nextTick} from 'vue'
-import {Link, usePage, Head} from '@inertiajs/vue3'
-import ClientsSection from '@/Components/ClientsSection.vue'
+import { computed } from 'vue'
+import { Head, Link, usePage } from '@inertiajs/vue3'
+import AppLayout from '@/Layouts/App.vue'
+import PageTitle from '@/Components/PageTitle.vue'
+import HackerStrip from '@/Components/HackerStrip.vue'
 
 const page = usePage()
-const trans = (key) => page.props.translations[key] || key;
+const trans = (key) => page.props.translations[key] || key
 const seo = computed(() => page.props.seo)
 const settings = computed(() => page.props.settings || {})
 const asset_path = computed(() => page.props.asset_path || '')
 const locale = computed(() => page.props.locale || 'en')
-const isRtl = computed(() => locale.value === 'ar')
 const teams = computed(() => page.props.teams || [])
 const testimonials = computed(() => page.props.testimonials || [])
 const clients = computed(() => page.props.clients || [])
 const meta = computed(() => page.props.meta || {})
+const reversedTestimonials = computed(() => [...testimonials.value].reverse())
 
 const metaTitle = computed(() => {
     return meta.value.title || `${trans('About Us')} | ${seo.value.website_name || ''}`.trim()
@@ -531,6 +442,39 @@ const metaImage = computed(() => {
 const metaCanonical = computed(() => meta.value.canonical || '')
 const metaRobots = computed(() => meta.value.robots || 'index, follow')
 
+const benefitItems = [
+    {
+        icon: 'qore/images/section/platform.svg',
+        title: 'Harmony over chaos',
+        text: 'Every solution must be coherent. No messy stacks, no duct-tape architectures.',
+    },
+    {
+        icon: 'qore/images/section/ai-core.svg',
+        title: 'Engineering first',
+        text: 'Pretty UI is great, but solid architecture, performance, and maintainability come first.',
+    },
+    {
+        icon: 'qore/images/section/control.svg',
+        title: 'Truth & clarity',
+        text: "We say what's possible, what's risky, and what's unnecessary. No tech theater.",
+    },
+    {
+        icon: 'qore/images/section/evolving.svg',
+        title: 'Continuous learning',
+        text: 'AI, cloud, and software evolve fast. We evolve faster.',
+    },
+    {
+        icon: 'qore/images/section/speed.svg',
+        title: 'Unmatched Quality',
+        text: 'We deliver exceptional products and services that exceed expectations every time.',
+    },
+    {
+        icon: 'qore/images/section/secure.svg',
+        title: 'User-Centric Approach',
+        text: 'Your satisfaction is our priority, and we tailor solutions to meet your unique needs. Your happiness comes first.',
+    },
+]
+
 const translateField = (value) => {
     if (!value) {
         return ''
@@ -544,106 +488,5 @@ const translateField = (value) => {
     return ''
 }
 
-onMounted(() => {
-    nextTick(() => {
-        const applyOwlDotAriaLabels = ($carousel) => {
-            if (!$carousel || !$carousel.length) {
-                return;
-            }
-
-            $carousel.find('.owl-dot').each(function(index) {
-                $(this).attr('aria-label', `${trans('Go to slide')} ${index + 1}`);
-            });
-        };
-
-        // Initialize Team Owl Carousel
-        if (typeof $ !== 'undefined' && $('.team-two__carousel').length && teams.value.length > 0) {
-            const $teamCarousel = $('.team-two__carousel');
-            $teamCarousel.owlCarousel({
-                loop: teams.value.length > 3,
-                margin: 30,
-                nav: false,
-                dots: true,
-                smartSpeed: 500,
-                autoplay: true,
-                autoplayTimeout: 7000,
-                rtl: isRtl.value,
-                responsive: {
-                    0: {items: 1},
-                    768: {items: 2},
-                    992: {items: 2},
-                    1200: {items: 3}
-                }
-            }).on('initialized.owl.carousel refreshed.owl.carousel', function() {
-                applyOwlDotAriaLabels($(this));
-            });
-            applyOwlDotAriaLabels($teamCarousel);
-        }
-
-        // Initialize Testimonials Owl Carousel
-        if (typeof $ !== 'undefined' && $('.testimonial-one__carousel').length && testimonials.value.length > 0) {
-            const $testimonialCarousel = $('.testimonial-one__carousel');
-            $testimonialCarousel.owlCarousel({
-                loop: testimonials.value.length > 1,
-                margin: 30,
-                nav: false,
-                dots: true,
-                smartSpeed: 500,
-                autoplay: true,
-                autoplayTimeout: 7000,
-                rtl: isRtl.value,
-                responsive: {
-                    0: {items: 1},
-                    768: {items: 1},
-                    992: {items: 1},
-                    1200: {items: 1}
-                }
-            }).on('initialized.owl.carousel refreshed.owl.carousel', function() {
-                applyOwlDotAriaLabels($(this));
-            });
-            applyOwlDotAriaLabels($testimonialCarousel);
-        }
-
-        // Initialize WOW animations
-        if (typeof WOW !== 'undefined') {
-            new WOW().init();
-        }
-
-        // Initialize GSAP title animations
-        if (typeof gsap !== 'undefined' && typeof SplitText !== 'undefined') {
-            const titleAnimations = document.querySelectorAll(".sec-title-animation .title-animation");
-            if (titleAnimations.length) {
-                titleAnimations.forEach(quote => {
-                    let split = new SplitText(quote, {type: "lines"});
-                    gsap.from(split.lines, {
-                        duration: 1,
-                        y: 100,
-                        opacity: 0,
-                        stagger: 0.1,
-                        scrollTrigger: {
-                            trigger: quote,
-                            start: "top 90%",
-                            toggleActions: "play none none none"
-                        }
-                    });
-                });
-            }
-        }
-
-    });
-});
-
+const teamLink = (team) => team?.linked_in || team?.github || team?.behance || team?.facebook || ''
 </script>
-<script>
-
-
-import AppLayout from '@/Layouts/App.vue';
-
-export default {
-    components: {
-        AppLayout
-    }
-
-};
-</script>
-

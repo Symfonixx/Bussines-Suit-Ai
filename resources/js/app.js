@@ -1,4 +1,3 @@
-import 'bootstrap';
 import 'toastr';
 
 import {createApp, h} from 'vue';

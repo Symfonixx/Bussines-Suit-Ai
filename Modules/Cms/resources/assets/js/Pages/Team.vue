@@ -1,6 +1,5 @@
 <template>
     <Head>
-        <link rel="stylesheet" :href="asset_path + 'site/css/module-css/page-header.css'" />
         <title>{{ metaTitle }}</title>
         <meta name="description" :content="metaDescription">
         <meta name="keywords" :content="metaKeywords">
@@ -19,31 +18,8 @@
     <app-layout>
 
         <!--Page Header Start-->
-        <section class="page-header">
-            <div class="page-header__bg" :style="{ backgroundImage: `url(${asset_path}images/backgrounds/our-team-bg.jpg)`}">
-
-            </div>
-            <div class="container">
-                <div class="page-header__inner">
-                    <h1>{{ trans('Our Members') }}</h1>
-                    <div class="thm-breadcrumb__box">
-                        <ul class="thm-breadcrumb list-unstyled">
-                            <li>
-                                <Link :href="route('home')" v-if="typeof route !== 'undefined'">
-                                    <i class="fas fa-home"></i>{{ trans('Home') }}
-                                </Link>
-                                <a :href="`/${locale === 'ar' ? 'ar' : ''}`" v-else>
-                                    <i class="fas fa-home"></i>{{ trans('Home') }}
-                                </a>
-                            </li>
-                            <li><span :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow-1`"></span></li>
-                            <li>{{ trans('Our Members') }}</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--Page Header End-->
+        <PageTitle :title="trans('Our Members')" />
+<!--Page Header End-->
 
         <!--Team Page Start-->
         <section class="team-page my-5">
@@ -98,6 +74,7 @@
 <script setup>
 import { computed, onMounted, nextTick } from 'vue'
 import { Link, usePage, Head } from '@inertiajs/vue3'
+import PageTitle from '@/Components/PageTitle.vue'
 
 const page = usePage()
 const trans = (key) => page.props.translations[key] || key;

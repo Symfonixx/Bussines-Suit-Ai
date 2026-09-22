@@ -1,6 +1,6 @@
-# Symfonix Business Suite
+# Symfonix Business AI
 
-Symfonix Business Suite is a modular Laravel business platform for agencies and service companies. It combines a multilingual public website, admin panel, CRM, project delivery, finance, tax, HR, support, reporting, product catalog, and an AI layer (Ask Symfonix, content generation, image editing, and the public chatbot) in one codebase.
+Symfonix Business AI is a modular Laravel business platform for agencies and service companies. It combines a multilingual public website, admin panel, CRM, project delivery, finance, tax, HR, support, reporting, product catalog, and an AI layer (Ask Symfonix, content generation, image editing, and the public chatbot) in one codebase.
 
 Built on **Laravel 13** with **nwidart/laravel-modules**, **Spatie Permission**, **Inertia + Vue 3**, **Livewire**, and the **Metronic** admin theme.
 

@@ -1,243 +1,173 @@
 <template>
-    <ul class="main-menu__list">
-        <li :class="{ current: isActive('home', { exact: ['/'] }) }">
-            <Link :href="route('home')">
-                {{ trans('Home') }}
-            </Link>
-        </li>
-        <li :class="{ current: isActive('about-us', { prefixes: ['/about-us'] }) }">
-            <Link :href="route('about-us')">
-                {{ trans('About Us') }}
-            </Link>
-        </li>
-        <li :class="{ current: isActive(['services.index', 'services.show'], { prefixes: ['/services', '/service'] }) }">
-            <Link :href="route('services.index')">
-                {{ trans('Our Services') }}
-            </Link>
-        </li>
-        <li :class="{ current: isActive(['use-cases.index', 'use-cases.show'], { prefixes: ['/use-cases', '/portfolio'] }) }">
-            <Link :href="route('use-cases.index')">
-                {{ trans('Case Studies') }}
-            </Link>
-        </li>
-        <li :class="{ current: isActive(['product.index', 'product.show'], { prefixes: ['/products', '/product'] }) }">
-            <Link :href="route('product.index')">
-                {{ trans('Products') }}
-            </Link>
-        </li>
-        <li :class="{ current: isActive(['blogs.index', 'blogs.show'], { prefixes: ['/blogs', '/blog'] }) }">
-            <Link :href="route('blogs.index')">
-                {{ trans('Blogs') }}
-            </Link>
-        </li>
-        <li
-            class="dropdown"
-            :class="[
-                headerPages.length === 0 ? 'd-none' : '',
-                { current: isActive('page.view', { prefixes: ['/p'] }) }
-            ]"
-        >
-            <Link :href="headerPages.length ? route('page.view', headerPages[0].slug) : '#'">
-                {{ trans('Pages') }}
-            </Link>
-            <ul class="shadow-box">
-                <li v-for="page in headerPages" :key="page.id" :class="{ current: isPageActive(page) }">
-                    <Link :href="route('page.view', page.slug)">
-                        {{ page.title[locale] }}
-                    </Link>
-                </li>
-            </ul>
-        </li>
-
-        <li :class="{ current: isActive('contact-us', { prefixes: ['/contact-us'] }) }">
-            <Link :href="route('contact-us')">
-                {{ trans('Contact Us') }}
-            </Link>
-        </li>
-
-        <li
-            v-if="!auth"
-            class="d-md-none"
-            :class="{ current: isActive('login', { prefixes: ['/login'] }) }"
-        >
-            <Link :href="loginUrl">
-                <i class="fas fa-sign-in-alt mx-1"></i>
-                {{ trans('Login') }}
-            </Link>
-        </li>
-
-        <li
-            v-if="auth?.type === 'admin'"
-            :class="{ active: isActive('admin.dashboard.index', { prefixes: ['/admin'] }) }"
-        >
-            <a :href="adminDashboardUrl">
-                {{ trans('Dashboard') }}
+    <ul v-if="variant === 'mobile'" class="nav-ul-mb gap-0">
+        <li v-for="item in items" :key="item.key" class="nav-mb-item">
+            <template v-if="item.children?.length">
+                <a
+                    :href="`#mb-${item.key}`"
+                    class="collapsed mb-menu-link"
+                    data-bs-toggle="collapse"
+                    aria-expanded="false"
+                    :aria-controls="`mb-${item.key}`"
+                >
+                    <span>{{ item.label }}</span>
+                    <span class="icon icon-arrow-caret-down"></span>
+                </a>
+                <div :id="`mb-${item.key}`" class="collapse">
+                    <ul class="sub-nav-menu">
+                        <li v-for="child in item.children" :key="child.key">
+                            <a
+                                v-if="child.external"
+                                :href="child.href"
+                                class="sub-nav-link"
+                                :class="{ active: child.active }"
+                                data-bs-dismiss="offcanvas"
+                            >{{ child.label }}</a>
+                            <Link
+                                v-else
+                                :href="child.href"
+                                class="sub-nav-link"
+                                :class="{ active: child.active }"
+                                data-bs-dismiss="offcanvas"
+                            >{{ child.label }}</Link>
+                        </li>
+                    </ul>
+                </div>
+            </template>
+            <a
+                v-else-if="item.external"
+                :href="item.href"
+                class="mb-menu-link"
+                :class="{ 'is-active': item.active, active: item.active }"
+                data-bs-dismiss="offcanvas"
+            >
+                <span>{{ item.label }}</span>
             </a>
+            <Link
+                v-else
+                :href="item.href"
+                class="mb-menu-link"
+                :class="{ 'is-active': item.active, active: item.active }"
+                data-bs-dismiss="offcanvas"
+            >
+                <span>{{ item.label }}</span>
+            </Link>
         </li>
+        <li class="nav-mb-item">
+            <a href="#mb-lang" class="collapsed mb-menu-link" data-bs-toggle="collapse" aria-expanded="false">
+                <span>{{ trans('Language') }}</span>
+                <span class="icon icon-arrow-caret-down"></span>
+            </a>
+            <div id="mb-lang" class="collapse">
+                <ul class="sub-nav-menu">
+                    <li v-for="lang in languages" :key="lang.code">
+                        <a href="#" class="sub-nav-link" :class="{ active: locale === lang.code }" @click.prevent="switchLocale(lang.code)">
+                            {{ lang.label }}
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+    </ul>
 
+    <ul v-else class="box-nav-menu main-nav_menu">
         <li
-            v-if="auth?.type === 'customer'"
-            class="dropdown portal-account-dropdown"
+            v-for="item in items"
+            :key="item.key"
+            class="menu-item"
+            :class="{ 'is-active': item.active }"
         >
-            <a href="#" aria-label="Customer account" @click.prevent>
-                <i class="fas fa-user-circle mx-1"></i>{{ auth.name }}
+            <a
+                v-if="item.children?.length"
+                href="javascript:void(0)"
+                class="item-link tf-btn style-transparent text-body-3 animate-btn"
+                :class="{ 'is-active': item.active, active: item.active }"
+            >
+                {{ item.label }}
+                <i class="icon icon-arrow-caret-down fs-7"></i>
             </a>
-            <ul class="shadow-box portal-account-menu">
-                <li
-                    class="portal-menu-item"
-                    :class="{ current: isActive('portal.dashboard') }"
-                >
-                    <Link :href="route('portal.dashboard')">
-                        <i class="fas fa-th-large mx-1"></i>
-                        {{ portalLabel('menu.my_dashboard') }}
-                    </Link>
-                </li>
-                <li
-                    class="portal-menu-item"
-                    :class="{ current: isActive(['portal.projects.index', 'portal.projects.show'], { prefixes: ['/portal/projects'] }) }"
-                >
-                    <Link :href="route('portal.projects.index')">
-                        <i class="fas fa-folder-open mx-1"></i>
-                        {{ portalLabel('menu.projects') }}
-                        <span v-if="unreadCount" class="portal-menu-badge">{{ unreadCount }}</span>
-                    </Link>
-                </li>
-                <li
-                    class="portal-menu-item"
-                    :class="{ current: isActive('portal.subscriptions.index', { prefixes: ['/portal/subscriptions'] }) }"
-                >
-                    <Link :href="route('portal.subscriptions.index')">
-                        <i class="fas fa-sync-alt mx-1"></i>
-                        {{ portalLabel('menu.subscriptions') }}
-                    </Link>
-                </li>
-                <li
-                    class="portal-menu-item"
-                    :class="{ current: isActive(['portal.tickets.index', 'portal.tickets.create', 'portal.tickets.show'], { prefixes: ['/portal/tickets'] }) }"
-                >
-                    <Link :href="route('portal.tickets.index')">
-                        <i class="fas fa-life-ring mx-1"></i>
-                        {{ portalLabel('menu.tickets') }}
-                    </Link>
-                </li>
-                <li
-                    class="portal-menu-item"
-                    :class="{ current: isActive('portal.profile.index', { prefixes: ['/portal/profile'] }) }"
-                >
-                    <Link :href="route('portal.profile.index')">
-                        <i class="fas fa-user-cog mx-1"></i>
-                        {{ portalLabel('menu.profile') }}
-                    </Link>
-                </li>
-                <li class="portal-menu-item portal-menu-item--logout text-danger">
-                    <Link :href="route('logout')" method="post" as="a">
-                        <i class="fas fa-sign-out-alt mx-1"></i>
-                        {{ portalLabel('menu.logout') }}
-                    </Link>
-                </li>
-            </ul>
+            <a
+                v-else-if="item.external"
+                :href="item.href"
+                class="item-link tf-btn style-transparent text-body-3 animate-btn"
+                :class="{ 'is-active': item.active, active: item.active }"
+            >
+                {{ item.label }}
+            </a>
+            <Link
+                v-else
+                :href="item.href"
+                class="item-link tf-btn style-transparent text-body-3 animate-btn"
+                :class="{ 'is-active': item.active, active: item.active }"
+            >
+                {{ item.label }}
+            </Link>
+            <div v-if="item.children?.length" class="sub-menu">
+                <ul class="sub-menu_list">
+                    <li v-for="child in item.children" :key="child.key">
+                        <a
+                            v-if="child.external"
+                            :href="child.href"
+                            class="sub-menu_link"
+                            :class="{ active: child.active }"
+                        >{{ child.label }}</a>
+                        <Link
+                            v-else
+                            :href="child.href"
+                            class="sub-menu_link"
+                            :class="{ active: child.active }"
+                        >{{ child.label }}</Link>
+                    </li>
+                </ul>
+            </div>
         </li>
-
-        <li class="dropdown">
-            <a href="#" aria-label="Change language">
-                <img
-                    :src="asset_path + `images/langs/${locale}.svg`"
-                    width="20"
-                    :alt="trans('Current language')"
-                >
+        <li class="menu-item">
+            <a href="javascript:void(0)" class="item-link tf-btn style-transparent text-body-3 animate-btn">
+                {{ locale.toUpperCase() }}
+                <i class="icon icon-arrow-caret-down fs-7"></i>
             </a>
-            <ul class="shadow-box">
-                <li>
-                    <a
-                        href="#"
-                        @click.prevent="switchLocale('ar')"
-                        :class="{ active: locale === 'ar' }"
-                    >
-                        <img
-                            class="mx-1"
-                            :src="asset_path + 'images/langs/ar.svg'"
-                            width="20"
-                            :alt="trans('Arabic')"
+            <div class="sub-menu">
+                <ul class="sub-menu_list">
+                    <li v-for="lang in languages" :key="lang.code">
+                        <a
+                            href="#"
+                            class="sub-menu_link"
+                            :class="{ active: locale === lang.code }"
+                            @click.prevent="switchLocale(lang.code)"
                         >
-                        {{ trans('Arabic') }}
-                    </a>
-                </li>
-
-                <li>
-                    <a
-                        href="#"
-                        @click.prevent="switchLocale('en')"
-                        :class="{ active: locale === 'en' }"
-                    >
-                        <img
-                            class="mx-1"
-                            :src="asset_path + 'images/langs/en.svg'"
-                            width="20"
-                            :alt="trans('English')"
-                        >
-                        {{ trans('English') }}
-                    </a>
-                </li>
-                <li>
-                    <a
-                        href="#"
-                        @click.prevent="switchLocale('tr')"
-                        :class="{ active: locale === 'tr' }"
-                    >
-                        <img
-                            class="mx-1"
-                            :src="asset_path + 'images/langs/tr.svg'"
-                            width="20"
-                            :alt="trans('Turkish')"
-                        >
-                        {{ trans('Turkish') }}
-                    </a>
-                </li>
-                <li>
-                    <a
-                        href="#"
-                        @click.prevent="switchLocale('de')"
-                        :class="{ active: locale === 'de' }"
-                    >
-                        <img
-                            class="mx-1"
-                            :src="asset_path + 'images/langs/de.svg'"
-                            width="20"
-                            :alt="trans('German')"
-                        >
-                        {{ trans('German') }}
-                    </a>
-                </li>
-            </ul>
+                            {{ lang.label }}
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </li>
     </ul>
 </template>
 
 <script setup>
-import {computed} from 'vue'
-import {Link, usePage} from '@inertiajs/vue3'
+import { computed } from 'vue'
+import { Link, usePage } from '@inertiajs/vue3'
+
+defineProps({
+    variant: { type: String, default: 'desktop' },
+})
 
 const page = usePage()
-const trans = (key) => page.props.translations[key] || key
-const locale = computed(() => page.props.locale)
+const trans = (key) => page.props.translations?.[key] || key
+const locale = computed(() => page.props.locale || 'en')
 const headerPages = computed(() => page.props.headerPages || [])
 const auth = computed(() => page.props.auth)
-const asset_path = computed(() => page.props.asset_path || '')
 const portalTranslations = computed(() => page.props.portal?.translations || {})
 const unreadCount = computed(() => page.props.portal?.unread_notifications || 0)
 
 const portalLabel = (key) => {
     const parts = key.split('.')
     let value = portalTranslations.value
-
     for (const part of parts) {
         value = value?.[part]
     }
-
     if (typeof value === 'string') {
         return value
     }
-
     const fallbacks = {
         'menu.my_dashboard': 'My Dashboard',
         'menu.projects': 'My Projects',
@@ -246,22 +176,18 @@ const portalLabel = (key) => {
         'menu.profile': 'My Profile',
         'menu.logout': 'Logout',
     }
-
     return fallbacks[key] || key
 }
 
 const localizedPath = (path = '') => {
     const normalized = path.startsWith('/') ? path : `/${path}`
     const localePrefix = locale.value ? `/${locale.value}` : ''
-
     if (!localePrefix) {
         return normalized === '/' ? '/' : normalized
     }
-
     if (normalized === '/') {
         return localePrefix
     }
-
     return `${localePrefix}${normalized}`
 }
 
@@ -272,9 +198,6 @@ const safeRoute = (name, fallbackPath = '/', params = undefined) => {
         return localizedPath(fallbackPath)
     }
 }
-
-const loginUrl = computed(() => safeRoute('login', '/login'))
-const adminDashboardUrl = computed(() => localizedPath('/admin/dashboard'))
 
 const normalizePath = (path) => {
     if (!path) return ''
@@ -307,10 +230,8 @@ const isActive = (routeName, options = {}) => {
     const routeNames = Array.isArray(routeName) ? routeName : [routeName]
     const prefixes = expandPrefixes(options.prefixes || [])
     const exactPaths = expandPrefixes(options.exact || [])
-    const currentPath = normalizePath(page.url)
-    const hasPathOptions = exactPaths.length > 0 || prefixes.length > 0
+    const currentPath = normalizePath(getPathFromUrl(page.url) || page.url)
 
-    // Prefer Inertia page.url — Ziggy location can stay on the first page across SPA visits.
     if (exactPaths.some((path) => currentPath === normalizePath(path))) {
         return true
     }
@@ -322,10 +243,6 @@ const isActive = (routeName, options = {}) => {
         return true
     }
 
-    if (hasPathOptions) {
-        return false
-    }
-
     try {
         return routeNames.some((name) => route().current(name))
     } catch (e) {
@@ -333,14 +250,10 @@ const isActive = (routeName, options = {}) => {
     }
 }
 
-const isCurrentUrl = (targetUrl) => {
-    const targetPath = normalizePath(getPathFromUrl(targetUrl))
-    const currentPath = normalizePath(page.url)
-    return currentPath === targetPath
-}
+const isCurrentUrl = (targetUrl) => normalizePath(getPathFromUrl(targetUrl)) === normalizePath(page.url)
 
 const isPageActive = (pageItem) => {
-    if (!pageItem || !pageItem.slug) return false
+    if (!pageItem?.slug) return false
     try {
         return isCurrentUrl(route('page.view', pageItem.slug))
     } catch (e) {
@@ -351,37 +264,88 @@ const isPageActive = (pageItem) => {
 const switchLocale = (newLocale) => {
     const currentPath = window.location.pathname
     const currentLocale = locale.value
-
-    // Remove current locale from path if it exists
     let pathWithoutLocale = currentPath
     if (currentLocale && currentPath.startsWith(`/${currentLocale}`)) {
         pathWithoutLocale = currentPath.substring(`/${currentLocale}`.length) || '/'
     }
-
-    // Ensure path starts with /
     if (!pathWithoutLocale.startsWith('/')) {
-        pathWithoutLocale = '/' + pathWithoutLocale
+        pathWithoutLocale = `/${pathWithoutLocale}`
+    }
+    const newPath = `/${newLocale}${pathWithoutLocale === '/' ? '' : pathWithoutLocale}`
+    window.location.href = newPath + window.location.search + window.location.hash
+}
+
+const pageTitle = (cmsPage) => {
+    const title = cmsPage?.title
+    if (!title) return ''
+    if (typeof title === 'string') return title
+    return title[locale.value] || title.en || Object.values(title)[0] || ''
+}
+
+const languages = computed(() => [
+    { code: 'ar', label: trans('Arabic') },
+    { code: 'en', label: trans('English') },
+    { code: 'tr', label: trans('Turkish') },
+    { code: 'de', label: trans('German') },
+])
+
+const items = computed(() => {
+    const list = [
+        { key: 'home', label: trans('Home'), href: safeRoute('home', '/'), active: isActive('home', { exact: ['/'] }) },
+        { key: 'about', label: trans('About Us'), href: safeRoute('about-us', '/about-us'), active: isActive('about-us', { prefixes: ['/about-us'] }) },
+        { key: 'services', label: trans('Our Services'), href: safeRoute('services.index', '/services'), active: isActive(['services.index', 'services.show'], { prefixes: ['/services', '/service'] }) },
+        { key: 'cases', label: trans('Case Studies'), href: safeRoute('use-cases.index', '/use-cases'), active: isActive(['use-cases.index', 'use-cases.show'], { prefixes: ['/use-cases', '/portfolio'] }) },
+        { key: 'products', label: trans('Products'), href: safeRoute('product.index', '/products'), active: isActive(['product.index', 'product.show'], { prefixes: ['/products', '/product'] }) },
+        { key: 'blogs', label: trans('Blogs'), href: safeRoute('blogs.index', '/blogs'), active: isActive(['blogs.index', 'blogs.show'], { prefixes: ['/blogs', '/blog'] }) },
+    ]
+
+    if (headerPages.value.length) {
+        list.push({
+            key: 'pages',
+            label: trans('Pages'),
+            href: safeRoute('page.view', '/p', headerPages.value[0].slug),
+            active: isActive('page.view', { prefixes: ['/p'] }),
+            children: headerPages.value.map((cmsPage) => ({
+                key: `page-${cmsPage.id}`,
+                label: pageTitle(cmsPage),
+                href: safeRoute('page.view', `/p/${cmsPage.slug}`, cmsPage.slug),
+                active: isPageActive(cmsPage),
+            })),
+        })
     }
 
-    // Build new URL with new locale
-    const newPath = `/${newLocale}${pathWithoutLocale === '/' ? '' : pathWithoutLocale}`
+    list.push({
+        key: 'contact',
+        label: trans('Contact Us'),
+        href: safeRoute('contact-us', '/contact-us'),
+        active: isActive('contact-us', { prefixes: ['/contact-us'] }),
+    })
 
-    // Preserve query string and hash if present
-    const queryString = window.location.search
-    const hash = window.location.hash
+    if (auth.value?.type === 'admin') {
+        list.push({
+            key: 'dashboard',
+            label: trans('Dashboard'),
+            href: localizedPath('/admin/dashboard'),
+            external: true,
+            active: false,
+        })
+    } else if (auth.value?.type === 'customer') {
+        const badge = unreadCount.value ? ` (${unreadCount.value})` : ''
+        list.push({
+            key: 'portal',
+            label: auth.value.name || trans('Account'),
+            href: safeRoute('portal.dashboard', '/portal'),
+            active: isActive('portal.dashboard'),
+            children: [
+                { key: 'p-dash', label: portalLabel('menu.my_dashboard'), href: safeRoute('portal.dashboard', '/portal'), active: isActive('portal.dashboard') },
+                { key: 'p-projects', label: portalLabel('menu.projects') + badge, href: safeRoute('portal.projects.index', '/portal/projects'), active: isActive(['portal.projects.index', 'portal.projects.show'], { prefixes: ['/portal/projects'] }) },
+                { key: 'p-subs', label: portalLabel('menu.subscriptions'), href: safeRoute('portal.subscriptions.index', '/portal/subscriptions'), active: isActive('portal.subscriptions.index', { prefixes: ['/portal/subscriptions'] }) },
+                { key: 'p-tickets', label: portalLabel('menu.tickets'), href: safeRoute('portal.tickets.index', '/portal/tickets'), active: isActive(['portal.tickets.index', 'portal.tickets.create', 'portal.tickets.show'], { prefixes: ['/portal/tickets'] }) },
+                { key: 'p-profile', label: portalLabel('menu.profile'), href: safeRoute('portal.profile.index', '/portal/profile'), active: isActive('portal.profile.index', { prefixes: ['/portal/profile'] }) },
+            ],
+        })
+    }
 
-    window.location.href = newPath + queryString + hash
-}
+    return list
+})
 </script>
-
-<style scoped>
-.main-menu__list a:focus,
-.main-menu__list a:active {
-    outline: none;
-}
-
-.main-menu__list a:focus-visible {
-    outline: 2px solid var(--techguru-base, #5CB0E9);
-    outline-offset: 4px;
-}
-</style>

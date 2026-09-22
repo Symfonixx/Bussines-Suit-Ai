@@ -1,32 +1,24 @@
 <template>
-    <div class="blog-one__single">
-        <div class="blog-one__img">
-            <Link :href="postUrl">
-                <img :src="blog.image_link" :alt="blog.title" width="800" height="500" loading="lazy" decoding="async" @error="handleImageError">
-            </Link>
-            <div v-if="showCategory && blog.category" class="blog-one__tags">
-                <span>{{ blog.category.name }}</span>
+    <article class="blog-article hover-img">
+        <Link :href="postUrl" class="entry_image img-style">
+            <img :src="blog.image_link" :alt="blog.title" width="640" height="360" loading="lazy" decoding="async" @error="handleImageError">
+        </Link>
+        <div class="article_content">
+            <Link :href="postUrl" class="entry_title font-3 h5 link text-main-2">{{ blog.title }}</Link>
+            <p v-if="showDescription && blog.description" class="entry_desc">{{ blog.description }}</p>
+            <div class="br-line has-dot"></div>
+            <div class="entry_meta">
+                <div v-if="dateText" class="meta meta__date">
+                    <i class="icon icon-Clock"></i>
+                    <span class="meta-text text-body-3">{{ dateText }}</span>
+                </div>
+                <div v-if="showCategory && blog.category" class="meta meta__tag">
+                    <i class="icon icon-Tag"></i>
+                    <span class="meta-text text-body-3">{{ blog.category.name }}</span>
+                </div>
             </div>
         </div>
-        <div class="blog-one__content">
-            <ul class="blog-one__meta list-unstyled">
-                <li v-if="dateText">
-                    <Link :href="postUrl"><span class="far fa-calendar-alt"></span>{{ dateText }}</Link>
-                </li>
-                <li v-if="showComments">
-                    <Link :href="postUrl"><span class="fal fa-comments"></span>{{ commentsCount }} {{ trans("Comments") }}</Link>
-                </li>
-            </ul>
-            <h3 class="blog-one__title"><Link :href="postUrl">{{ blog.title }}</Link></h3>
-            <p v-if="showDescription" class="blog-one__text">{{ blog.description }}</p>
-            <div v-if="showReadMore" class="blog-one__btn-box">
-                <Link :href="postUrl" class="thm-btn" :aria-label="readMoreLabel">
-                    {{ readMoreLabel }}
-                    <span :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow `"></span>
-                </Link>
-            </div>
-        </div>
-    </div>
+    </article>
 </template>
 
 <script setup>

@@ -1,0 +1,545 @@
+@use "../abstracts/index" as *;
+
+form {
+    position: relative;
+    z-index: 30;
+
+    textarea,
+    input[type="text"],
+    input[type="password"],
+    input[type="datetime"],
+    input[type="datetime-local"],
+    input[type="date"],
+    input[type="month"],
+    input[type="time"],
+    input[type="week"],
+    input[type="number"],
+    input[type="email"],
+    input[type="url"],
+    input[type="search"],
+    input[type="tel"],
+    input[type="color"] {
+        outline: 0;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+        width: 100%;
+        padding: 7px 11px;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 20px;
+        letter-spacing: -0.14px;
+        @include transition3;
+        border-radius: 0px;
+        background: transparent;
+        color: var(--white);
+        border-radius: 8px;
+        background: var(--bg-2);
+        border: 1px solid var(--line);
+        min-height: 36px;
+
+        &::placeholder {
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 20px;
+            letter-spacing: -0.14px;
+            color: var(--text-main);
+        }
+
+        &:focus {
+            border-color: var(--white);
+        }
+
+        &.style-2 {
+            animation: hue-rotate 5s infinite linear;
+
+            &::placeholder {
+                width: max-content;
+                color: transparent;
+                background: linear-gradient(90.9deg, #9F9DFB 0%, #709AF5 50%, #A5DCF3 100%);
+                background-clip: text;
+            }
+        }
+
+        &.style-large {
+            padding: 13px 20px;
+        }
+
+
+        &.type-radius-2 {
+            border-radius: 28px;
+        }
+
+        @include res(xl, min) {
+            &.style-large {
+                padding: 17px 24px;
+            }
+        }
+    }
+
+    button,
+    input[type="button"],
+    input[type="reset"],
+    input[type="submit"] {
+        background-color: transparent;
+        overflow: hidden;
+        padding: 0;
+    }
+
+    textarea {
+        height: 100px;
+        resize: none;
+    }
+
+    .f-col {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .cols {
+        gap: 15px;
+    }
+
+    .label-text {
+        margin-bottom: 10px;
+    }
+
+    fieldset {
+        >label {}
+    }
+
+
+
+    &.style-border {
+
+        input,
+        textarea {
+            padding: 11px 12px;
+            border: 1px solid var(--line-8);
+        }
+
+        textarea {
+
+            &:focus {
+                border-color: var(--primary);
+            }
+        }
+    }
+
+    &.style-btn-abs {
+        .btn-submit {
+            position: absolute;
+            right: 4px;
+            top: 4px;
+            bottom: 4px;
+        }
+    }
+
+    &.style-radius {
+        fieldset {
+            input {
+                padding: 9px 10px 9px 52px;
+                border-top: 1px solid var(--line);
+                border-right: 1px solid var(--line);
+                border-left: 1px solid var(--line);
+                border-radius: 30px;
+
+                &:focus {
+                    border-color: var(--primary);
+                }
+            }
+        }
+    }
+
+    .form-content-2 {
+        gap: 12px;
+        display: grid;
+    }
+
+    .tf-grid-layout {
+        gap: 12px;
+    }
+
+    @include res(xl, min) {
+        .form-content-2 {
+            gap: 24px;
+        }
+    }
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.tf-check {
+    position: relative;
+    background: transparent;
+    cursor: pointer;
+    outline: 0;
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    min-width: 16px;
+    border: 1px solid var(--line-10);
+    padding: 0;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--white);
+    @include transition3;
+
+    &:checked {
+        border-color: var(--primary);
+        background-color: var(--primary);
+
+        &::before {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    &::before {
+        font-weight: 500;
+        font-family: $fontIcon;
+        content: "\e944";
+        position: absolute;
+        color: var(--white);
+        opacity: 0;
+        font-size: 7px;
+        transform: scale(0);
+        @include transition3;
+    }
+
+    &.style-2 {
+        width: 24px;
+        height: 24px;
+        min-width: 24px;
+
+
+        &:before {
+            font-size: 10px;
+        }
+    }
+
+    &.style-3 {
+        width: 40px;
+        height: 40px;
+        min-width: 40px;
+    }
+
+    &.style-4 {
+        width: 20px;
+        height: 20px;
+        min-width: 20px;
+    }
+}
+
+.checkbox-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    input {
+        padding: 0;
+    }
+
+    label {
+        cursor: pointer;
+    }
+
+    .type-2 {
+        gap: 8px;
+    }
+}
+
+.tf-field {
+    position: relative;
+
+    .tf-input {
+
+        padding: 22px 0px 3px !important;
+
+        &:not(:placeholder-shown),
+        &:focus {
+            ~.tf-lable {
+                top: 0;
+                transform: translateY(0%);
+                font-size: 12px;
+                line-height: 20px;
+                letter-spacing: 0;
+
+            }
+        }
+
+        &::placeholder {
+            color: transparent;
+        }
+    }
+
+    .tf-lable {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: text;
+        @include transition3;
+        font-size: 16px;
+        line-height: 24px;
+        letter-spacing: -0.32px;
+        pointer-events: none;
+
+        &.type-2 {
+            top: 22px;
+            transform: 0;
+        }
+    }
+}
+
+.tf-select {
+    position: relative;
+
+    select {
+        border-radius: 0;
+        width: 100%;
+        padding: 16px 10px;
+        border: 1px solid var(--line);
+        -webkit-appearance: none;
+        appearance: none;
+        background-color: transparent;
+        @include transition3;
+        font-size: 16px;
+        line-height: 24px;
+        color: var(--main);
+        outline: unset;
+    }
+
+    &::after {
+        font-family: $fontIcon;
+        position: absolute;
+        content: "\e928";
+        right: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 10px;
+        z-index: -1;
+        font-weight: 400;
+    }
+
+    &:hover {
+        select {
+            border-color: var(--primary);
+        }
+    }
+
+    &.select-square {
+        select {
+            padding-top: 14px;
+            padding-bottom: 14px;
+            border-radius: 6px;
+            font-size: 14px;
+            line-height: 20px;
+            color: var(--main-4);
+            opacity: 0.8;
+            height: 50px;
+        }
+    }
+}
+
+
+.tf-check-rounded {
+    padding: 0 !important;
+    position: relative;
+    border: 1px solid #9a9a9a;
+    border-radius: 50%;
+    background: none;
+    cursor: pointer;
+    outline: 0;
+    height: 10px;
+    width: 10px;
+    @include flex(center, center);
+    -webkit-appearance: none;
+
+    &::before {
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+        width: 6px;
+        height: 6px;
+        background-color: var(--primary);
+        opacity: 0;
+    }
+
+    &:checked {
+        border-color: var(--primary);
+
+        &::before {
+            opacity: 1;
+        }
+    }
+}
+
+
+.form-ask {
+    padding: 11px;
+    border: 1px solid var(--line);
+    backdrop-filter: blur(16px);
+    border-radius: 28px;
+    background: var(--bg-2);
+
+    .form-content {
+        input {
+            padding: 2px 4px 26px;
+            border: 0;
+        }
+    }
+
+    .field-bottom {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 10px;
+
+    }
+
+    .field_left,
+    .field_right {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+}
+
+
+.btn-ip {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: linear-gradient(0deg, rgba(20, 20, 21, 0.82), rgba(20, 20, 21, 0.82)),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0) 100%);
+    border: 1px solid var(--line);
+    box-shadow: 0px 1px 1px 0px #FFFFFF2E inset, 0px 0px 4px 0px #FFFFFF0F inset, 0px 0px 8px 0px #FFFFFF14 inset, 0px 0px 16px 0px #FFFFFF1F inset;
+    padding: 7px 12px;
+    border-radius: 999px;
+    @include transition3;
+    color: var(--text-2);
+
+    .icon {
+        font-size: 20px;
+        width: 20px;
+    }
+
+    &.type-circle {
+        border-radius: 50%;
+        padding: 7px;
+    }
+
+    &.type-transparent {
+        border: transparent;
+        background: transparent;
+        box-shadow: unset;
+    }
+
+    &:hover {
+        color: var(--primary);
+    }
+}
+
+.form-get {
+    .form-content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+    }
+
+    fieldset {
+        max-width: 237px;
+        width: 100%;
+    }
+}
+
+
+.form-search {
+    position: relative;
+
+    input {
+        border-radius: 24px;
+    }
+
+    .btn_submit {
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        top: 4px;
+        right: 4px;
+        bottom: 4px;
+        font-size: 18px;
+    }
+
+    @include res(xl, min) {
+        .btn_submit {
+            width: 48px;
+            height: 48px;
+            font-size: 24px;
+        }
+    }
+}
+
+.form-review {
+    .form-content {
+        display: grid;
+        gap: 12px;
+        margin-bottom: 24px;
+
+        fieldset {
+            display: grid;
+        }
+
+        label {
+            margin-bottom: 8px;
+        }
+
+        textarea {
+            height: 100px;
+        }
+    }
+
+    .tf-grid-layout {
+        gap: 12px;
+    }
+
+    @include res(xl, min) {
+        .form-content {
+            gap: 24px;
+        }
+    }
+}
+
+.form-get_in {
+    width: 100%;
+
+    .form-content-2 {
+        margin-bottom: 24px;
+
+        .label-text {
+            margin-bottom: 8px;
+        }
+
+        fieldset {
+            display: grid;
+        }
+    }
+
+    @include res(xl, min) {
+        max-width: 675px;
+        width: 100%;
+        margin-left: auto;
+        padding-left: 12px;
+    }
+}

@@ -1,0 +1,251 @@
+@use "../abstracts/index" as *;
+
+
+.tf-header {
+    padding-top: 28px;
+    padding-bottom: 28px;
+    position: sticky;
+    z-index: 100;
+
+    .header-left {
+        padding-left: 15px;
+    }
+
+    .header-right {
+        padding-right: 15px;
+    }
+}
+
+.header-sticky {
+    background: #0000001A;
+    backdrop-filter: blur(16px);
+    @include transition3;
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    top: -100px;
+    transition: top 0.3s ease;
+    z-index: 999;
+}
+
+.menu-item {
+    position: relative;
+    z-index: 1;
+    cursor: pointer;
+
+    &::before {
+        content: "";
+        position: absolute;
+        height: 88px;
+        width: calc(100% + 64px);
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: none;
+    }
+
+    &:hover {
+        &::before {
+            display: block;
+        }
+
+        .item-link {
+            color: var(--text-2);
+        }
+
+        .sub-menu {
+            @include visible;
+            pointer-events: all;
+            transform: rotate3d(0, 0, 0, 0deg);
+        }
+    }
+}
+
+.menu-indicator {
+    position: absolute;
+    border-radius: 8px;
+    border: 1px solid var(--line);
+    background-color: var(--bg-2);
+    backdrop-filter: blur(12px);
+    transition: all 0.3s ease;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.logo-site {}
+
+.header-right {
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+.btn_group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.main-nav_menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+}
+
+.btn-menu_mobile {
+    display: flex;
+    font-size: 24px;
+    color: var(--text-2);
+}
+
+.canvas-mb {
+    background-color: transparent;
+    backdrop-filter: blur(16px);
+}
+
+.nav-ul-mb {
+    display: grid;
+    gap: 24px;
+}
+
+.mb-item-link {
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 40px;
+    letter-spacing: -0.18px;
+
+    &:hover,
+    &.active {
+        color: var(--white);
+    }
+}
+
+/* Update Inner */
+
+
+.item-link {
+    gap: 6px;
+}
+
+.sub-menu {
+    position: absolute;
+    top: calc(100% + 28px);
+    background-color: rgba(15, 15, 15, 0.9);
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 10px 20px 0px;
+    min-width: 150px;
+    left: -31px;
+    // transform: scale(0.9);
+    // transform-origin: top;
+    // @include transition4;
+    @include hidden;
+    @include transition3;
+    pointer-events: none;
+    transform: rotate3d(1, 0, 0, -90deg);
+    transform-origin: 0 0 0;
+    border-radius: 8px;
+}
+
+.sub-menu_list {
+    padding: 12px 0px;
+}
+
+.sub-menu_link {
+    color: var(--white);
+    padding: 4px 16px;
+    display: flex;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+
+    &:hover {
+        color: var(--primary);
+    }
+}
+
+
+
+
+.nav-ul-mb {
+    li {
+        &:not(:last-child) {
+            .mb-menu-link {
+                padding-bottom: 24px;
+            }
+
+            .sub-nav-menu {
+                &:not(.sub-menu-level-2) {
+                    margin-bottom: 24px;
+                }
+            }
+        }
+    }
+}
+
+// .nav-ul-mb {
+//     li {
+//         &:not(:last-child) {
+//             .mb-menu-link {
+//                 padding-bottom: 24px;
+//             }
+
+//             .sub-nav-menu {
+//                 &:not(.sub-menu-level-2) {
+//                     margin-bottom: 24px;
+//                 }
+//             }
+//         }
+//     }
+// }
+
+.mb-menu-link {
+    @include flex(center, space-between);
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    @include transition3;
+
+    .icon {
+        font-size: 9px;
+        @include transition3;
+        transform: rotate(0deg);
+    }
+
+    &:not(.collapsed) {
+        padding-bottom: 24px;
+
+        .icon {
+            transform: rotate(180deg);
+        }
+    }
+}
+
+
+.sub-nav-menu {
+    padding-left: 16px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    margin-left: 16px;
+    border-left: 1px solid var(--line);
+
+    .sub-nav-link {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
+        display: flex;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        align-items: center;
+        justify-content: space-between;
+
+        .icon {
+            font-size: 14px;
+        }
+
+        &.active {
+            font-weight: 700;
+        }
+    }
+}

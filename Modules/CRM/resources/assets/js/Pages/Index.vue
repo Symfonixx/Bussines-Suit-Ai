@@ -1,6 +1,5 @@
 <template>
     <Head>
-        <link rel="stylesheet" :href="asset_path + 'site/css/module-css/page-header.css'"/>
         <title>{{ metaTitle }}</title>
         <meta name="description" :content="metaDescription">
         <meta name="keywords" :content="metaKeywords">
@@ -17,228 +16,155 @@
         <meta v-if="metaImage" name="twitter:image" :content="metaImage">
     </Head>
     <app-layout>
+        <PageTitle :title="trans('Contact Us')" />
 
-
-        <section class="page-header">
-            <div class="page-header__bg" :style="{ backgroundImage: `url(${asset_path}images/backgrounds/contact-us-bg.jpg)`}">
-            </div>
-            <div class="container">
-                <div class="page-header__inner">
-                    <h1>{{ trans("Contact Us") }}</h1>
-                    <div class="thm-breadcrumb__box">
-                        <ul class="thm-breadcrumb list-unstyled">
-                            <li><Link :href="route('home')" ><i class="fas fa-home"></i>{{ trans("Home") }}</Link></li>
-                            <li><span :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow-1`"></span></li>
-                            <li>{{ trans("Contact Us") }}</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact One Start -->
-        <section class="contact-one">
-            <div class="contact-one__bg-shape"
-                 :style="{ backgroundImage: `url(${asset_path}images/shapes/contact-one-bg-shape.png)`}">
-
-            </div>
+        <section class="section-get-in flat-spacing-3">
             <div class="container">
                 <div class="row">
-                    <div class="col-xl-6 col-lg-6">
-                        <div :class="`contact-one__left wow slideIn${locale !== 'ar' ? 'Left' : 'Right'}`" data-wow-delay="100ms"
-                             data-wow-duration="2500ms">
-                            <div class="contact-one__left-shape-1"></div>
-                            <div class="contact-one__left-shape-2"></div>
-                            <h3 class="contact-one__from-title">{{ trans("How Can We Help You?") }}</h3>
-                            <form @submit.prevent="handleSubmit" class="contact-one__form">
-                                <div class="row">
-                                    <div class="col-xl-6 col-lg-6">
-                                        <h4 class="contact-one__input-title">{{ trans("Full Name") }}</h4>
-                                        <div class="contact-one__input-box">
-                                            <div class="contact-one__input-icon">
-                                                <span class="icon-user-1"></span>
-                                            </div>
-                                            <input
-                                                v-model="contactForm.name"
-                                                type="text"
-                                                name="name"
-                                                :placeholder="trans('Full Name')"
-                                                :class="{ 'error': contactForm.errors.name }"
-                                                :disabled="contactForm.processing"
-                                                required>
-                                        </div>
+                    <div class="col-lg-10 mx-auto">
+                        <h2 class="s-title only-title font-3 text-linear px-16 px-xl-0">
+                            {{ trans('Get In Touch') }}
+                        </h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3 offset-lg-1">
+                        <ul class="info-us-list px-16 px-lg-0 mb-lg-0">
+                            <li v-if="settings.address">
+                                <p class="title-sub text-body-3">{{ trans('Our Location') }}</p>
+                                <span class="text-body-3 text-white">{{ settings.address }}</span>
+                            </li>
+                            <li v-if="settings.address" class="br-line has-dot"></li>
+                            <li v-if="settings.email">
+                                <p class="title-sub text-body-3">{{ trans('Email') }}</p>
+                                <a :href="`mailto:${settings.email}`" class="h5 fw-medium link text-white font-3" dir="ltr">
+                                    {{ settings.email }}
+                                </a>
+                            </li>
+                            <li v-if="settings.email && settings.phone" class="br-line has-dot"></li>
+                            <li v-if="settings.phone">
+                                <p class="title-sub text-body-3">{{ trans('Phone') }}</p>
+                                <a :href="`tel:${settings.phone}`" class="h5 fw-medium link text-white font-3" dir="ltr">
+                                    {{ settings.phone }}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-7">
+                        <form @submit.prevent="handleSubmit" class="form-get_in px-16 px-xl-0">
+                            <div class="form-content-2">
+                                <div class="tf-grid-layout sm-col-2">
+                                    <fieldset>
+                                        <label class="label-text text-body-3 text-white" for="contact-name">{{ trans('Full Name') }}</label>
+                                        <input
+                                            id="contact-name"
+                                            v-model="contactForm.name"
+                                            type="text"
+                                            name="name"
+                                            :placeholder="trans('Full Name')"
+                                            :class="{ error: contactForm.errors.name }"
+                                            :disabled="contactForm.processing"
+                                            required
+                                        >
                                         <div v-if="contactForm.errors.name" class="text-danger mt-1 small">
                                             {{ contactForm.errors.name }}
                                         </div>
-                                    </div>
-                                    <div class="col-xl-6 col-lg-6">
-                                        <h4 class="contact-one__input-title">{{ trans("Email") }}</h4>
-                                        <div class="contact-one__input-box">
-                                            <div class="contact-one__input-icon">
-                                                <span class="icon-email"></span>
-                                            </div>
-                                            <input
-                                                v-model="contactForm.email"
-                                                type="email"
-                                                name="email"
-                                                :placeholder="trans('Email')"
-                                                :class="{ 'error': contactForm.errors.email }"
-                                                :disabled="contactForm.processing"
-                                                required>
-                                        </div>
+                                    </fieldset>
+                                    <fieldset>
+                                        <label class="label-text text-body-3 text-white" for="contact-email">{{ trans('Email') }}</label>
+                                        <input
+                                            id="contact-email"
+                                            v-model="contactForm.email"
+                                            type="email"
+                                            name="email"
+                                            :placeholder="trans('Email')"
+                                            :class="{ error: contactForm.errors.email }"
+                                            :disabled="contactForm.processing"
+                                            required
+                                        >
                                         <div v-if="contactForm.errors.email" class="text-danger mt-1 small">
                                             {{ contactForm.errors.email }}
                                         </div>
-                                    </div>
-                                    <div class="col-xl-6 col-lg-6">
-                                        <h4 class="contact-one__input-title">{{ trans("Phone Number") }}</h4>
-                                        <div class="contact-one__input-box">
-                                            <div class="contact-one__input-icon">
-                                                <span class="icon-phone-call"></span>
-                                            </div>
-                                            <input
-                                                v-model="contactForm.mobile"
-                                                type="text"
-                                                name="mobile"
-                                                :placeholder="trans('Phone Number')"
-                                                :class="{ 'error': contactForm.errors.mobile }"
-                                                :disabled="contactForm.processing"
-                                                required>
-                                        </div>
+                                    </fieldset>
+                                </div>
+                                <div class="tf-grid-layout sm-col-2">
+                                    <fieldset>
+                                        <label class="label-text text-body-3 text-white" for="contact-mobile">{{ trans('Phone Number') }}</label>
+                                        <input
+                                            id="contact-mobile"
+                                            v-model="contactForm.mobile"
+                                            type="text"
+                                            name="mobile"
+                                            :placeholder="trans('Phone Number')"
+                                            :class="{ error: contactForm.errors.mobile }"
+                                            :disabled="contactForm.processing"
+                                            required
+                                        >
                                         <div v-if="contactForm.errors.mobile" class="text-danger mt-1 small">
                                             {{ contactForm.errors.mobile }}
                                         </div>
-                                    </div>
-                                    <div class="col-xl-6 col-lg-6">
-                                        <h4 class="contact-one__input-title">{{ trans("Subject") }}</h4>
-                                        <div class="contact-one__input-box">
-                                            <div class="contact-one__input-icon">
-                                                <span class="icon-edit"></span>
-                                            </div>
-                                            <input
-                                                v-model="contactForm.subject"
-                                                type="text"
-                                                name="subject"
-                                                :placeholder="trans('Subject')"
-                                                :class="{ 'error': contactForm.errors.subject }"
-                                                :disabled="contactForm.processing"
-                                                required>
-                                        </div>
+                                    </fieldset>
+                                    <fieldset>
+                                        <label class="label-text text-body-3 text-white" for="contact-subject">{{ trans('Subject') }}</label>
+                                        <input
+                                            id="contact-subject"
+                                            v-model="contactForm.subject"
+                                            type="text"
+                                            name="subject"
+                                            :placeholder="trans('Subject')"
+                                            :class="{ error: contactForm.errors.subject }"
+                                            :disabled="contactForm.processing"
+                                            required
+                                        >
                                         <div v-if="contactForm.errors.subject" class="text-danger mt-1 small">
                                             {{ contactForm.errors.subject }}
                                         </div>
-                                    </div>
+                                    </fieldset>
                                 </div>
-                                <div class="col-xl-12">
-                                    <h4 class="contact-one__input-title">{{ trans("Message") }}</h4>
-                                    <div class="contact-one__input-box text-message-box">
-                                        <div class="contact-one__input-icon">
-                                            <span class="icon-edit"></span>
-                                        </div>
-                                        <textarea
-                                            v-model="contactForm.message"
-                                            name="message"
-                                            :placeholder="trans('Write your message')"
-                                            :class="{ 'error': contactForm.errors.message }"
-                                            :disabled="contactForm.processing"
-                                            required></textarea>
-                                    </div>
+                                <fieldset class="d-grid">
+                                    <label class="label-text text-body-3 text-white" for="contact-message">{{ trans('Message') }}</label>
+                                    <textarea
+                                        id="contact-message"
+                                        v-model="contactForm.message"
+                                        name="message"
+                                        :placeholder="trans('Write your message')"
+                                        :class="{ error: contactForm.errors.message }"
+                                        :disabled="contactForm.processing"
+                                        required
+                                    ></textarea>
                                     <div v-if="contactForm.errors.message" class="text-danger mt-1 small">
                                         {{ contactForm.errors.message }}
                                     </div>
-                                    <div class="contact-one__btn-box">
-                                        <button
-                                            type="submit"
-                                            class="thm-btn"
-                                            :disabled="contactForm.processing"
-                                            :class="{ 'opacity-50': contactForm.processing }">
-                                            <span v-if="contactForm.processing">
-                                                <i class="fa-solid fa-spinner fa-spin me-2"></i>{{
-                                                    trans("Sending...")
-                                                }}
-                                            </span>
-                                            <span v-else>
-                                                <span>{{ trans("Submit") }}</span> <i :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow mx-1`"></i>
-                                            </span>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div v-if="submitSuccess" class="col-12 mt-3">
-                                    <div class="alert alert-success">
-                                        {{ trans("Thank you for contacting us! We will get back to you soon.") }}
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="col-xl-6 col-lg-6">
-                        <div class="contact-one__right">
-                            <div class="section-title text-left sec-title-animation animation-style2">
-                                <div class="section-title__tagline-box">
-                                    <div class="section-title__tagline-shape-1"></div>
-                                    <span class="section-title__tagline">{{ trans("Get In Touch") }}</span>
-                                    <div class="section-title__tagline-shape-2"></div>
-                                </div>
-                                <h2  class="section-title__title title-animation"
-                                    v-html="trans('Start the Conversation')+ '<span>–</span><br><span>' + trans('Reach Out Anytime') +'</span>'"></h2>
-
-
+                                </fieldset>
                             </div>
-                            <p  class="contact-one__text">{{
-                                    trans("We're here to listen! Whether you have questions, feedback, or just want to say hello, feel free to reach out")
-                                }}</p>
-
-
-                            <ul class="contact-one__list list-unstyled">
-                                <li>
-                                    <div class="icon">
-                                        <span class="icon-pin"></span>
-                                    </div>
-                                    <div class="content">
-                                        <h4>{{ trans('Our Location') }}</h4>
-                                        <p>{{ settings.address }}</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <span class="icon-mail"></span>
-                                    </div>
-                                    <div class="content">
-                                        <h4>{{ trans('Email') }}</h4>
-                                        <p><a dir="ltr" href="mailto:{{settings.email}}">{{ settings.email }}</a></p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <span class="icon-phone-call"></span>
-                                    </div>
-                                    <div class="content">
-                                        <h4>{{ trans('Phone') }}</h4>
-                                        <p><a dir="ltr" :href="`tel:${settings.phone}`">{{ settings.phone }}</a></p>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
+                            <button
+                                type="submit"
+                                class="tf-btn text-body-3 style-2 animate-btn animate-dark style-high"
+                                :disabled="contactForm.processing"
+                            >
+                                {{ contactForm.processing ? trans('Sending...') : trans('Submit') }}
+                            </button>
+                            <div v-if="submitSuccess" class="alert alert-success mt-3">
+                                {{ trans('Thank you for contacting us! We will get back to you soon.') }}
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </section>
-        <!-- Contact One End -->
-
-
     </app-layout>
 </template>
 
 <script setup>
 import {computed, ref} from 'vue'
-import {usePage, useForm, Link ,Head} from '@inertiajs/vue3'
+import {usePage, useForm, Head} from '@inertiajs/vue3'
+import AppLayout from '@/Layouts/App.vue'
+import PageTitle from '@/Components/PageTitle.vue'
 
 const page = usePage()
 const trans = (key) => page.props.translations[key] || key;
 const seo = computed(() => page.props.seo || {})
 const settings = computed(() => page.props.settings || {})
-const asset_path = computed(() => page.props.asset_path || '')
-const locale = computed(() => page.props.locale || 'en')
 const meta = computed(() => page.props.meta || {})
 const siteName = computed(() => seo.value.website_name || page.props.appName || 'Symfonix')
 
@@ -320,21 +246,6 @@ const handleSubmit = () => {
 
     return false;
 }
-
-
-</script>
-
-<script>
-
-
-import AppLayout from '@/Layouts/App.vue';
-
-export default {
-    components: {
-        AppLayout
-    }
-
-};
 </script>
 
 
