@@ -25,12 +25,6 @@
                             >
                                 {{ trans('Login') }}
                             </Link>
-                            <Link
-                                :href="ctaUrl"
-                                class="tf-btn text-body-3 style-2 animate-btn animate-dark"
-                            >
-                                {{ ctaLabel }}
-                            </Link>
                             <a href="#mobileMenu" class="btn-menu_mobile d-lg-none" data-bs-toggle="offcanvas">
                                 <i class="icon icon-menu"></i>
                             </a>
@@ -61,10 +55,6 @@ const homeUrl = computed(() => {
 const loginUrl = computed(() => {
     try { return route('login') } catch (e) { return `/${locale.value}/login` }
 })
-const ctaUrl = computed(() => {
-    try { return route('contact-us') } catch (e) { return `/${locale.value}/contact-us` }
-})
-const ctaLabel = computed(() => trans('Get started'))
 const logoSrc = computed(() => {
     const logo = settings.value?.site_logo
     if (!logo || logo === false || logo === 'false' || logo === 'default.jpg') {

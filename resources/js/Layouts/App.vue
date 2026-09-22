@@ -175,9 +175,6 @@
                 <span v-else class="brand-text-logo">{{ brandName }}</span>
             </div>
             <div class="btn_group">
-                <Link :href="contactUrl" class="tf-btn style-2" data-bs-dismiss="offcanvas">
-                    {{ trans('Get started') }}
-                </Link>
                 <span class="icon-close-popup" data-bs-dismiss="offcanvas">
                     <i class="icon-close"></i>
                 </span>

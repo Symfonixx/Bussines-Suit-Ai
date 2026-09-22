@@ -347,14 +347,6 @@ const _sfc_main$U = {
         return `/${locale.value}/login`;
       }
     });
-    const ctaUrl = computed(() => {
-      try {
-        return route("contact-us");
-      } catch (e2) {
-        return `/${locale.value}/contact-us`;
-      }
-    });
-    const ctaLabel = computed(() => trans("Get started"));
     const logoSrc = computed(() => {
       var _a;
       const logo = (_a = settings.value) == null ? void 0 : _a.site_logo;
@@ -422,21 +414,6 @@ const _sfc_main$U = {
       } else {
         _push(`<!---->`);
       }
-      _push(ssrRenderComponent(unref(Link), {
-        href: ctaUrl.value,
-        class: "tf-btn text-body-3 style-2 animate-btn animate-dark"
-      }, {
-        default: withCtx((_2, _push2, _parent2, _scopeId) => {
-          if (_push2) {
-            _push2(`${ssrInterpolate(ctaLabel.value)}`);
-          } else {
-            return [
-              createTextVNode(toDisplayString(ctaLabel.value), 1)
-            ];
-          }
-        }),
-        _: 1
-      }, _parent));
       _push(`<a href="#mobileMenu" class="btn-menu_mobile d-lg-none" data-bs-toggle="offcanvas"><i class="icon icon-menu"></i></a></div></div></div></div></div></header>`);
     };
   }
@@ -959,24 +936,7 @@ const _sfc_main$R = {
         } else {
           _push(`<span class="brand-text-logo">${ssrInterpolate(brandName.value)}</span>`);
         }
-        _push(`</div><div class="btn_group">`);
-        _push(ssrRenderComponent(unref(Link), {
-          href: contactUrl.value,
-          class: "tf-btn style-2",
-          "data-bs-dismiss": "offcanvas"
-        }, {
-          default: withCtx((_2, _push2, _parent2, _scopeId) => {
-            if (_push2) {
-              _push2(`${ssrInterpolate(trans("Get started"))}`);
-            } else {
-              return [
-                createTextVNode(toDisplayString(trans("Get started")), 1)
-              ];
-            }
-          }),
-          _: 1
-        }, _parent));
-        _push(`<span class="icon-close-popup" data-bs-dismiss="offcanvas"><i class="icon-close"></i></span></div></div><span class="br-line"></span><div class="canvas-body">`);
+        _push(`</div><div class="btn_group"><span class="icon-close-popup" data-bs-dismiss="offcanvas"><i class="icon-close"></i></span></div></div><span class="br-line"></span><div class="canvas-body">`);
         _push(ssrRenderComponent(_sfc_main$V, { variant: "mobile" }, null, _parent));
         _push(`</div><div class="canvas-footer">`);
         if (!auth.value) {
